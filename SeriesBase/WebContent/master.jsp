@@ -72,7 +72,7 @@
 <div id="cnn_hdr-nav">
 	<ul id="intl-menu">
 		<li class="no-border"><a id="nav-home"
-			class="nav-media no-border nav-on" href="/" title="Homepage">   Home</a>
+			class="nav-media no-border nav-on" href="/" title="Homepage">Home</a>
 		</li>
 		<%
 			if (logged) {
