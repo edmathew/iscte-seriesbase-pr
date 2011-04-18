@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dto.Episodio;
+import dto.Genre;
 import dto.Person;
 import dto.Series;
 
@@ -51,6 +52,7 @@ public class QueryDatabase {
 				id = set.getInt(1);
 
 		} catch (SQLException e) {
+			System.out.println();
 		} catch (IllegalArgumentException e) {
 		} finally {
 			try {
@@ -235,6 +237,7 @@ public class QueryDatabase {
 			ps = db.preparedStatement(SQLStatements.insertSeriesActor());
 			ps.setInt(1, seriesID);
 			ps.setInt(2, personId);
+			ps.executeUpdate();
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -242,5 +245,30 @@ public class QueryDatabase {
 			} catch (SQLException e) {
 			}
 		}
+	}
+
+	public Genre getGenre(String genre) {
+
+		return null;
+	}
+
+	private boolean exists(String genre) {
+		PreparedStatement ps = null;
+		boolean exists = false;
+		try {
+			ps = db.preparedStatement(SQLStatements.countGenre());
+			ps.setString(1, genre);
+			ResultSet s = ps.executeQuery();
+			
+				
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+
+		return exists;
 	}
 }

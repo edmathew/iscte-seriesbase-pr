@@ -11,11 +11,12 @@ package sql;
 public class SQLStatements {
 
 	public static String selectPassword(String user) {
-		return "SELECT idUser, password FROM user WHERE nome='" + user + "'";
+		return "SELECT idUtilizador, password FROM utilizador WHERE nome='"
+				+ user + "'";
 	}
 
 	public static String selectUserImageURL(int userId) {
-		return "SELECT imageURL FROM user WHERE idUser=" + userId;
+		return "SELECT ImageURL FROM utilizador WHERE idUtilizador=" + userId;
 	}
 
 	public static String selectUsername(String username) {
@@ -42,5 +43,17 @@ public class SQLStatements {
 
 	public static String insertSeriesActor() {
 		return "INSERT INTO actoresDaSerie(Serie_idSerie, Pessoa_idPessoa) VALUES (?, ?)";
+	}
+
+	public static String insertGenre() {
+		return "INSERT INTO genero (Nome) VALUES (?, ?)";
+	}
+
+	public static String countGenre() {
+		return "SELECT COUNT(*) FROM genero WHERE nome = ?";
+	}
+
+	public static String selectGenre() {
+		return "SELECT * FROM genero WHERE nome = ?";
 	}
 }

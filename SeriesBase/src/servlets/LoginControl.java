@@ -90,6 +90,7 @@ public class LoginControl extends HttpServlet {
 		String pass = req.getParameter("password");
 
 		int userId = query.validLogin(user, pass);
+		System.out.println(userId);
 		if (userId > 0) {
 			session.setAttribute("loginname", user);
 			session.setAttribute("loginID", userId);
@@ -116,6 +117,5 @@ public class LoginControl extends HttpServlet {
 			session.setAttribute("imageURL", req.getParameter("imageURL"));
 			throw new UsernameAlreadyTaken();
 		}
-
 	}
 }
