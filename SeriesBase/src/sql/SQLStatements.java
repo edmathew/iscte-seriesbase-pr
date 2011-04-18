@@ -46,7 +46,7 @@ public class SQLStatements {
 	}
 
 	public static String insertGenre() {
-		return "INSERT INTO genero (Nome) VALUES ?";
+		return "INSERT INTO genero (Nome) VALUES (?)";
 	}
 
 	public static String countGenre() {
@@ -58,6 +58,6 @@ public class SQLStatements {
 	}
 	
 	public static String insertSeriesGenre(){
-		return "INSERT INTO generosdadaserie (Genero_idGenero, Serie_idSerie) VALUES (?, ?)";
+		return "INSERT INTO generosdaserie (Genero_idGenero, Serie_idSerie) VALUES (?, ?)";
 	}
 }

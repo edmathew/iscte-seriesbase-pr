@@ -52,8 +52,6 @@ public class QueryDatabase {
 				id = set.getInt(1);
 
 		} catch (SQLException e) {
-			System.out.println();
-		} catch (IllegalArgumentException e) {
 		} finally {
 			try {
 				db.closeStatement();
@@ -193,7 +191,6 @@ public class QueryDatabase {
 			}
 		}
 	}
-	
 
 	public void insertEpisode(int seriesID, Episodio e) throws SQLException {
 		PreparedStatement ps = db.preparedStatement(SQLStatements
@@ -209,6 +206,7 @@ public class QueryDatabase {
 			ps.setNull(6, java.sql.Types.DATE);
 
 		ps.executeUpdate();
+		db.commit();
 	}
 
 	public int insertPerson(Person p) {
@@ -226,6 +224,7 @@ public class QueryDatabase {
 			ResultSet s = ps.getGeneratedKeys();
 			if (s != null && s.next())
 				personId = s.getInt(1);
+			db.commit();
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -243,6 +242,7 @@ public class QueryDatabase {
 			ps.setInt(1, seriesID);
 			ps.setInt(2, personId);
 			ps.executeUpdate();
+			db.commit();
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -269,6 +269,7 @@ public class QueryDatabase {
 			ResultSet s = ps.getGeneratedKeys();
 			if (s != null && s.next())
 				id = s.getInt(1);
+			db.commit();
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -310,7 +311,6 @@ public class QueryDatabase {
 			ResultSet s = ps.executeQuery();
 			if (s != null && s.next() && s.getInt(0) != 0)
 				exists = true;
-
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -321,14 +321,15 @@ public class QueryDatabase {
 
 		return exists;
 	}
-	
-	public void insertSeriesGenre(int seriesID, int genreID){
+
+	public void insertSeriesGenre(int seriesID, int genreID) {
 		PreparedStatement ps = null;
 		try {
-			ps = db.preparedStatement(SQLStatements.insertSeriesActor());
+			ps = db.preparedStatement(SQLStatements.insertSeriesGenre());
 			ps.setInt(2, seriesID);
 			ps.setInt(1, genreID);
 			ps.executeUpdate();
+			db.commit();
 		} catch (SQLException e) {
 		} finally {
 			try {
