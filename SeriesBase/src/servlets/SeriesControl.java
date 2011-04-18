@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.LinkedList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +33,11 @@ public class SeriesControl extends HttpServlet {
 		if (action.equals("getAll")) {
 			req.getSession().setAttribute("seriesList", query.getAllSeries().toArray());
 			resp.sendRedirect("listSeries.jsp");
+		}else if(action.equals("getById")){
+			int id = Integer.parseInt(req.getParameter("id"));
+			Series s = query.getSeriesById(id);
+			req.getSession().setAttribute("series", s);
+			resp.sendRedirect("showSeriesInfo.jsp");
 		}
 	}
 

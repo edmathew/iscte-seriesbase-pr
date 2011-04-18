@@ -30,31 +30,52 @@ public class QueryDatabase {
 			}
 	}
 
+	private Series readSeriesFrom(ResultSet set) throws SQLException {
+		int id = set.getInt(1);
+		String name = set.getString(2);
+		int anoInicial = set.getInt(3);
+		String resumo = set.getString(4);
+		String imageURL = set.getString(5);
+		String network = set.getString(6);
+		Series s = new Series(name, anoInicial, resumo, network, null, null);
+		s.setId(id);
+		s.setImageURL(imageURL);
+		return s;
+	}
+
 	public LinkedList<Series> getAllSeries() {
 		LinkedList<Series> all = new LinkedList<Series>();
 		try {
 			ResultSet set = db.selectStatement(SQLStatements.getAllSeries());
-			while (set.next()) {
-				int id = set.getInt(1);
-				String name = set.getString(2);
-				int anoInicial = set.getInt(3);
-				String resumo = set.getString(4);
-				String imageURL = set.getString(5);
-				String network = set.getString(6);
-				Series s = new Series(name, anoInicial, resumo, network, null,
-						null);
-				s.setId(id);
-				s.setImageURL(imageURL);
-				all.add(s);
-			}
+			while (set.next())
+				all.add(readSeriesFrom(set));
+
 		} catch (SQLException e) {
 			try {
 				db.closeStatement();
 			} catch (SQLException e1) {
 			}
 		}
-
 		return all;
+	}
+
+	public Series getSeriesById(int id) {
+		PreparedStatement ps = null;
+		Series s = null;
+		try {
+			ps = db.preparedStatement(SQLStatements.getSeriesById());
+			ps.setInt(1, id);
+			ResultSet set = ps.executeQuery();
+			if (set != null && set.next())
+				s = readSeriesFrom(set);
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+		return s;
 	}
 
 	/**

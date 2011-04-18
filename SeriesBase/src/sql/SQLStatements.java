@@ -11,7 +11,11 @@ package sql;
 public class SQLStatements {
 	
 	public static String getAllSeries(){
-		return "SELECT * FROM serie";
+		return "SELECT * FROM serie ORDER BY AnoInicial";
+	}
+	
+	public static String getSeriesById(){
+		return "SELECT * FROM serie WHERE idSerie = ?";
 	}
 
 	public static String selectPassword(String user) {

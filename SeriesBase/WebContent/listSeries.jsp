@@ -3,12 +3,17 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%
-	if (request.getHeader("Referer") == null)
-		response.sendRedirect("index.jsp");
 
-	Object[] series = (Object[]) session.getAttribute("seriesList");
+<%
+	if (session.getAttribute("seriesList") == null)
+		request.getRequestDispatcher("/seriesControl?action=getAll")
+				.forward(request, response);
+
+	Object[] series;
+	//if (session.getAttribute("seriesList") != null)
+		series = (Object[]) session.getAttribute("seriesList");
+	//else
+		//series = new Object[0];
 %>
 
 <html>
@@ -17,13 +22,20 @@
 <title></title>
 </head>
 <body>
-	<%
-		for (int i = 0; i < series.length; i++) {
-	%>
-			<%= ((Series)series[i]).getName()%><br/>
-	<%
-		}
-	%>
+	<table border="1" id="s1">
+		<%
+			for (int i = 0; i < series.length; i++) {
+				Series s = (Series) series[i];
+		%>
+		<tr>
+			<td><%=s.getName()%></td>
+			<td><%=s.getAnoInicial()%></td>
+			<td><a href="seriesControl?action=getById&id=<%=s.getId()%>">Page</a>
+		</tr>
+		<%
+			}
+		%>
+	</table>
 
 </body>
 </html>
