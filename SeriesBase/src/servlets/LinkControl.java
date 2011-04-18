@@ -30,6 +30,9 @@ public class LinkControl extends HttpServlet {
 		if(link != null){
 			if(link.equals("register"))
 				resp.sendRedirect("forms/register.jsp");
+			else if(link.equals("home"))
+				resp.sendRedirect("index.jsp");
+				
 		}			
 	}
 
