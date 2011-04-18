@@ -13,39 +13,15 @@
 		<title>Seriesbase - Your TV Series Database</title>
 	</head>
 	<body>
-		<jsp:include page="master.jsp"/>
+		
+		<jsp:include page="master.jsp"/>	
 		
 		<div class="news">
 		<%-- <ul>
 			<li>The time is now <%=new java.util.Date()%></li>
 		</ul> --%>
 	
-		<%
-			if (!logged) {
-		%>
-		
-		<%
-			if (bruteForce) {
-					session.removeAttribute("bruteForceLogin");
-		%>
-		<p style="color: red; size: 20px">Dados incorrectos. Tente outra
-			vez.</p>
-		<%
-			}
-		%>
-	
-		<a href="forms/register.jsp">Registar</a>
-		<%
-			} else {
-		%>
-		<p>
-			Welcome
-			<%=session.getAttribute("loginname").toString()%></p>
-		<a href="logout.jsp">LogOut</a>
-		<%
-			}
-		%>
-		</div>
+			</div>
 	
 		<div class=footer>
 		</div>

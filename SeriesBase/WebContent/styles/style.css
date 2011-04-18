@@ -27,6 +27,7 @@ form {
 }
 
 .header {
+	background-image: url('../images/SeriesBaseLogo.gif');
 	font-family: verdana;
 	font-size: 20px;
 	text-decoration: blink;

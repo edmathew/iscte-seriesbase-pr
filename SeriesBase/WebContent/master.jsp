@@ -8,7 +8,7 @@
 
 <div class="header">
 	<!-- @Ed - Falta o Logotipo -->
-	Seriesbase ALPHA Version 2.0 Nuno<br />
+	<!-- Seriesbase ALPHA Version 2.0 Nuno<br /> -->
 	
 </div>
 
