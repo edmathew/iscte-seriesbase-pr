@@ -3,6 +3,7 @@ package databaseAccess;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 import dto.Episodio;
 import dto.Genre;
@@ -27,6 +28,33 @@ public class QueryDatabase {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+	}
+
+	public LinkedList<Series> getAllSeries() {
+		LinkedList<Series> all = new LinkedList<Series>();
+		try {
+			ResultSet set = db.selectStatement(SQLStatements.getAllSeries());
+			while (set.next()) {
+				int id = set.getInt(1);
+				String name = set.getString(2);
+				int anoInicial = set.getInt(3);
+				String resumo = set.getString(4);
+				String imageURL = set.getString(5);
+				String network = set.getString(6);
+				Series s = new Series(name, anoInicial, resumo, network, null,
+						null);
+				s.setId(id);
+				s.setImageURL(imageURL);
+				all.add(s);
+			}
+		} catch (SQLException e) {
+			try {
+				db.closeStatement();
+			} catch (SQLException e1) {
+			}
+		}
+
+		return all;
 	}
 
 	/**

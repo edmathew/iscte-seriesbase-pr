@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 public class Series {
 
+	private int id;
 	private String name;
 	private int anoInicial;
 	private String resumo;
@@ -22,6 +23,14 @@ public class Series {
 		this.actors = actors;
 		this.genres = genres;
 		this.network = network;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
 	}
 
 	public void setEpisodes(LinkedList<Episodio> episodes) {

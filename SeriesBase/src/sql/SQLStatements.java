@@ -9,6 +9,10 @@ package sql;
  * 
  */
 public class SQLStatements {
+	
+	public static String getAllSeries(){
+		return "SELECT * FROM serie";
+	}
 
 	public static String selectPassword(String user) {
 		return "SELECT idUtilizador, password FROM utilizador WHERE nome='"

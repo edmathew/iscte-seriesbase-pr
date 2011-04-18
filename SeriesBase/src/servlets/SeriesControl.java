@@ -1,17 +1,22 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import databaseAccess.QueryDatabase;
+import dto.Series;
 
 @SuppressWarnings("serial")
-@WebServlet("/linkControl")
-public class LinkControl extends HttpServlet {
+@WebServlet("/seriesControl")
+public class SeriesControl extends HttpServlet {
+
+	private QueryDatabase query = new QueryDatabase();
 
 	/**
 	 * Process get and post requests.
@@ -25,16 +30,10 @@ public class LinkControl extends HttpServlet {
 	 */
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		String link = req.getParameter("link");
-		if (link != null) {
-			if (link.equals("register"))
-				resp.sendRedirect("forms/register.jsp");
-			else if (link.equals("home"))
-				resp.sendRedirect("index.jsp");
-			else if(link.equals("series")){
-				resp.sendRedirect("seriesControl?action=getAll");
-			}
+		String action = req.getParameter("action");
+		if (action.equals("getAll")) {
+			req.getSession().setAttribute("seriesList", query.getAllSeries().toArray());
+			resp.sendRedirect("listSeries.jsp");
 		}
 	}
 
@@ -49,4 +48,5 @@ public class LinkControl extends HttpServlet {
 			throws ServletException, IOException {
 		processRequest(req, resp);
 	}
+
 }
