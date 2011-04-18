@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import databaseAccess.QueryDatabase;
+import exceptions.UsernameAlreadyTaken;
 
 /**
  * This Servlet is responsable for all of the login bussiness.
@@ -36,17 +37,22 @@ public class LoginControl extends HttpServlet {
 	 */
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		String action = req.getParameter("action");
-		if (action != null) {
-			if (action.equals("logout"))
-				logout(session);
-			else if (action.equals("login"))
-				login(session, req);
-			else if (action.equals("register"))
-				register(session, req);
+		try {
+			String action = req.getParameter("action");
+			if (action != null) {
+				if (action.equals("logout"))
+					logout(req.getSession());
+				else if (action.equals("login"))
+					login(req);
+				else if (action.equals("register")) {
+					register(req);
+				}
+			}
+			resp.sendRedirect("index.jsp");
+		} catch (UsernameAlreadyTaken e) {
+			req.getSession().setAttribute("duplicatedUsername", true);
+			resp.sendRedirect("forms/register.jsp");
 		}
-		resp.sendRedirect("index.jsp");
 	}
 
 	@Override
@@ -78,7 +84,8 @@ public class LoginControl extends HttpServlet {
 	 * @param req
 	 *            HttpResquest
 	 */
-	public void login(HttpSession session, HttpServletRequest req) {
+	public void login(HttpServletRequest req) {
+		HttpSession session = req.getSession();
 		String user = req.getParameter("login");
 		String pass = req.getParameter("password");
 
@@ -97,8 +104,18 @@ public class LoginControl extends HttpServlet {
 			session.setAttribute("loginImageURL", URL);
 	}
 
-	public void register(HttpSession session, HttpServletRequest req) {
-		
-	}
+	public void register(HttpServletRequest req) throws UsernameAlreadyTaken {
+		HttpSession session = req.getSession();
+		String username = req.getParameter("username");
+		//String date = req.getParameter("birth");
 
+		if (!query.checkUsernameAvaliability(username)){
+			session.setAttribute("username", req.getParameter("username"));
+			session.setAttribute("email", req.getParameter("email"));
+			session.setAttribute("birth", req.getParameter("birth"));
+			session.setAttribute("imageURL", req.getParameter("imageURL"));
+			throw new UsernameAlreadyTaken();
+		}
+
+	}
 }

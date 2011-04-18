@@ -2,9 +2,11 @@ package databaseAccess;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 
 /**
  * MySQL Database manipulation Library.
@@ -21,7 +23,8 @@ public class DatabaseManager {
 	private Connection conn;
 	private Statement s;
 
-	public DatabaseManager(String dbLocation, String user, String pass) throws SQLException {
+	public DatabaseManager(String dbLocation, String user, String pass)
+			throws SQLException {
 		loadDriver();
 		conn = openConnection(dbLocation, user, pass);
 		conn.setAutoCommit(false);
@@ -84,24 +87,20 @@ public class DatabaseManager {
 	 * 
 	 * @param sqlUpdate
 	 *            Query (Insert, Update or Delete) to execute.
-	 * @return Number of affected rows.
+	 * @return Retrieves the current result as an update count;
+	 * @throws SQLException
 	 */
-	public int updateStatement(String sqlUpdate) {
-		Statement s = null;
-		int affectedRows = 0;
-		try {
-			s = conn.createStatement();
-			s.execute(sqlUpdate);
-			affectedRows = s.getUpdateCount();
-			conn.commit();
-		} catch (SQLException e) {
-			System.out.println("SQLException: " + e.getMessage());
-			System.out.println("SQLState: " + e.getSQLState());
-			System.out.println("VendorError: " + e.getErrorCode());
-		}
-		return affectedRows;
+	public ResultSet updateStatement(String sqlUpdate) throws SQLException {
+		s = conn.createStatement();
+		s.executeUpdate(sqlUpdate, Statement.RETURN_GENERATED_KEYS);
+		return s.getGeneratedKeys();
 	}
-
+	
+	
+	public PreparedStatement preparedStatement(String sql) throws SQLException{
+		return conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+	}
+	
 	/**
 	 * Releases the actual connection and the JDBC resources.
 	 * 
@@ -130,6 +129,15 @@ public class DatabaseManager {
 	 * @throws SQLException
 	 */
 	public void closeStatement() throws SQLException {
-		s.close();
+		if (s != null && !s.isClosed())
+			s.close();
+	}
+
+	public void commit() throws SQLException {
+		conn.commit();
+	}
+
+	public void rollback() throws SQLException {
+		conn.rollback();
 	}
 }

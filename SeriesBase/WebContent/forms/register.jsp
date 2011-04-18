@@ -1,5 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
+<%
+	boolean duplicatedUsername = session.getAttribute("duplicatedUsername")!= null;
+	boolean duplicatedEmail = session.getAttribute("duplicatedEmail") != null;
+	boolean postBack = duplicatedEmail || duplicatedUsername;
+	String username = null, email = null, birth = null, imageURL = null;
+	if(duplicatedUsername){
+		session.removeAttribute("duplicatedUsername");
+		session.removeAttribute("duplicatedEmail");
+		username = (String)session.getAttribute("username");
+		email = (String)session.getAttribute("email");
+		birth = (String)session.getAttribute("birth");
+		imageURL = (String)session.getAttribute("imageURL");
+		session.removeAttribute("username");
+		session.removeAttribute("email");
+		session.removeAttribute("birth");
+		session.removeAttribute("imageURL");
+	}
+%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -11,30 +29,33 @@
 				var errorMessage = "";
 				var name = document.forms["registerForm"]["username"].value;
 				if(!validString(name))
-					errorMessage += "Invalid Username\n";
+					errorMessage += "\tEmpty or Invalid Username\n";
 				
 				var email = document.forms["registerForm"]["email"].value;
 				if(!validEmail(email))
-					errorMessage += "Invalid Email\n";
+					errorMessage += "\tEmpty or Invalid Email\n";
 				
 				var password = document.forms["registerForm"]["password"].value;
 				if(!validString(password))
-					errorMessage += "Password Field Required\n";
+					errorMessage += "\tPassword Field Required\n";
 				
 				var repeatPassword = document.forms["registerForm"]["repeatPassword"].value;
-				if(!validString(password))
-					errorMessage += "Repeat Password Field Required\n";
-				else if(password != repeatPassword)
-					errorMessage += "Passwords doesn't match\n";
+				if(!validString(repeatPassword))
+					errorMessage += "\tRepeat Password Field Required\n";
+				else if(repeatPassword.toString() != password.toString()){
+					errorMessage += "\tPasswords doesn't match\n";				
+					alert(password+" - "+repeatPassword);
+				}
 				
 				var birthDate = document.forms["registerForm"]["birth"].value;
-				
-					
-				
+				if(!validDate(birthDate))
+					errorMessage += "\tInvalid Date";				
+									
 				if(errorMessage != ""){
 					alert("Errors:\n"+errorMessage);
 					return false;
 				}
+				
 				return true;
 			}
 		</script>
@@ -45,15 +66,17 @@
 		
 		<div class="registerForm">
 			<p class="title">Register at Seriesbase</p>
-			<form name="registerForm" action="../registerControl" method="post" onsubmit="return validateForm()">					
+			<form name="registerForm" action="../loginControl?action=register" method="post" onsubmit="return validateForm()">					
 				<table>
 					<tr>
 						<td class="label">Username</td>
-						<td class="field"><input type="text" name="username" size="30"/></td>
+						<td class="field"><input type="text" name="username" size="30" value="<%if(postBack)%><%=username%>" /></td>
+						<td class="error"><%if(duplicatedUsername){%>Duplicated Username<%} %></td>
 					</tr>
 					<tr>
 						<td class="label">E-Mail</td>
-						<td class="field"><input type="email" name="email" size="30" placeholder="someone@mail.com"/></td>
+						<td class="field"><input type="email" name="email" size="30" value="<%if(postBack)%><%=email%>" placeholder="someone@mail.com"/></td>
+						<td class="error"><%if(duplicatedEmail){%>Duplicated Email<%} %></td>
 					</tr>
 					<tr>
 						<td class="label">Password</td>
@@ -65,11 +88,11 @@
 					</tr>
 					<tr>
 						<td class="label">Birth Date (yyyy-mm-dd)</td>
-						<td class="field"><input type="date" name="birth" size="30" placeholder="yyyy-mm-dd"/></td>
+						<td class="field"><input type="date" name="birth" size="30" placeholder="yyyy-mm-dd" value="<%if(postBack)%><%=birth%>"/></td>
 					</tr>
 					<tr>
 						<td class="label">Profile Image URL</td>
-						<td class="field"><input type="url" name="birth" size="30"/></td>
+						<td class="field"><input type="url" name="imageURL" size="30" value="<%if(postBack)%><%=imageURL%>")/></td>
 					</tr>
 				</table>
 					<p class="submitButton"><input type="submit" value="Register" 

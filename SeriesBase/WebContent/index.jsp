@@ -22,7 +22,7 @@
 		<%
 			if (!logged) {
 		%>
-		<jsp:include page="forms\loginForm.jsp" />
+		
 		<%
 			if (bruteForce) {
 					session.removeAttribute("bruteForceLogin");

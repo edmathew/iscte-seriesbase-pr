@@ -107,7 +107,7 @@ form {
 .registerForm {
 	padding-top: 5px;
 	clear: both;
-	width: 500px;
+	width: 700px;
 	margin-left:auto;
 	margin-right:auto;
 	text-align: right;
@@ -122,6 +122,14 @@ td.label{
 td.field{
 	width: 250px;
 	text-align: left;	
+}
+
+td.error{
+	width: 200px;
+	color: red;
+	text-align: left;
+	font: bold ;
+	font-size: 16px;	
 }
 
 p.submitButton{
