@@ -1,15 +1,31 @@
 @CHARSET "ISO-8859-1";
 
 body {
-	background-image: url('../images/background2.jpg');
+	/* background-image: url('../images/background2.jpg'); */
+	background-image: url('../images/background.jpg');
 	background-repeat: repeat-x;
 }
 
-.footer {
-	padding-top: 20px;
+/* .footer {
+	margin-bottom: 20px;
+	padding-bottom: 20px;
 	display: block;
 	clea
 	r: both;
+} */
+html,body {
+	height: 100%;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+}
+
+.footer,.push {
+	height: 4em;
 }
 
 a:link {
@@ -35,7 +51,7 @@ form {
 	float: left;
 }
 
-.title{
+.title {
 	font-family: verdana;
 	font-size: 20px;
 	text-decoration: bold;
@@ -81,17 +97,19 @@ form {
 }
 
 /*Menu Stuff*/
- /*.mainMenu {
+/*.mainMenu {
 	clear: both;
 	float: left;
 	margin-top: 20px;
 	width: 80%;
 	height: 50px;
 	/*background-image: url('../images/menu-bg.gif');*/
-	/* /* background-repeat: repeat-x; */ */
-}*/
-
-/* .mainMenu ul {
+/* /* background-repeat: repeat-x; */
+*
+/
+}
+* /
+	/* .mainMenu ul {
 	list-style: none;
 }
 
@@ -99,119 +117,155 @@ form {
 	display: block;
 	float: left;
 	margin: 0 0 0 10px;
- } */ */
+ } */  * /
 #cnn_hdr #cnn_hdr-nav {
-    background: url("http://i.cdn.turner.com/cnn/.element/img/3.0/global/header/bg-nav.c.gif") repeat-x scroll 0 -66px #B60002;
-    border-bottom: 6px solid #DFDFDF;
-    display: block;
-    height: 35px;
-    padding: 0 10px;
-}
-#cnn_hdr #us-menu, #cnn_hdr #intl-menu {
-    border-left: 1px solid #B60002;
-    display: block;
-    height: 35px;
-    margin: 0 auto;
-    width: 980px;
-}
-#us-menu li, #intl-menu li {
-    background: none repeat scroll 0 0 #990000;
-    border-right: 1px solid #CA0002;
-    display: block;
-    float: left;
-    height: 35px;
-}
-#us-menu li a, #intl-menu li a {
-    background: url("http://i.cdn.turner.com/cnn/.element/img/3.0/global/header/bg-nav.c.gif") repeat-x scroll 0 -66px #B60002;
-    border-right: 1px solid #990000;
-    color: #FFFFFF;
-    display: block;
-    font-weight: bold;
-    height: 35px;
-    line-height: 35px;
-    overflow: hidden;
-    text-decoration: none !important;
-}
-#us-menu li a:hover, #intl-menu li a:hover {
-    background: none repeat scroll 0 0 #990000;
-}
-#us-menu .nav-media, #intl-menu .nav-media {
-    background: url("http://i.cdn.turner.com/cnn/.element/img/3.0/global/header/bg-nav.c.gif") repeat-x scroll 0 -131px #B60002;
-}
-#us-menu .nav-on, #us-menu .nav-on:hover, #intl-menu .nav-on, #intl-menu .nav-on:hover {
-    background: url("http://i.cdn.turner.com/cnn/.element/img/3.0/global/header/bg-nav.c.gif") repeat-x scroll 0 0 #FFFFFF;
-    color: #CA0002;
-}
-#us-menu #nav-newspulse, #us-menu #nav-money, #us-menu #nav-sports {
-    position: relative;
-}
-#us-menu #nav-money span, #us-menu #nav-sports span {
-    left: -3px;
-    position: relative;
-}
-#us-menu #nav-home {
-    width: 55px;
-}
-#us-menu #nav-mySeries {
-    width: 67px;
-}
-#us-menu #nav-series {
-    width: 98px;
-}
-#us-menu #nav-people img {
-    position: absolute;
-    right: 5px;
-    top: 0;
-}
-#us-menu #nav-about {
-    width: 37px;
-}
-#intl-menu #nav-home {
-    width: 42px;
-}
-#intl-menu #nav-video {
-    width: 50px;
-}
-#intl-menu #nav-world {
-    width: 54px;
-}
-#intl-menu #nav-africa {
-    width: 54px;
-}
-#intl-menu #nav-asia {
-    width: 43px;
-}
-#intl-menu #nav-europe {
-    width: 58px;
-}
-#intl-menu #nav-latin-america {
-    width: 96px;
-}
-#intl-menu #nav-middle-east {
-    width: 84px;
-}
-#intl-menu #nav-us {
-    width: 40px;
-}
-#intl-menu #nav-business {
-    width: 73px;
-}
-#intl-menu #nav-world-sport {
-    width: 89px;
-}
-#intl-menu #nav-entertainment {
-    width: 100px;
-}
-#intl-menu #nav-tech {
-    width: 45px;
-}
-#intl-menu #nav-travel {
-    width: 53px;
-}
-#intl-menu #nav-ireport {
-    width: 60px;
+	background:
+		url("http://i.cdn.turner.com/cnn/.element/img/3.0/global/header/bg-nav.c.gif")
+		repeat-x scroll 0 -66px #B60002;
+	border-bottom: 6px solid #DFDFDF;
+	display: block;
+	height: 35px;
+	padding: 0 10px;
 }
 
+#cnn_hdr #us-menu,#cnn_hdr #intl-menu {
+	border-left: 1px solid #B60002;
+	display: block;
+	height: 35px;
+	margin: 0 auto;
+	width: 980px;
+}
+
+#us-menu li,#intl-menu li {
+	background: none repeat scroll 0 0 #990000;
+	border-right: 1px solid #CA0002;
+	display: block;
+	float: left;
+	height: 35px;
+}
+
+#us-menu li a,#intl-menu li a {
+	background:
+		url("http://i.cdn.turner.com/cnn/.element/img/3.0/global/header/bg-nav.c.gif")
+		repeat-x scroll 0 -66px #B60002;
+	border-right: 1px solid #990000;
+	color: #FFFFFF;
+	display: block;
+	font-weight: bold;
+	height: 35px;
+	line-height: 35px;
+	overflow: hidden;
+	text-decoration: none !important;
+}
+
+#us-menu li a:hover,#intl-menu li a:hover {
+	background: none repeat scroll 0 0 #990000;
+}
+
+#us-menu .nav-media,#intl-menu .nav-media {
+	background:
+		url("http://i.cdn.turner.com/cnn/.element/img/3.0/global/header/bg-nav.c.gif")
+		repeat-x scroll 0 -131px #B60002;
+}
+
+#us-menu .nav-on,#us-menu .nav-on:hover,#intl-menu .nav-on,#intl-menu .nav-on:hover
+	{
+	background:
+		url("http://i.cdn.turner.com/cnn/.element/img/3.0/global/header/bg-nav.c.gif")
+		repeat-x scroll 0 0 #FFFFFF;
+	color: #CA0002;
+}
+
+#us-menu #nav-newspulse,#us-menu #nav-money,#us-menu #nav-sports {
+	position: relative;
+}
+
+#us-menu #nav-money span,#us-menu #nav-sports span {
+	left: -3px;
+	position: relative;
+}
+
+#us-menu #nav-home {
+	width: 55px;
+}
+
+#us-menu #nav-mySeries {
+	width: 67px;
+}
+
+#us-menu #nav-series {
+	width: 98px;
+}
+
+#us-menu #nav-people img {
+	position: absolute;
+	right: 5px;
+	top: 0;
+}
+
+#us-menu #nav-about {
+	width: 37px;
+}
+
+#intl-menu #nav-home {
+	width: 42px;
+}
+
+#intl-menu #nav-video {
+	width: 50px;
+}
+
+#intl-menu #nav-world {
+	width: 54px;
+}
+
+#intl-menu #nav-africa {
+	width: 54px;
+}
+
+#intl-menu #nav-asia {
+	width: 43px;
+}
+
+#intl-menu #nav-europe {
+	width: 58px;
+}
+
+#intl-menu #nav-latin-america {
+	width: 96px;
+}
+
+#intl-menu #nav-middle-east {
+	width: 84px;
+}
+
+#intl-menu #nav-us {
+	width: 40px;
+}
+
+#intl-menu #nav-business {
+	width: 73px;
+}
+
+#intl-menu #nav-world-sport {
+	width: 89px;
+}
+
+#intl-menu #nav-entertainment {
+	width: 100px;
+}
+
+#intl-menu #nav-tech {
+	width: 45px;
+}
+
+#intl-menu #nav-travel {
+	width: 53px;
+}
+
+#intl-menu #nav-ireport {
+	width: 60px;
+}
 
 /*
 	#cnn_hdr #cnn_hdr-nav {
@@ -372,7 +426,6 @@ form {
     width: 60px;
 }
 */
-
 .news {
 	clear: both;
 	float: left;
@@ -382,31 +435,30 @@ form {
 	padding-top: 5px;
 	clear: both;
 	width: 700px;
-	margin-left:auto;
-	margin-right:auto;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: right;
 	font-size: 14px;
 }
 
-td.label{
+td.label {
 	width: 250px;
 	text-align: left;
 }
 
-td.field{
+td.field {
 	width: 250px;
-	text-align: left;	
+	text-align: left;
 }
 
-td.error{
+td.error {
 	width: 200px;
 	color: red;
 	text-align: left;
-	font: bold ;
-	font-size: 16px;	
+	font: bold;
+	font-size: 16px;
 }
 
-p.submitButton{
+p.submitButton {
 	text-align: center;
 }
-
