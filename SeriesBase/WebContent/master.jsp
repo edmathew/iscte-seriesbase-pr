@@ -73,13 +73,13 @@
  --%>
  <div class="mainMenu">
  <ul id="menu">
-   <li><a href="linkControl?action=home" target="_self" title="Home" class="current">Home</a></li>
+   <li><a href="linkControl?link=home" target="_self" title="Home" class="current">Home</a></li>
    <%if (logged) {	%>
-   <li><a href="linkControl?action=mySeries" target="_self" title="My Series">My Series</a></li>
+   <li><a href="linkControl?link=mySeries" target="_self" title="My Series">My Series</a></li>
    <% } %>
-   <li><a href="linkControl?action=series" target="_self" title="Series">Series</a></li>
-   <li><a href="linkControl?action=people" target="_self" title="People">People</a></li>
-   <li><a href="linkControl?action=about" target="_self" title="About">About</a></li>
+   <li><a href="linkControl?link=series" target="_self" title="Series">Series</a></li>
+   <li><a href="linkControl?link=people" target="_self" title="People">People</a></li>
+   <li><a href="linkControl?link=about" target="_self" title="About">About</a></li>
 </ul>
 </div>
  <%-- <div id="cnn_hdr-nav">
