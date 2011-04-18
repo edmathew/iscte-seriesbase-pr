@@ -80,17 +80,17 @@ form {
 }
 
 /*Menu Stuff*/
-/* .mainMenu {
+ /*.mainMenu {
 	clear: both;
 	float: left;
 	margin-top: 20px;
-	width: 100%;
+	width: 80%;
 	height: 50px;
-	background-image: url('../images/menu-bg.gif');
-	background-repeat: repeat-x;
-}
+	/*background-image: url('../images/menu-bg.gif');*/
+	/* /* background-repeat: repeat-x; */ */
+}*/
 
-.mainMenu ul {
+/* .mainMenu ul {
 	list-style: none;
 }
 
@@ -98,7 +98,7 @@ form {
 	display: block;
 	float: left;
 	margin: 0 0 0 10px;
- }*/
+ } */ */
 #cnn_hdr #cnn_hdr-nav {
     background: url("http://i.cdn.turner.com/cnn/.element/img/3.0/global/header/bg-nav.c.gif") repeat-x scroll 0 -66px #B60002;
     border-bottom: 6px solid #DFDFDF;

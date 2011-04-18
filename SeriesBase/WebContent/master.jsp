@@ -8,7 +8,8 @@
 
 <div class="header">
 	<!-- @Ed - Falta o Logotipo -->
-	Seriesbase ALPHA Version<br />
+	Seriesbase ALPHA Version 2.0 Nuno<br />
+	
 </div>
 
 <div class="loginForm">
@@ -50,7 +51,7 @@
 	%>
 </div>
 
-<div class="mainMenu">
+<%-- <div class="mainMenu">
 	<hr width="500px" align="left" />
 	<ul>
 		<li><a href="?action=home">Home</a></li>
@@ -69,26 +70,38 @@
 	<hr width="500px" align="left" />
 
 </div>
-<div id="cnn_hdr-nav">
+ --%>
+ <div class="mainMenu">
+ <ul id="menu">
+   <li><a href="linkControl?action=home" target="_self" title="Home" class="current">Home</a></li>
+   <%if (logged) {	%>
+   <li><a href="linkControl?action=mySeries" target="_self" title="My Series">My Series</a></li>
+   <% } %>
+   <li><a href="linkControl?action=series" target="_self" title="Series">Series</a></li>
+   <li><a href="linkControl?action=people" target="_self" title="People">People</a></li>
+   <li><a href="linkControl?action=about" target="_self" title="About">About</a></li>
+</ul>
+</div>
+ <%-- <div id="cnn_hdr-nav">
 	<ul id="intl-menu">
 		<li class="no-border"><a id="nav-home"
-			class="nav-media no-border nav-on" href="/" title="Homepage">Home</a>
+			class="nav-media no-border nav-on" href="/linkControl?action=home" title="Homepage">Home</a>
 		</li>
 		<%
 			if (logged) {
 		%>
 		<li class="no-border"><a id="nav-mySeries"
-			class="nav-media no-border" href="/video/"
+			class="nav-media no-border" href="/linkControl?action=mySeries"
 			title="My personal space where i can control my series">My Series</a>
 		</li>
 		<%
 			}
 		%>
-		<li><a id="nav-series" href="/WORLD/"
-			title="Global Series Database">Series</a></li>
-		<li><a id="nav-people" href="/US/" title="People information">People</a>
+		<li><a id="nav-series" href="/linkControl?action=series" title="Global Series Database">Series</a></li>
+		<li><a id="nav-people" href="/linkControl?action=people" title="People information">People</a>
 		</li>
-		<li><a id="nav-about" href="/AFRICA/" title="More about us">About</a>
+		<li><a id="nav-about" href="/linkControl?action=about" title="More about us">About</a>
 		</li>
 	</ul>
 </div>
+ --%>
