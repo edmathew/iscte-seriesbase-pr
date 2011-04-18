@@ -16,9 +16,9 @@
 		<jsp:include page="master.jsp"/>
 		
 		<div class="news">
-		<ul>
+		<%-- <ul>
 			<li>The time is now <%=new java.util.Date()%></li>
-		</ul>
+		</ul> --%>
 	
 		<%
 			if (!logged) {
