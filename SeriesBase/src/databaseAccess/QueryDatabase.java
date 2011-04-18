@@ -174,6 +174,10 @@ public class QueryDatabase {
 					if (pId != -1)
 						insertSeriesActor(pId, id);
 				}
+				for (String g : series.getGenres()) {
+					int genreId = getGenreId(g);
+					insertSeriesGenre(id, genreId);
+				}
 			}
 			db.commit();
 
@@ -189,6 +193,7 @@ public class QueryDatabase {
 			}
 		}
 	}
+	
 
 	public void insertEpisode(int seriesID, Episodio e) throws SQLException {
 		PreparedStatement ps = db.preparedStatement(SQLStatements
@@ -247,9 +252,53 @@ public class QueryDatabase {
 		}
 	}
 
-	public Genre getGenre(String genre) {
+	public int getGenreId(String genre) {
+		if (exists(genre))
+			return selectGenre(genre).getId();
+		else
+			return insertGenre(genre);
+	}
 
-		return null;
+	private int insertGenre(String genre) {
+		int id = -1;
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLStatements.insertGenre());
+			ps.setString(1, genre);
+			ps.executeUpdate();
+			ResultSet s = ps.getGeneratedKeys();
+			if (s != null && s.next())
+				id = s.getInt(1);
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+		return id;
+	}
+
+	private Genre selectGenre(String genre) {
+		PreparedStatement ps = null;
+		Genre g = null;
+		try {
+			ps = db.preparedStatement(SQLStatements.selectGenre());
+			ps.setString(1, genre);
+			ResultSet s = ps.executeQuery();
+			if (s != null && s.next()) {
+				int id = s.getInt(1);
+				String name = s.getString(2);
+				g = new Genre(id, name);
+			}
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+		return g;
 	}
 
 	private boolean exists(String genre) {
@@ -259,8 +308,9 @@ public class QueryDatabase {
 			ps = db.preparedStatement(SQLStatements.countGenre());
 			ps.setString(1, genre);
 			ResultSet s = ps.executeQuery();
-			
-				
+			if (s != null && s.next() && s.getInt(0) != 0)
+				exists = true;
+
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -270,5 +320,21 @@ public class QueryDatabase {
 		}
 
 		return exists;
+	}
+	
+	public void insertSeriesGenre(int seriesID, int genreID){
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLStatements.insertSeriesActor());
+			ps.setInt(2, seriesID);
+			ps.setInt(1, genreID);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
 	}
 }

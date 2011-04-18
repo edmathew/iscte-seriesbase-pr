@@ -27,13 +27,13 @@ public class LinkControl extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		String link = req.getParameter("link");
-		if(link != null){
-			if(link.equals("register"))
+		if (link != null) {
+			if (link.equals("register"))
 				resp.sendRedirect("forms/register.jsp");
-			else if(link.equals("home"))
-				resp.sendRedirect("index.jsp");
-				
-		}			
+			else if (link.equals("home"))
+				getServletConfig().getServletContext()
+						.getRequestDispatcher("index.jsp").forward(req, resp);
+		}
 	}
 
 	@Override
