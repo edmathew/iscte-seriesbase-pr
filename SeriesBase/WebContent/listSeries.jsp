@@ -27,21 +27,23 @@
 <body>
 
 	<jsp:include page="master.jsp" />
+	<div class="centralZone">
 
-	<table border="1" id="s1">
-		<%
-			for (int i = 0; i < series.length; i++) {
-				Series s = (Series) series[i];
-		%>
-		<tr>
-			<td><%=s.getName()%></td>
-			<td><%=s.getAnoInicial()%></td>
-			<td><a href="seriesControl?action=getById&id=<%=s.getId()%>">Page</a>
-		</tr>
-		<%
-			}
-		%>
-	</table>
 
+		<table border="1" id="s1">
+			<%
+				for (int i = 0; i < series.length; i++) {
+					Series s = (Series) series[i];
+			%>
+			<tr>
+				<td><%=s.getName()%></td>
+				<td><%=s.getAnoInicial()%></td>
+				<td><a href="seriesControl?action=getById&id=<%=s.getId()%>">Page</a>
+			</tr>
+			<%
+				}
+			%>
+		</table>
+	</div>
 </body>
 </html>

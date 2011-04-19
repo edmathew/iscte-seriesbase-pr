@@ -9,7 +9,7 @@
 <div class="header">
 	<!-- @Ed - Falta o Logotipo -->
 	<!-- Seriesbase ALPHA Version 2.0 Nuno<br /> -->
-	
+
 </div>
 
 <div class="loginForm">
@@ -51,57 +51,71 @@
 	%>
 </div>
 
-<%-- <div class="mainMenu">
-	<hr width="500px" align="left" />
-	<ul>
-		<li><a href="?action=home">Home</a></li>
+<div class="mainMenu">
+	<ul id="menu">
+		<li><a href="linkControl?link=home" target="_self" title="Home"
+			class="current">Home</a>
+		</li>
 		<%
 			if (logged) {
 		%>
-		<li><a href="">My Account</a></li>
+		<li><a href="linkControl?link=mySeries" target="_self"
+			title="My Series">My Series</a>
+		</li>
 		<%
 			}
 		%>
-		<li><a href="">Series</a></li>
-		<li><a href="">People</a></li>
-		<li><a href="">About</a></li>
+		<li><a href="linkControl?link=series" target="_self"
+			title="Series">Series</a>
+		</li>
+		<li><a href="linkControl?link=people" target="_self"
+			title="People">People</a>
+		</li>
+		<li><a href="linkControl?link=about" target="_self" title="About">About</a>
+		</li>
 	</ul>
-	<br />
-	<hr width="500px" align="left" />
+</div>
+<div class=footer>
+	<td align="center">
+		<table align="center" border="0" width="960">
+			<tr>
+				<td align="left" width="200"><a href="http://www.w3schools.com"><img
+						border="0" src="/images/w3schoolscom_gray.gif" alt="W3Schools.com" />
+				</a>
+				</td>
+				<td align="right"
+					style="word-spacing: 6px; font-size: 80%; padding-right: 10px;">
+					<a href="/default.asp" target="_top">HOME</a> | <a href="#top"
+					target="_top">TOP</a> | <a href='/css/css_dont.asp?output=print'
+					target="_blank">PRINT</a> | <a href="/forum/default.asp"
+					target="_blank">FORUM</a> | <a href="/about/default.asp"
+					target="_top">ABOUT</a>
+				</td>
+			</tr>
+
+			<tr>
+				<td valign="top" colspan="2" align="center" style="color: #404040;">
+					<a href="" onclick="displayError();return false">Help
+						W3Schools. Suggest corrections to this page.</a>
+				</td>
+			</tr>
+			<tr>
+
+				<td valign="top" colspan="2" align="center"
+					style="padding-top: 7px; color: #404040;">W3Schools is
+					optimized for learning, testing, and training. Examples might be
+					simplified to improve reading and basic understanding.<br />
+					Tutorials, references, and examples are constantly reviewed to
+					avoid errors, but we cannot warrant full correctness of all
+					content.<br /> While using this site, you agree to have read and
+					accepted our <a href="/about/about_copyright.asp">terms of use</a>
+					and <a href="/about/about_privacy.asp">privacy policy</a>.<br /> <a
+					href="/about/about_copyright.asp">Copyright 1999-2011</a> by
+					Refsnes Data. All Rights Reserved.</td>
+
+			</tr>
+		</table> <br />
+	</td>
 
 </div>
- --%>
- <div class="mainMenu">
- <ul id="menu">
-   <li><a href="linkControl?link=home" target="_self" title="Home" class="current">Home</a></li>
-   <%if (logged) {	%>
-   <li><a href="linkControl?link=mySeries" target="_self" title="My Series">My Series</a></li>
-   <% } %>
-   <li><a href="linkControl?link=series" target="_self" title="Series">Series</a></li>
-   <li><a href="linkControl?link=people" target="_self" title="People">People</a></li>
-   <li><a href="linkControl?link=about" target="_self" title="About">About</a></li>
-</ul>
-</div>
- <%-- <div id="cnn_hdr-nav">
-	<ul id="intl-menu">
-		<li class="no-border"><a id="nav-home"
-			class="nav-media no-border nav-on" href="/linkControl?action=home" title="Homepage">Home</a>
-		</li>
-		<%
-			if (logged) {
-		%>
-		<li class="no-border"><a id="nav-mySeries"
-			class="nav-media no-border" href="/linkControl?action=mySeries"
-			title="My personal space where i can control my series">My Series</a>
-		</li>
-		<%
-			}
-		%>
-		<li><a id="nav-series" href="/linkControl?action=series" title="Global Series Database">Series</a></li>
-		<li><a id="nav-people" href="/linkControl?action=people" title="People information">People</a>
-		</li>
-		<li><a id="nav-about" href="/linkControl?action=about" title="More about us">About</a>
-		</li>
-	</ul>
-</div>
- --%>
+

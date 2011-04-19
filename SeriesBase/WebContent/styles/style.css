@@ -1,36 +1,26 @@
 @CHARSET "ISO-8859-1";
 
-body {
-	/* background-image: url('../images/background2.jpg'); */
+body { /* background-image: url('../images/background2.jpg'); */
 	background-image: url('../images/background2.jpg');
 	background-repeat: repeat-x;
 }
 
-/* .footer {
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-	display: block;
-	clea
-	r: both;
-} */
 html,body {
 	height: 100%;
 }
-
+/***************** START OF LOGO ZONE ******************/
 .wrapper {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
 	margin: 0 auto -4em;
 }
-
+/***************** END OF LOGO ZONE ******************/
 .footer,.push {
 	height: 4em;
 }
 
-
 /***************** START OF MENU BAR ******************/
-
 ul#menu {
 	width: 97%;
 	height: 43px;
@@ -43,11 +33,13 @@ ul#menu {
 	margin: 50px 0 0 0;
 	padding-top: 0px;
 }
+
 ul#menu li {
 	display: block;
 	float: left;
 	margin: 0 0 0 5px;
 }
+
 ul#menu li a {
 	height: 43px;
 	color: #777;
@@ -57,9 +49,11 @@ ul#menu li a {
 	line-height: 200%;
 	padding: 8px 15px 0;
 }
+
 ul#menu li a:hover {
 	color: #333;
 }
+
 ul#menu li a.current {
 	color: #FFF;
 	background: #FFF url("images/current-bg.gif") top left repeat-x;
@@ -68,8 +62,14 @@ ul#menu li a.current {
 
 /***************** END OF MENU BAR ******************/
 
+/***************** START OF CENTRAL ZONE ******************/
 
+.centralZone {
+	
+	
+}
 
+/***************** END OF CENTRAL ZONE ******************/
 a:link {
 	text-decoration: none;
 	color: gray;
@@ -100,7 +100,7 @@ form {
 	text-align: center;
 }
 
-/*Login Form Stuff*/
+/***************** START OF LOGIN FORM ******************/
 .loginForm {
 	font-size: 14px;
 	text-align: right;
@@ -138,33 +138,9 @@ form {
 	font-family: verdana;
 }
 
-/*Menu Stuff*/
-/*.mainMenu {
-	clear: both;
-	float: left;
-	margin-top: 20px;
-	width: 80%;
-	height: 50px;
-	/*background-image: url('../images/menu-bg.gif');*/
-/* /* background-repeat: repeat-x; */
-*
-/
-}
-* /
-	/* .mainMenu ul {
-	list-style: none;
-}
+/***************** END OF LOGIN FORM ******************/
 
-.mainMenu li {
-	display: block;
-	float: left;
-	margin: 0 0 0 10px;
- } */  * /
-.news {
-	clear: both;
-	float: left;
-}
-
+/***************** START OF REGISTER FORM ******************/
 .registerForm {
 	padding-top: 5px;
 	clear: both;
@@ -175,6 +151,9 @@ form {
 	font-size: 14px;
 }
 
+/***************** END OF REGISTER FORM ******************/
+
+/***************** TABLES ******************/
 td.label {
 	width: 250px;
 	text-align: left;
@@ -192,7 +171,12 @@ td.error {
 	font: bold;
 	font-size: 16px;
 }
-
+/***************** END OF TABLES ******************/
 p.submitButton {
 	text-align: center;
+}
+
+.news {
+	clear: both;
+	float: left;
 }
