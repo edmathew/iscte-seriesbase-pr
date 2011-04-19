@@ -11,7 +11,7 @@ package sql;
 public class SQLStatements {
 	
 	public static String getAllSeries(){
-		return "SELECT * FROM serie ORDER BY AnoInicial";
+		return "SELECT * FROM serie";
 	}
 	
 	public static String getSeriesById(){

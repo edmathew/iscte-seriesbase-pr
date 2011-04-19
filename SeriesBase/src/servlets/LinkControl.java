@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("serial")
 @WebServlet("/linkControl")
@@ -25,15 +24,18 @@ public class LinkControl extends HttpServlet {
 	 */
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		HttpSession session = req.getSession();
 		String link = req.getParameter("link");
 		if (link != null) {
-			if (link.equals("register"))
+			if (link.equals("error"))
+				resp.sendRedirect("error.jsp");
+			else if (link.equals("register"))
 				resp.sendRedirect("forms/register.jsp");
 			else if (link.equals("home"))
 				resp.sendRedirect("index.jsp");
-			else if(link.equals("series")){
-				resp.sendRedirect("seriesControl?action=getAll");
+			else if (link.equals("series")) {
+				getServletConfig().getServletContext()
+						.getRequestDispatcher("/seriesControl")
+						.forward(req, resp);
 			}
 		}
 	}

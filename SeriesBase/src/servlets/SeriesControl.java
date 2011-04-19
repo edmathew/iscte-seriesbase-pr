@@ -31,13 +31,14 @@ public class SeriesControl extends HttpServlet {
 			throws ServletException, IOException {
 		String action = req.getParameter("action");
 		if (action.equals("getAll")) {
-			req.getSession().setAttribute("seriesList", query.getAllSeries().toArray());
+			req.getSession().setAttribute("seriesList",
+					query.getAllSeries().toArray());
 			resp.sendRedirect("listSeries.jsp");
-		}else if(action.equals("getById")){
+		} else if (action.equals("getById")) {
 			int id = Integer.parseInt(req.getParameter("id"));
 			Series s = query.getSeriesById(id);
 			req.getSession().setAttribute("series", s);
-			resp.sendRedirect("showSeriesInfo.jsp");
+			resp.sendRedirect("showSeriesInfo.jsp?id="+id);
 		}
 	}
 
@@ -52,5 +53,4 @@ public class SeriesControl extends HttpServlet {
 			throws ServletException, IOException {
 		processRequest(req, resp);
 	}
-
 }

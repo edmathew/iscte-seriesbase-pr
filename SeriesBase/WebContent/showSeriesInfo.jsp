@@ -1,12 +1,19 @@
-<%@page import="dto.Series"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="dto.Series"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE HTML>
 <%
-	if (request.getHeader("Referer") == null)
-		response.sendRedirect("index.jsp");	
+	if (session.getAttribute("series") == null) {
+		if (request.getParameter("id") == null)
+			request.getRequestDispatcher("linkControl?link=error").forward(request, response);
+		else{
+			int id = Integer.parseInt(request.getParameter("id"));
+			request.getRequestDispatcher("/seriesControl?action=getyById&id="+id)
+				.forward(request,response);
+		}
+	}
 
-	Series s = (Series)session.getAttribute("series");
+	Series s = (Series) session.getAttribute("series");
+	session.removeAttribute("series");
 %>
 
 <html>
@@ -15,6 +22,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1><%=s.getName() %></h1>
+	<%if(s != null) {%>
+	<h1><%=s.getName()%></h1>
+	
+	<%} %>
 </body>
 </html>
