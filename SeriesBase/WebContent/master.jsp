@@ -65,7 +65,7 @@
 		<%
 			}
 		%>
-		<li><a href="linkControl?link=series" target="_self"
+		<li><a href="linkControl?link=series&action=getAll" target="_self"
 			title="Series">Series</a>
 		</li>
 		<li><a href="linkControl?link=people" target="_self"

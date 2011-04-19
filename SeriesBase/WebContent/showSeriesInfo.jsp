@@ -7,6 +7,7 @@
 			request.getRequestDispatcher("linkControl?link=error").forward(request, response);
 		else{
 			int id = Integer.parseInt(request.getParameter("id"));
+			System.out.println(id);
 			request.getRequestDispatcher("/seriesControl?action=getyById&id="+id)
 				.forward(request,response);
 		}
