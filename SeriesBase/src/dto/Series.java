@@ -1,8 +1,10 @@
 package dto;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Series {
+@SuppressWarnings("serial")
+public class Series implements Serializable{
 
 	private int id;
 	private String name;

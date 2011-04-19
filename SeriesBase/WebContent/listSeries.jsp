@@ -14,6 +14,7 @@
 	series = (Object[]) session.getAttribute("seriesList");
 	//else
 	//series = new Object[0];
+	session.removeAttribute("seriesList");
 %>
 
 <html>

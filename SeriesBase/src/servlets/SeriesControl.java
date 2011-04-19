@@ -37,8 +37,11 @@ public class SeriesControl extends HttpServlet {
 		} else if (action.equals("getById")) {
 			int id = Integer.parseInt(req.getParameter("id"));
 			Series s = query.getSeriesById(id);
-			req.getSession().setAttribute("series", s);
-			resp.sendRedirect("showSeriesInfo.jsp?id="+id);
+			if(s != null){
+				req.getSession().setAttribute("series", s);
+				resp.sendRedirect("showSeriesInfo.jsp?id="+id);
+			}else
+				resp.sendRedirect("error.jsp");
 		}
 	}
 

@@ -2,19 +2,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
 <%
-	if (session.getAttribute("series") == null) {
-		if (request.getParameter("id") == null)
-			request.getRequestDispatcher("linkControl?link=error").forward(request, response);
-		else{
-			int id = Integer.parseInt(request.getParameter("id"));
-			System.out.println(id);
-			request.getRequestDispatcher("/seriesControl?action=getyById&id="+id)
-				.forward(request,response);
-		}
-	}
-
 	Series s = (Series) session.getAttribute("series");
-	session.removeAttribute("series");
+	if (request.getHeader("Referer") == null && request.getParameter("id")==null) {
+%>
+		<jsp:forward page="linkControl?link=error"/>
+<%	
+	}else{
+		int id = Integer.parseInt(request.getParameter("id"));
+		if(session.getAttribute("series") == null || s.getId() != id ){
+			request.getRequestDispatcher("/seriesControl?action=getById&id="+id)
+					.forward(request,response);
+			}
+		} 
+	
 %>
 
 <html>
@@ -26,6 +26,6 @@
 	<%if(s != null) {%>
 	<h1><%=s.getName()%></h1>
 	
-	<%} %>
+	<%	} %>
 </body>
 </html>
