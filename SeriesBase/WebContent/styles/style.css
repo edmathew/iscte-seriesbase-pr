@@ -179,6 +179,18 @@ td.error {
 	float: left;
 }
 
+.seriesInfo {
+	
+}
+
+.seriesInfo img{
+	margin:2px;
+ 	height:	400px;
+  	width:300px;
+  	float:left;
+  	text-align:center;
+}
+
 /***************** END OF SERIES TABLES ******************/
 
 p.submitButton {
