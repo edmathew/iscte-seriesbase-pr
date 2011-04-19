@@ -11,17 +11,23 @@
 
 	Object[] series;
 	//if (session.getAttribute("seriesList") != null)
-		series = (Object[]) session.getAttribute("seriesList");
+	series = (Object[]) session.getAttribute("seriesList");
 	//else
-		//series = new Object[0];
+	//series = new Object[0];
 %>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="styles/style.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="styles/menu_style.css" type="text/css" />
 <title></title>
 </head>
 <body>
+
+	<jsp:include page="master.jsp" />
+
 	<table border="1" id="s1">
 		<%
 			for (int i = 0; i < series.length; i++) {
