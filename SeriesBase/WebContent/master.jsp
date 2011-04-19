@@ -5,7 +5,6 @@
 	String loginImage = (String) session.getAttribute("loginImageURL");
 	String location = request.getContextPath();
 %>
-
 <div class="header">
 	<!-- @Ed - Falta o Logotipo -->
 	<!-- Seriesbase ALPHA Version 2.0 Nuno<br /> -->
