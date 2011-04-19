@@ -1,22 +1,12 @@
-<%@page import="dto.Series"%>
-<%@page import="java.util.LinkedList"%>
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+<%@ page import="dto.Series"%>
+<%@ page import="java.util.LinkedList"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE HTML>
 <%
-	if (session.getAttribute("seriesList") == null)
-		request.getRequestDispatcher("/seriesControl?action=getAll")
-				.forward(request, response);
-
-	Object[] series;
-	//if (session.getAttribute("seriesList") != null)
-	series = (Object[]) session.getAttribute("seriesList");
-	//else
-	//series = new Object[0];
+	request.getRequestDispatcher("/seriesControl?action=getAll").include(request,response);
+	Object[] series = (Object[]) session.getAttribute("seriesList");
 	session.removeAttribute("seriesList");
 %>
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -26,11 +16,8 @@
 <script type="text/javascript" src="../scripts/slidingTitle.js"></script>
 </head>
 <body>
-
 	<jsp:include page="master.jsp" />
-	<div class="centralZone">
-
-
+	<div class="seriesTable">
 		<table border="1" id="s1">
 			<%
 				for (int i = 0; i < series.length; i++) {

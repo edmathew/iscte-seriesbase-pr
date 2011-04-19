@@ -172,6 +172,14 @@ td.error {
 	font-size: 16px;
 }
 /***************** END OF TABLES ******************/
+
+/***************** SERIES TABLES ******************/
+.seriesTable {
+	float: left;
+}
+
+/***************** END OF SERIES TABLES ******************/
+
 p.submitButton {
 	text-align: center;
 }
