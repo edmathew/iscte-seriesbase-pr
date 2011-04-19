@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="styles/style.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet" href="styles/menu_style.css" type="text/css" />
-<title></title>
+<script type="text/javascript" src="../scripts/slidingTitle.js"></script>
 </head>
 <body>
 
