@@ -62,7 +62,7 @@
 	</head>
 		
 	<body>
-		<%@include file="../master.jsp" %>
+		<%@include file="../index.jsp" %>
 		
 		<div class="registerForm">
 			<p class="title">Register at Seriesbase</p>

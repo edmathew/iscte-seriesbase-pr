@@ -8,7 +8,7 @@
 		<title>Error</title>
 	</head>
 	<body>
-		<jsp:include page="master.jsp" />
+		<jsp:include page="index.jsp" />
 		<h1 style="color: red;">Não foi possivel encontrar o recurso pretendido!</h1>
 	</body>
 </html>

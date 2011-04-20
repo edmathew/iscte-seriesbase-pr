@@ -16,7 +16,7 @@
 
 	<%-- <jsp:include page="master.jsp" /> --%>
 	<jsp:include page="header.jsp" />
-
+	<jsp:include page="footer.jsp" />
 
 
 </body>

@@ -16,7 +16,7 @@
 <script type="text/javascript" src="../scripts/slidingTitle.js"></script>
 </head>
 <body>
-	<jsp:include page="master.jsp" />
+	<jsp:include page="index.jsp" />
 	<div class="seriesTable">
 		<table border="1" id="s1">
 			<%
