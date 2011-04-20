@@ -19,7 +19,7 @@ import sql.SQLStatements;
  */
 public class QueryDatabase {
 
-	private DatabaseManager db;
+	private static DatabaseManager db;
 
 	public QueryDatabase() {
 		if (db == null)
@@ -30,25 +30,12 @@ public class QueryDatabase {
 			}
 	}
 
-	private Series readSeriesFrom(ResultSet set) throws SQLException {
-		int id = set.getInt(1);
-		String name = set.getString(2);
-		int anoInicial = set.getInt(3);
-		String resumo = set.getString(4);
-		String imageURL = set.getString(5);
-		String network = set.getString(6);
-		Series s = new Series(name, anoInicial, resumo, network, null, null);
-		s.setId(id);
-		s.setImageURL(imageURL);
-		return s;
-	}
-
 	public LinkedList<Series> getAllSeries() {
 		LinkedList<Series> all = new LinkedList<Series>();
 		try {
 			ResultSet set = db.selectStatement(SQLStatements.getAllSeries());
 			while (set.next())
-				all.add(readSeriesFrom(set));
+				all.add(ResultSetReader.readSeries(set));
 
 		} catch (SQLException e) {
 			try {
@@ -67,7 +54,10 @@ public class QueryDatabase {
 			ps.setInt(1, id);
 			ResultSet set = ps.executeQuery();
 			if (set != null && set.next())
-				s = readSeriesFrom(set);
+				s = ResultSetReader.readSeries(set);
+			
+			s.setGenres(getGenresBySeriesID(id));
+			s.setActors(getActorsBySeriesID(id));
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -77,7 +67,50 @@ public class QueryDatabase {
 		}
 		return s;
 	}
+	
+	public LinkedList<String> getGenresBySeriesID(int id){
+		LinkedList<String> result = new LinkedList<String>();
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLStatements.getGenresBySeriesId());
+			ps.setInt(1, id);
+			ResultSet set = ps.executeQuery();
+			if (set != null)
+				while(set.next())
+					result.add(set.getString(1));
+			
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
 
+		return result;
+	}
+
+	public LinkedList<Person> getActorsBySeriesID(int id){
+		LinkedList<Person> result = new LinkedList<Person>();
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLStatements.getActorsBySeriesId());
+			ps.setInt(1, id);
+			ResultSet set = ps.executeQuery();
+			if (set != null)
+				while(set.next())
+					result.add(ResultSetReader.readPerson(set));
+			
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+
+		return result;
+	}
 	/**
 	 * Check if the password matches the username.<br />
 	 * TODO MD5 - Password steel in Clear text.

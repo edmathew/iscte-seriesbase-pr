@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 @SuppressWarnings("serial")
-public class Series implements Serializable{
+public class Series implements Serializable {
 
 	private int id;
 	private String name;
@@ -17,8 +17,8 @@ public class Series implements Serializable{
 	private LinkedList<String> genres = new LinkedList<String>();
 	private LinkedList<Episodio> episodes = new LinkedList<Episodio>();
 
-	public Series(String nome, int anoInicial, String resumo,
-			String network, LinkedList<Person> actors, LinkedList<String> genres) {
+	public Series(String nome, int anoInicial, String resumo, String network,
+			LinkedList<Person> actors, LinkedList<String> genres) {
 		this.name = nome;
 		this.anoInicial = anoInicial;
 		this.resumo = resumo;
@@ -26,11 +26,18 @@ public class Series implements Serializable{
 		this.genres = genres;
 		this.network = network;
 	}
-	
+
+	public Series(String nome, int anoInicial, String resumo, String network) {
+		this.name = nome;
+		this.anoInicial = anoInicial;
+		this.resumo = resumo;
+		this.network = network;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -38,7 +45,15 @@ public class Series implements Serializable{
 	public void setEpisodes(LinkedList<Episodio> episodes) {
 		this.episodes = episodes;
 	}
-
+	
+	public void setGenres(LinkedList<String> genres) {
+		this.genres = genres;
+	}
+	
+	public void setActors(LinkedList<Person> actors) {
+		this.actors = actors;
+	}
+	
 	public LinkedList<Episodio> getEpisodes() {
 		return episodes;
 	}
@@ -69,9 +84,10 @@ public class Series implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Serie [nome=" + name + ", anoInicial=" + anoInicial+", resumo=" + resumo + ", network="
-				+ network + ", actors=" + actors + ", genres=" + genres
-				+ ", episodes=" + episodes + "]";
+		return "Serie [nome=" + name + ", anoInicial=" + anoInicial
+				+ ", resumo=" + resumo + ", network=" + network + ", actors="
+				+ actors + ", genres=" + genres + ", episodes=" + episodes
+				+ "]";
 	}
 
 	public void setImageURL(String imageURL) {

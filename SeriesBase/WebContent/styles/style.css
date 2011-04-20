@@ -2,7 +2,7 @@
 
 body { /* background-image: url('../images/background2.jpg'); */
 	background-image: url('../images/fundo3.jpg');
-	background-attachment: fixed;
+	background-attachment:fixed;
 }
 
 html,body {
@@ -63,7 +63,9 @@ ul#menu li a.current {
 /***************** END OF MENU BAR ******************/
 
 /***************** START OF CENTRAL ZONE ******************/
+
 .centralZone {
+	
 	
 }
 
@@ -100,7 +102,7 @@ form {
 }
 
 /***************** START OF LOGIN FORM ******************/
-/* .loginForm {
+.loginForm {
 	font-size: 14px;
 	text-align: right;
 	float: right;
@@ -135,42 +137,8 @@ form {
 	float: left;
 	text-align: left;
 	font-family: verdana;
-} */
-
-/* Login Panel */
-/* #top {
-	background: url(images/login_top.jpg) repeat-x 0 0;
-	height: 38px;
-	position: relative;
 }
 
-#top ul.login {
-	display: block;
-	position: relative;
-	float: right;
-	clear: right;
-	height: 38px;
-	width: auto;
-	font-weight: bold;
-	line-height: 38px;
-	margin: 0;
-	right: 150px;
-	color: white;
-	font-size: 80%;
-	text-align: center;
-	background: url(images/login_r.jpg) no-repeat right 0;
-	padding-right: 45px;
-}
-
-#top ul.login li.left {
-	background: url(images/login_l.jpg) no-repeat left 0;
-	height: 38px;
-	width: 45px;
-	padding: 0;
-	margin: 0;
-	display: block;
-	float: left;
-} */
 /***************** END OF LOGIN FORM ******************/
 
 /***************** START OF REGISTER FORM ******************/
@@ -212,18 +180,30 @@ td.error {
 }
 
 .seriesInfo {
-	
+	clear: right;
+	display: table;
+	margin-top: 15px;
+	max-width: 700px;
+	text-align: justify;
+	padding-left: 20px;
 }
 
-.seriesInfo img {
-	margin: 2px;
-	height: 400px;
-	width: 300px;
-	float: left;
-	text-align: center;
+.seriesImage{
+	margin:2px;
+	display: block;
+  	float:left;
+  	height:	400px;
+  	width:300px;
+}
+
+.seriesImage img{
+	height:	400px;
+  	width:300px;
+  	border-style: outset;
 }
 
 /***************** END OF SERIES TABLES ******************/
+
 p.submitButton {
 	text-align: center;
 }
