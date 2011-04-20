@@ -1,7 +1,7 @@
 @CHARSET "ISO-8859-1";
 
-body { /* background-image: url('../images/background2.jpg'); */
-	background-image: url('../images/fundo3.jpg');
+body {
+	background: url('../images/fundo3.jpg') bottom right no-repeat;
 	background-attachment:fixed;
 }
 
