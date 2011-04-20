@@ -33,13 +33,11 @@ public class SeriesControl extends HttpServlet {
 		if (action.equals("getAll")) {
 			req.getSession().setAttribute("seriesList",
 					query.getAllSeries().toArray());
-			//resp.sendRedirect("listSeries.jsp");
 		} else if (action.equals("getById")) {
 			int id = Integer.parseInt(req.getParameter("id"));
 			Series s = query.getSeriesById(id);
 			if(s != null){
 				req.getSession().setAttribute("series", s);
-				resp.sendRedirect("showSeriesInfo.jsp?id="+id);
 			}else
 				resp.sendRedirect("error.jsp");
 		}

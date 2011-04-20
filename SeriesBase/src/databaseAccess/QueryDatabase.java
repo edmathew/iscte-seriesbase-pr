@@ -38,6 +38,7 @@ public class QueryDatabase {
 				all.add(ResultSetReader.readSeries(set));
 
 		} catch (SQLException e) {
+		} finally {
 			try {
 				db.closeStatement();
 			} catch (SQLException e1) {
@@ -55,7 +56,7 @@ public class QueryDatabase {
 			ResultSet set = ps.executeQuery();
 			if (set != null && set.next())
 				s = ResultSetReader.readSeries(set);
-			
+
 			s.setGenres(getGenresBySeriesID(id));
 			s.setActors(getActorsBySeriesID(id));
 		} catch (SQLException e) {
@@ -67,8 +68,8 @@ public class QueryDatabase {
 		}
 		return s;
 	}
-	
-	public LinkedList<String> getGenresBySeriesID(int id){
+
+	public LinkedList<String> getGenresBySeriesID(int id) {
 		LinkedList<String> result = new LinkedList<String>();
 		PreparedStatement ps = null;
 		try {
@@ -76,9 +77,9 @@ public class QueryDatabase {
 			ps.setInt(1, id);
 			ResultSet set = ps.executeQuery();
 			if (set != null)
-				while(set.next())
+				while (set.next())
 					result.add(set.getString(1));
-			
+
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -90,7 +91,7 @@ public class QueryDatabase {
 		return result;
 	}
 
-	public LinkedList<Person> getActorsBySeriesID(int id){
+	public LinkedList<Person> getActorsBySeriesID(int id) {
 		LinkedList<Person> result = new LinkedList<Person>();
 		PreparedStatement ps = null;
 		try {
@@ -98,9 +99,9 @@ public class QueryDatabase {
 			ps.setInt(1, id);
 			ResultSet set = ps.executeQuery();
 			if (set != null)
-				while(set.next())
+				while (set.next())
 					result.add(ResultSetReader.readPerson(set));
-			
+
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -111,6 +112,7 @@ public class QueryDatabase {
 
 		return result;
 	}
+
 	/**
 	 * Check if the password matches the username.<br />
 	 * TODO MD5 - Password steel in Clear text.
