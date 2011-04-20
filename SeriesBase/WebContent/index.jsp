@@ -14,7 +14,8 @@
 </head>
 <body>
 
-	<jsp:include page="master.jsp" />
+	<%-- <jsp:include page="master.jsp" /> --%>
+	<jsp:include page="header.jsp" />
 
 
 

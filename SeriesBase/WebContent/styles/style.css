@@ -176,9 +176,9 @@ td.error {
 
 /***************** SERIES TABLES ******************/
 .seriesTable {
-	float: left;
+	float: none;
+	
 }
-
 .seriesInfo {
 	clear: right;
 	display: table;

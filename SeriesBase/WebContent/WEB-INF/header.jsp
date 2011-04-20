@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
 <%
 	boolean logged = session.getAttribute("loginname") != null;
@@ -6,6 +8,9 @@
 	String location = request.getContextPath();
 %>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
@@ -19,18 +24,11 @@
 <link rel="stylesheet" href="styles/fx.slide.css" type="text/css"
 	media="screen" />
 <!-- Mootools - the core -->
-	<script type="text/javascript" src="scripts/mootools-1.2-core-yc.js"></script>
+<script type="text/javascript" src="scripts/mootools-1.2-core-yc.js"></script>
 <!--Toggle effect (show/hide login form) -->
 <script type="text/javascript" src="scripts/mootools-1.2-more.js"></script>
 <script type="text/javascript" src="scripts/fx.slide.js"></script>
 <!-- END Fx.Slide -->
-</head>
-
-<div class="header">
-	<!-- @Ed - Falta o Logotipo -->
-	<!-- Seriesbase ALPHA Version 2.0 Nuno<br /> -->
-
-</div>
 
 
 <div id="login">
@@ -64,7 +62,8 @@
 			<li class="left">&nbsp;</li>
 			<li>Hello Guest!</li>
 			<li>|</li>
-			<li><a id="toggleLogin" href="#">Log In</a></li>
+			<li><a id="toggleLogin" href="#">Log In</a>
+			</li>
 		</ul>
 	</div>
 
@@ -72,8 +71,7 @@
 	<div class="mainMenu">
 		<ul id="menu">
 			<li><a href="linkControl?link=home" target="_self" title="Home"
-				class="current">Home</a>
-			</li>
+				class="current">Home</a></li>
 			<%
 				if (logged) {
 			%>
@@ -94,7 +92,5 @@
 			</li>
 		</ul>
 	</div>
-	<div id="content">
-		<p>The content of your page!</p>
-	</div>
-	<!-- <div class="clearfix"></div> -->
+</head>
+</html>
