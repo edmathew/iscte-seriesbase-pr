@@ -31,12 +31,12 @@ Date: August 2008
   	color: white;
   	font-size: 80%;
 	text-align: center;
-  	background: url(images/login_r.jpg) no-repeat right 0;
+  	background: url(images/login_r2.png) no-repeat right 0;
 	padding-right: 45px;
 }
 
 #top ul.login li.left {
-  	background: url(images/login_l.jpg) no-repeat left 0;
+  	background: url(images/login_l2.png) no-repeat left 0;
   	height: 38px;
 	width: 45px;
 	padding: 0;
