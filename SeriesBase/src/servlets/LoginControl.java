@@ -86,8 +86,8 @@ public class LoginControl extends HttpServlet {
 	 */
 	public void login(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		String user = req.getParameter("login");
-		String pass = req.getParameter("password");
+		String user = req.getParameter("log");
+		String pass = req.getParameter("pwd");
 
 		int userId = query.validLogin(user, pass);
 		System.out.println(userId);
