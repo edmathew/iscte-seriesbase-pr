@@ -1,9 +1,9 @@
 @CHARSET "ISO-8859-1";
 
 body {
-	/* background: url('../images/fundo3.jpg') bottom right no-repeat; */
-	background-color: orange;
-	background-attachment:fixed;
+	background: url('../images/fundo3.jpg') bottom right no-repeat;
+	/*background-color: orange;
+	background-attachment:fixed;*/
 }
 
 html,body {
@@ -17,9 +17,7 @@ html,body {
 	margin: 0 auto -4em;
 }
 /***************** END OF LOGO ZONE ******************/
-.footer,.push {
-	height: 4em;
-}
+
 
 /***************** START OF MENU BAR ******************/
 ul#menu {
@@ -177,8 +175,7 @@ td.error {
 
 /***************** SERIES TABLES ******************/
 .seriesTable {
-	float: none;
-	
+	float: left;	
 }
 .seriesInfo {
 	clear: right;
@@ -209,7 +206,39 @@ p.submitButton {
 	text-align: center;
 }
 
+/***** Main Layout ****/
+.container {
+	min-height: 100%;
+  	width: auto;
+  	height: auto;
+  	text-align: center;/* IE fix to center the page */
+  	margin-bottom: -36px;
+}
+
+#footer-spacer {
+    height: 36px;
+}
+
+.footer,.push {
+	height: 4em;
+	float:left;
+	height: 15px;
+	border-top: 1px solid #000;
+}
+
+.rodTop{
+	position: absolute;	
+}
+
+#content {
+  	width: 900px;
+  	margin: 0 auto;/* center the page in Firefox */
+  	text-align: left;
+	padding: 20px;
+}
+
 .news {
 	clear: both;
 	float: left;
 }
+

@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
 /**
  * MySQL Database manipulation Library.
  * 
@@ -95,12 +94,12 @@ public class DatabaseManager {
 		s.executeUpdate(sqlUpdate, Statement.RETURN_GENERATED_KEYS);
 		return s.getGeneratedKeys();
 	}
-	
-	
-	public PreparedStatement preparedStatement(String sql) throws SQLException{
-		return conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+	public PreparedStatement preparedStatement(String sql) throws SQLException {
+		return conn.prepareStatement(sql,
+				PreparedStatement.RETURN_GENERATED_KEYS);
 	}
-	
+
 	/**
 	 * Releases the actual connection and the JDBC resources.
 	 * 

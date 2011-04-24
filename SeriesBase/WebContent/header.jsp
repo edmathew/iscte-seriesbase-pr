@@ -1,35 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
 <%
 	boolean logged = session.getAttribute("loginname") != null;
 	boolean bruteForce = session.getAttribute("bruteForceLogin") != null;
 	String loginImage = (String) session.getAttribute("loginImageURL");
 	String location = request.getContextPath();
 %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
-<!-- The main style sheet -->
-<link rel="stylesheet" href="styles/style.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="styles/styleLogin.css" type="text/css"
-	media="screen" />
-<!-- START Fx.Slide -->
-<!-- The CSS -->
-<link rel="stylesheet" href="styles/fx.slide.css" type="text/css"
-	media="screen" />
-<!-- Mootools - the core -->
-<script type="text/javascript" src="scripts/mootools-1.2-core-yc.js"></script>
-<!--Toggle effect (show/hide login form) -->
-<script type="text/javascript" src="scripts/mootools-1.2-more.js"></script>
-<script type="text/javascript" src="scripts/fx.slide.js"></script>
-<!-- END Fx.Slide -->
-</head>
-
-<body>
+	<div id="rodTop"></div>
 	<div id="login">
 		<div class="loginContent">
 			<form action="<%=location%>/loginControl?action=login" method="post">
@@ -99,5 +74,3 @@
 			</ul>
 		</div>
 	</div>
-</body>
-</html>

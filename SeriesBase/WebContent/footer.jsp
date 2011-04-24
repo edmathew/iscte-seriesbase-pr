@@ -1,16 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="styles/style.css" type="text/css"
-	media="screen" />
-</head>
-<body>
+	
 	<div class=footer>
-		<td align="center">
-			<table align="center" border="0" width="960">
+			SeriesBase---O melhor site de series.
+			<!-- <table align="center" border="0" width="960">
 				<tr>
 					<td align="left" width="200"><a
 						href="http://www.w3schools.com"><img border="0"
@@ -47,10 +38,6 @@
 						Refsnes Data. All Rights Reserved.</td>
 
 				</tr>
-			</table> <br />
-		</td>
-
+			</table> <br />-->
 	</div>
 
-</body>
-</html>

@@ -45,15 +45,15 @@ public class Series implements Serializable {
 	public void setEpisodes(LinkedList<Episodio> episodes) {
 		this.episodes = episodes;
 	}
-	
+
 	public void setGenres(LinkedList<String> genres) {
 		this.genres = genres;
 	}
-	
+
 	public void setActors(LinkedList<Person> actors) {
 		this.actors = actors;
 	}
-	
+
 	public LinkedList<Episodio> getEpisodes() {
 		return episodes;
 	}

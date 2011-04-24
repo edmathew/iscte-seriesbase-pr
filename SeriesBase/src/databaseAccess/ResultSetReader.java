@@ -7,12 +7,12 @@ import dto.*;
 
 public class ResultSetReader {
 
-	public static Genre readGenre(ResultSet set) throws SQLException{
+	public static Genre readGenre(ResultSet set) throws SQLException {
 		int id = set.getInt(1);
 		String name = set.getString(2);
 		return new Genre(id, name);
 	}
-	
+
 	public static Series readSeries(ResultSet set) throws SQLException {
 		int id = set.getInt(1);
 		String name = set.getString(2);
@@ -26,7 +26,7 @@ public class ResultSetReader {
 		return s;
 	}
 
-	public static Person readPerson(ResultSet set) throws SQLException{
+	public static Person readPerson(ResultSet set) throws SQLException {
 		int id = set.getInt(1);
 		String name = set.getString(2);
 		String picture = set.getString(3);

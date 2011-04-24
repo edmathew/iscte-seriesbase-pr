@@ -11,7 +11,7 @@ public class ImageTester {
 
 	private static void save(BufferedImage image, String ext) {
 		String fileName = "savingAnImage";
-		File file = new File("WebContent/"+fileName + "." + ext);
+		File file = new File("WebContent/" + fileName + "." + ext);
 		try {
 			ImageIO.write(image, ext, file); // ignore returned boolean
 		} catch (IOException e) {
@@ -24,13 +24,13 @@ public class ImageTester {
 		BufferedImage image = null;
 		try {
 			// Read from a URL
-			URL url = new URL("http://cache.thetvdb.com/banners/posters/80348-6.jpg");
+			URL url = new URL(
+					"http://cache.thetvdb.com/banners/posters/80348-6.jpg");
 			image = ImageIO.read(url);
-			save(image, "jpg"); 
+			save(image, "jpg");
 		} catch (IOException e) {
 			System.out.println("I didn't read that crap");
 		}
-		
-		
+
 	}
 }

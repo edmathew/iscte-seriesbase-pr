@@ -21,12 +21,12 @@ public class SQLStatements {
 	public static String getGenresBySeriesId() {
 		return "SELECT Nome from genero, generosdaserie WHERE Serie_idSerie = ? AND idGenero = Genero_idGenero";
 	}
-	
-	public static String getActorsBySeriesId(){
+
+	public static String getActorsBySeriesId() {
 		return "SELECT idPessoa, Nome, PhotoURL FROM pessoa, actoresdaserie WHERE Serie_idSerie = ? AND idPessoa = Pessoa_idPessoa";
 	}
-	
-	//public static 
+
+	// public static
 
 	public static String selectPassword(String user) {
 		return "SELECT idUtilizador, password FROM utilizador WHERE nome='"

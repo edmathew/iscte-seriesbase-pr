@@ -18,11 +18,10 @@ public class Utilities {
 			throws ParseException {
 		if (date == null)
 			throw new IllegalArgumentException();
-		
+
 		DateFormat format = new SimpleDateFormat(pattern);
 		Date d = format.parse(date);
 		return d;
 	}
 
-	
 }

@@ -14,19 +14,19 @@ public class Test {
 		QueryDatabase q = new QueryDatabase();
 		try {
 			Scanner file = new Scanner(new File("SeriesIDs.txt"));
-			while(file.hasNextInt()){
+			while (file.hasNextInt()) {
 				int id = file.nextInt();
-				System.out.print(" - "+id);
+				System.out.print(" - " + id);
 				Series s = new SeriesParser(id).getSerie();
-				if(s != null)
+				if (s != null)
 					q.insertSeries(s);
 				System.out.println("\tDONE");
 			}
-			
+
 			System.out.println("DONE");
 		} catch (FileNotFoundException e) {
 			System.err.println("Missing SeriesIDs.txt");
 		}
-		
+
 	}
 }

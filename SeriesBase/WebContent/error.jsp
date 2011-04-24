@@ -3,12 +3,11 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="styles/menu_style.css" type="text/css" />
+		<jsp:include page="headerLinks.jsp"/>
 		<title>Error</title>
 	</head>
 	<body>
-		<jsp:include page="index.jsp" />
-		<h1 style="color: red;">Não foi possivel encontrar o recurso pretendido!</h1>
+		<jsp:include page="header.jsp" />
+		<h1 style="color: red; float: left;">Não foi possivel encontrar o recurso pretendido!</h1>
 	</body>
 </html>

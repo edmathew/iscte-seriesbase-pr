@@ -108,9 +108,9 @@ public class LoginControl extends HttpServlet {
 	public void register(HttpServletRequest req) throws UsernameAlreadyTaken {
 		HttpSession session = req.getSession();
 		String username = req.getParameter("username");
-		//String date = req.getParameter("birth");
+		// String date = req.getParameter("birth");
 
-		if (!query.checkUsernameAvaliability(username)){
+		if (!query.checkUsernameAvaliability(username)) {
 			session.setAttribute("username", req.getParameter("username"));
 			session.setAttribute("email", req.getParameter("email"));
 			session.setAttribute("birth", req.getParameter("birth"));

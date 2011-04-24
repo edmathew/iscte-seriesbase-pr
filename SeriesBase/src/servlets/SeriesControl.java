@@ -36,9 +36,9 @@ public class SeriesControl extends HttpServlet {
 		} else if (action.equals("getById")) {
 			int id = Integer.parseInt(req.getParameter("id"));
 			Series s = query.getSeriesById(id);
-			if(s != null){
+			if (s != null) {
 				req.getSession().setAttribute("series", s);
-			}else
+			} else
 				resp.sendRedirect("error.jsp");
 		}
 	}
@@ -54,4 +54,5 @@ public class SeriesControl extends HttpServlet {
 			throws ServletException, IOException {
 		processRequest(req, resp);
 	}
+	
 }

@@ -110,7 +110,7 @@ public class SeriesParser {
 
 		if (!imageURL.equals(""))
 			s.setImageURL(BANNER_URL + imageURL);
-		
+
 		s.setEpisodes(eps);
 		return s;
 	}
