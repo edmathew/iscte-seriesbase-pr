@@ -16,7 +16,6 @@
 				for(int i = 0; i< 20; i++)
 					out.println(i+"<br />");
 			%>
-			<div id="footer-spacer"></div>  
 		</div>
 		<jsp:include page="footer.jsp" />
 	

@@ -60,15 +60,6 @@ ul#menu li a.current {
 }
 
 /***************** END OF MENU BAR ******************/
-
-/***************** START OF CENTRAL ZONE ******************/
-
-.centralZone {
-	
-	
-}
-
-/***************** END OF CENTRAL ZONE ******************/
 a:link {
 	text-decoration: none;
 	color: gray;
@@ -181,7 +172,7 @@ td.error {
 	clear: right;
 	display: table;
 	margin-top: 15px;
-	max-width: 700px;
+	max-width: 1000px;
 	text-align: justify;
 	padding-left: 20px;
 }
@@ -197,6 +188,8 @@ td.error {
 .seriesImage img{
 	height:	400px;
   	width:300px;
+  	min-height:	400px;
+  	min-width:300px;
   	border-style: outset;
 }
 
@@ -211,19 +204,19 @@ p.submitButton {
 	min-height: 100%;
   	width: auto;
   	height: auto;
-  	text-align: center;/* IE fix to center the page */
+  	/*text-align: center;/* IE fix to center the page */
   	margin-bottom: -36px;
 }
 
-#footer-spacer {
-    height: 36px;
-}
 
 .footer,.push {
+	clear:both;
 	height: 4em;
 	float:left;
 	height: 15px;
 	border-top: 1px solid #000;
+	margin-top: 10px;
+	margin-left: 10px;
 }
 
 .rodTop{
@@ -237,8 +230,9 @@ p.submitButton {
 	padding: 20px;
 }
 
-.news {
-	clear: both;
+.contents{
 	float: left;
+	display: block;
+	margin-left: 10px;
 }
 
