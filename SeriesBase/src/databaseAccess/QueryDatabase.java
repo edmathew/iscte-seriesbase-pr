@@ -59,6 +59,7 @@ public class QueryDatabase {
 
 			s.setGenres(getGenresBySeriesID(id));
 			s.setActors(getActorsBySeriesID(id));
+			s.setEpisodes(getEpisodesBySeriesID(id));
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -101,6 +102,28 @@ public class QueryDatabase {
 			if (set != null)
 				while (set.next())
 					result.add(ResultSetReader.readPerson(set));
+
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+
+		return result;
+	}
+	
+	public LinkedList<Episodio> getEpisodesBySeriesID(int id) {
+		LinkedList<Episodio> result = new LinkedList<Episodio>();
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLStatements.getEpisodesBySeriesId());
+			ps.setInt(1, id);
+			ResultSet set = ps.executeQuery();
+			if (set != null)
+				while (set.next())
+					result.add(ResultSetReader.readEpisode(set));
 
 		} catch (SQLException e) {
 		} finally {

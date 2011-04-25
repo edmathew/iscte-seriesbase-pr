@@ -25,8 +25,10 @@ public class SQLStatements {
 	public static String getActorsBySeriesId() {
 		return "SELECT idPessoa, Nome, PhotoURL FROM pessoa, actoresdaserie WHERE Serie_idSerie = ? AND idPessoa = Pessoa_idPessoa";
 	}
-
-	// public static
+	
+	public static String getEpisodesBySeriesId(){
+		return "SELECT * FROM Episodio WHERE Serie_idSerie = ?";
+	}
 
 	public static String selectPassword(String user) {
 		return "SELECT idUtilizador, password FROM utilizador WHERE nome='"

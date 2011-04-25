@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<%@page import="dto.Episodio"%>
 <%@ page import="dto.Series"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
@@ -34,6 +35,23 @@
 					<%=s.getGenres() %><br/><br/>
 					<b>Actors</b><br/>
 					<%=s.getActors() %><br/><br/>
+				</div>
+				<div class="episodesTable">
+					<table border="1" id="s1">
+						<%
+							for (int i = 0; i < s.getEpisodes().size(); i++) {
+								Episodio e = (Episodio) s.getEpisodes().get(i);
+						%>
+						<tr>
+							<td><%=e.getTemporada()%></td>
+							<td><%=e.getNumero()%></td>
+							<td><%=e.getTitulo()%></td>
+							<td><%=e.getOverview()%></td>
+						</tr>
+						<%
+							}
+						%>
+					</table>
 				</div>
 			</div>
 
