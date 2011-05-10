@@ -34,7 +34,7 @@ public class LinkControl extends HttpServlet {
 				resp.sendRedirect("index.jsp");
 			else if (link.equals("series"))
 				resp.sendRedirect("listSeries.jsp");
-			else if(link.equals("mySeries"))
+			else if (link.equals("mySeries"))
 				resp.sendRedirect("mySeries.jsp");
 			else if (link.equals("getSeriesById"))
 				resp.sendRedirect("showSeriesInfo.jsp?id="

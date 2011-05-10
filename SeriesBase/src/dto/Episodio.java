@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-public class Episodio implements Serializable{
+public class Episodio implements Serializable {
 
 	private int id;
 	private int numero;
@@ -21,7 +21,7 @@ public class Episodio implements Serializable{
 		this.dateExibicao = dateExibicao;
 		this.overview = overview;
 	}
-	
+
 	public Episodio(int id, int numero, int temporada, String titulo,
 			Date dateExibicao, String overview) {
 		this.id = id;
@@ -31,7 +31,7 @@ public class Episodio implements Serializable{
 		this.dateExibicao = dateExibicao;
 		this.overview = overview;
 	}
-	
+
 	public int getId() {
 		return id;
 	}

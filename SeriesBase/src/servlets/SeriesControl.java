@@ -30,6 +30,10 @@ public class SeriesControl extends HttpServlet {
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String action = req.getParameter("action");
+		int userId = 0;
+		if (req.getSession().getAttribute("loginID") != null)
+			userId = (Integer) req.getSession().getAttribute("loginID");
+
 		if (action.equals("getAll")) {
 			req.getSession().setAttribute("seriesList",
 					query.getAllSeries().toArray());
@@ -38,8 +42,19 @@ public class SeriesControl extends HttpServlet {
 			Series s = query.getSeriesById(id);
 			if (s != null) {
 				req.getSession().setAttribute("series", s);
+				if (query.isFavorite(s.getId(), userId))
+					req.getSession().setAttribute("isFavorite", true);
 			} else
 				resp.sendRedirect("error.jsp");
+		} else if (action.equals("getByUserId")) {
+			req.getSession().setAttribute("seriesList",
+					query.getSeriesByUserId(userId).toArray());
+		} else if (action.equals("addToFavorites")) {
+
+			int seriesId = ((Series) req.getSession().getAttribute("series"))
+					.getId();
+			query.insertUserSeries(seriesId, userId);
+			resp.sendRedirect("showSeriesInfo.jsp?id=" + seriesId);
 		}
 	}
 
@@ -54,5 +69,5 @@ public class SeriesControl extends HttpServlet {
 			throws ServletException, IOException {
 		processRequest(req, resp);
 	}
-	
+
 }

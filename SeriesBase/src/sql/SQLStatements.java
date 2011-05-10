@@ -23,11 +23,22 @@ public class SQLStatements {
 	}
 
 	public static String getActorsBySeriesId() {
-		return "SELECT idPessoa, Nome, PhotoURL FROM pessoa, actoresdaserie WHERE Serie_idSerie = ? AND idPessoa = Pessoa_idPessoa";
+		return "SELECT idPessoa, Nome, PhotoURL FROM pessoa, actoresdaserie WHERE Serie_idSerie = ? "
+				+ "AND idPessoa = Pessoa_idPessoa";
 	}
-	
-	public static String getEpisodesBySeriesId(){
+
+	public static String getEpisodesBySeriesId() {
 		return "SELECT * FROM Episodio WHERE Serie_idSerie = ?";
+	}
+
+	// **************UTILIZADORES***********************//
+	public static String selectSeriesByUserId() {
+		return "SELECT idSerie, Nome, AnoInicial, Resumo, ImageURL, Network FROM Serie, SeriesDoUtilizador "
+				+ "WHERE Serie_idSerie = idSerie AND Utilizador_idUtilizador = ?";
+	}
+
+	public static String insertUserSeries() {
+		return "INSERT INTO (Serie_idSerie, Utilizador_idUtilizador) VALUES (?, ?)";
 	}
 
 	public static String selectPassword(String user) {

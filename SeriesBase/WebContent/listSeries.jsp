@@ -17,7 +17,7 @@
 	<body>
 		<jsp:include page="header.jsp"/>
 		<div class="container">
-			<div class="seriesTable">
+			<div class="contents">
 				<table border="1" id="s1">
 					<%
 						for (int i = 0; i < series.length; i++) {

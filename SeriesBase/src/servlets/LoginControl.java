@@ -48,7 +48,7 @@ public class LoginControl extends HttpServlet {
 					register(req);
 				}
 			}
-			resp.sendRedirect("index.jsp");
+			resp.sendRedirect(req.getHeader("Referer"));
 		} catch (UsernameAlreadyTaken e) {
 			req.getSession().setAttribute("duplicatedUsername", true);
 			resp.sendRedirect("forms/register.jsp");

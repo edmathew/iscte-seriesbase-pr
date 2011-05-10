@@ -4,7 +4,8 @@
 
 		<link rel="stylesheet" href="styles/style.css" type="text/css" 	media="screen" />
 		<link rel="stylesheet" href="styles/styleLogin.css" type="text/css"	media="screen" />
-		
+		<link rel="shortcut icon" HREF="images/icon_1_test.ico">
+				
 		<!-- START Fx.Slide -->
 		<!-- The CSS -->
 		<link rel="stylesheet" href="styles/fx.slide.css" type="text/css" media="screen" />

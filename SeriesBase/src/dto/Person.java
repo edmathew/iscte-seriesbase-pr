@@ -1,5 +1,7 @@
 package dto;
 
+import java.io.Serializable;
+
 /**
  * Represents a Person.
  * 
@@ -7,7 +9,8 @@ package dto;
  * @version April 2011
  * 
  */
-public class Person {
+@SuppressWarnings("serial")
+public class Person implements Serializable {
 
 	private int id = -1;
 	private String name;

@@ -8,6 +8,11 @@
 <%}
 	request.getRequestDispatcher("/seriesControl?action=getById&id="+request.getParameter("id")).include(request,response);
 	Series s = (Series) session.getAttribute("series");
+	boolean isFavorite = false;
+	if(session.getAttribute("isFavorite") != null){
+		isFavorite = true;
+		session.removeAttribute("isFavorite");
+	}
 %>
 <html>
 	<head>
@@ -15,12 +20,24 @@
 		<title>Seriesbase - <%=s.getName() %></title>
 		<jsp:include page="headerLinks.jsp"/>
 	</head>
-	<body>
 	
+	<body>
 		<div class="container">
 			<jsp:include page="header.jsp" />
 			<div class="contents">
-				<h1><%=s.getName()%></h1>
+				<div class="seriesTitle">
+					<div><h1><%=s.getName()%></h1></div>
+					
+					<div class="favSeries">
+						<%if(!isFavorite){%>
+							<a href="#">Add to Favorites</a>
+						<%}else{%>
+							<img alt="" src="images/Yes_check.png" />
+							<a href="#">Favorite</a>
+						<%} %>
+						
+					</div>
+				</div>
 				<div class="seriesImage">
 					<img alt="Image not found" src="<%=s.getImageURL()%>">
 				</div>

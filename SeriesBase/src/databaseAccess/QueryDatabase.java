@@ -11,6 +11,7 @@ import dto.Person;
 import dto.Series;
 
 import sql.SQLStatements;
+import sql.SQLUserStatements;
 
 /**
  * 
@@ -34,6 +35,26 @@ public class QueryDatabase {
 		LinkedList<Series> all = new LinkedList<Series>();
 		try {
 			ResultSet set = db.selectStatement(SQLStatements.getAllSeries());
+			while (set.next())
+				all.add(ResultSetReader.readSeries(set));
+
+		} catch (SQLException e) {
+		} finally {
+			try {
+				db.closeStatement();
+			} catch (SQLException e1) {
+			}
+		}
+		return all;
+	}
+
+	public LinkedList<Series> getSeriesByUserId(int userId) {
+		PreparedStatement ps = null;
+		LinkedList<Series> all = new LinkedList<Series>();
+		try {
+			ps = db.preparedStatement(SQLStatements.selectSeriesByUserId());
+			ps.setInt(1, userId);
+			ResultSet set = ps.executeQuery();
 			while (set.next())
 				all.add(ResultSetReader.readSeries(set));
 
@@ -113,7 +134,7 @@ public class QueryDatabase {
 
 		return result;
 	}
-	
+
 	public LinkedList<Episodio> getEpisodesBySeriesID(int id) {
 		LinkedList<Episodio> result = new LinkedList<Episodio>();
 		PreparedStatement ps = null;
@@ -445,4 +466,42 @@ public class QueryDatabase {
 			}
 		}
 	}
+
+	public void insertUserSeries(int seriesID, int userID) {
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLStatements.insertUserSeries());
+			ps.setInt(2, seriesID);
+			ps.setInt(1, userID);
+			ps.executeUpdate();
+			db.commit();
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+	public boolean isFavorite(int seriesId, int userId) {
+		PreparedStatement ps = null;
+		boolean isFavorite = false;
+		try {
+			ps = db.preparedStatement(SQLUserStatements.selectSeries());
+			ps.setInt(1, seriesId);
+			ps.setInt(2, userId);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next() && rs.getInt(1) > 0)
+				isFavorite = true;
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+		return isFavorite;
+	}
+
 }
