@@ -16,7 +16,6 @@
 %>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Seriesbase - <%=s.getName() %></title>
 		<jsp:include page="headerLinks.jsp"/>
 	</head>
@@ -30,10 +29,10 @@
 					
 					<div class="favSeries">
 						<%if(!isFavorite){%>
-							<a href="#">Add to Favorites</a>
+							<a href="seriesControl?action=addToFavorites">Add to Favorites</a>
 						<%}else{%>
 							<img alt="" src="images/Yes_check.png" />
-							<a href="#">Favorite</a>
+							Favorite
 						<%} %>
 						
 					</div>

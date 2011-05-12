@@ -38,7 +38,7 @@ public class SQLStatements {
 	}
 
 	public static String insertUserSeries() {
-		return "INSERT INTO (Serie_idSerie, Utilizador_idUtilizador) VALUES (?, ?)";
+		return "INSERT INTO SeriesDoUtilizador (Serie_idSerie, Utilizador_idUtilizador) VALUES (?, ?)";
 	}
 
 	public static String selectPassword(String user) {

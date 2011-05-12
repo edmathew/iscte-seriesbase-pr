@@ -50,7 +50,6 @@ public class SeriesControl extends HttpServlet {
 			req.getSession().setAttribute("seriesList",
 					query.getSeriesByUserId(userId).toArray());
 		} else if (action.equals("addToFavorites")) {
-
 			int seriesId = ((Series) req.getSession().getAttribute("series"))
 					.getId();
 			query.insertUserSeries(seriesId, userId);

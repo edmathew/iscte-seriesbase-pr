@@ -15,7 +15,7 @@ import sql.SQLUserStatements;
 
 /**
  * 
- * @author Ed Mateus
+ * @author Edgar Mateus
  * 
  */
 public class QueryDatabase {
@@ -471,8 +471,8 @@ public class QueryDatabase {
 		PreparedStatement ps = null;
 		try {
 			ps = db.preparedStatement(SQLStatements.insertUserSeries());
-			ps.setInt(2, seriesID);
-			ps.setInt(1, userID);
+			ps.setInt(1, seriesID);
+			ps.setInt(2, userID);
 			ps.executeUpdate();
 			db.commit();
 		} catch (SQLException e) {
