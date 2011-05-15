@@ -7,7 +7,7 @@
 		<title>Error</title>
 	</head>
 	<body>
-		<jsp:include page="header.jsp" />
+		<jsp:include page="menu.jsp" />
 		<h1 style="color: red; float: left;">Não foi possivel encontrar o recurso pretendido!</h1>
 	</body>
 </html>

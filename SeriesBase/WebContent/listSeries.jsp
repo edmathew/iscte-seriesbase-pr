@@ -15,7 +15,7 @@
 	</head>
 
 	<body>
-		<jsp:include page="header.jsp"/>
+		<jsp:include page="menu.jsp"/>
 		<div class="container">
 			<div class="contents">
 				<table border="1" id="s1">

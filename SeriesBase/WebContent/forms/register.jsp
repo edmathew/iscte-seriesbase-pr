@@ -22,7 +22,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel="stylesheet" href="../styles/style.css" type="text/css" media="screen"/> 
+		
 		<title>Register</title>
+		
 		<script type="text/javascript" src="../scripts/validationScripts.js"></script>
 		<script type="text/javascript">
 			function validateForm(){
@@ -59,10 +61,12 @@
 				return true;
 			}
 		</script>
+		<jsp:include page="../headerLinks.jsp"/>
 	</head>
 		
 	<body>
-		<%@include file="../index.jsp" %>
+		<%-- <%@include file="../index.jsp" %> --%>
+		<jsp:include page="../menu.jsp"/>
 		
 		<div class="registerForm">
 			<p class="title">Register at Seriesbase</p>
@@ -99,5 +103,6 @@
 					style="height: 25px; width: 100px;"/></p>
 			</form>
 		</div>
+		<jsp:include page="../footer.jsp" />
 	</body>
 </html>

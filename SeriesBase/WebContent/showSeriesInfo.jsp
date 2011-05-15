@@ -22,7 +22,7 @@
 	
 	<body>
 		<div class="container">
-			<jsp:include page="header.jsp" />
+			<jsp:include page="menu.jsp" />
 			<div class="contents">
 				<div class="seriesTitle">
 					<div><h1><%=s.getName()%></h1></div>

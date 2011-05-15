@@ -11,7 +11,7 @@
 		<%-- <jsp:include page="master.jsp" /> --%>
 		
 		<div class="container">
-			<jsp:include page="header.jsp" />
+			<jsp:include page="menu.jsp" />
 			<%
 				for(int i = 0; i< 20; i++)
 					out.println(i+"<br />");
