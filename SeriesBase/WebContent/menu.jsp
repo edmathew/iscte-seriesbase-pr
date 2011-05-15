@@ -4,6 +4,7 @@
 	boolean bruteForce = session.getAttribute("bruteForceLogin") != null;
 	String loginImage = (String) session.getAttribute("loginImageURL");
 	String location = request.getContextPath();
+	String currentMenu = (String) session.getAttribute("menu");
 %>
 <div id="rodTop"></div>
 <div id="login">
@@ -22,8 +23,8 @@
 				value="forever" /> Remember me</label>
 		</div>
 		<div class="right">
-			Not a member? <a href="linkControl?link=register">Register</a> | <a href="#">Lost your
-				password?</a>
+			Not a member? <a href="linkControl?link=register">Register</a> | <a
+				href="#">Lost your password?</a>
 		</div>
 	</div>
 	<div class="loginClose">
@@ -36,20 +37,22 @@
 		<ul class="login">
 			<li class="left">&nbsp;</li>
 			<%
-				if(logged){
-				%>
+				if (logged) {
+			%>
 			<li>Hello <%=session.getAttribute("loginname")%>!</li>
 			<li>|</li>
-			<li><a href="linkControl?link=logout">Log Out</a></li>
+			<li><a href="linkControl?link=logout">Log Out</a>
+			</li>
 			<%
-				}else{
-				%>
+				} else {
+			%>
 			<li>Hello Guest!</li>
 			<li>|</li>
-			<li><a id="toggleLogin" href="#">Log In</a></li>
+			<li><a id="toggleLogin" href="#">Log In</a>
+			</li>
 			<%
 				}
-				%>
+			%>
 
 
 		</ul>
@@ -58,27 +61,121 @@
 	<!-- <div class="clearfix"></div> -->
 	<div class="mainMenu">
 		<ul id="menu">
+			<%
+				if (currentMenu.equals("home")) {
+			%>
 			<li><a href="linkControl?link=home" target="_self" title="Home"
-				class="current">Home</a>
-			</li>
+				class="current">Home</a></li>
 			<%
-					if (logged) {
-				%>
+				if (logged) {
+			%>
 			<li><a href="linkControl?link=mySeries" target="_self"
-				title="My Series">My Series</a>
+				title="My Series">My Series</a></li>
+			<%
+				}
+			%>
+			<li><a href="linkControl?link=series&action=getAll"
+				target="_self" title="Series">Series</a></li>
+			<li><a href="linkControl?link=people" target="_self"
+				title="People">People</a></li>
+			<li><a href="linkControl?link=about" target="_self"
+				title="About">About</a></li>
+			<%
+				}
+			%>
+
+			<%
+				if (currentMenu.equals("mySeries")) {
+			%>
+			<li><a href="linkControl?link=home" target="_self" title="Home">Home</a>
 			</li>
 			<%
-					}
-				%>
+				if (logged) {
+			%>
+			<li><a href="linkControl?link=mySeries" target="_self"
+				title="My Series" class="current">My Series</a></li>
+			<%
+				}
+			%>
 			<li><a href="linkControl?link=series&action=getAll"
-				target="_self" title="Series">Series</a>
-			</li>
+				target="_self" title="Series">Series</a></li>
 			<li><a href="linkControl?link=people" target="_self"
-				title="People">People</a>
-			</li>
+				title="People">People</a></li>
 			<li><a href="linkControl?link=about" target="_self"
-				title="About">About</a>
+				title="About">About</a></li>
+			<%
+				}
+			%>
+
+			<%
+				if (currentMenu.equals("series")) {
+			%>
+			<li><a href="linkControl?link=home" target="_self" title="Home">Home</a>
 			</li>
+			<%
+				if (logged) {
+			%>
+			<li><a href="linkControl?link=mySeries" target="_self"
+				title="My Series">My Series</a></li>
+			<%
+				}
+			%>
+			<li><a href="linkControl?link=series&action=getAll"
+				target="_self" title="Series" class="current">Series</a></li>
+			<li><a href="linkControl?link=people" target="_self"
+				title="People">People</a></li>
+			<li><a href="linkControl?link=about" target="_self"
+				title="About">About</a></li>
+			<%
+				}
+			%>
+
+			<%
+				if (currentMenu.equals("people")) {
+			%>
+			<li><a href="linkControl?link=home" target="_self" title="Home">Home</a>
+			</li>
+			<%
+				if (logged) {
+			%>
+			<li><a href="linkControl?link=mySeries" target="_self"
+				title="My Series">My Series</a></li>
+			<%
+				}
+			%>
+			<li><a href="linkControl?link=series&action=getAll"
+				target="_self" title="Series">Series</a></li>
+			<li><a href="linkControl?link=people" target="_self"
+				title="People" class="current">People</a></li>
+			<li><a href="linkControl?link=about" target="_self"
+				title="About">About</a></li>
+			<%
+				}
+			%>
+
+			<%
+				if (currentMenu.equals("about")) {
+			%>
+			<li><a href="linkControl?link=home" target="_self" title="Home">Home</a>
+			</li>
+			<%
+				if (logged) {
+			%>
+			<li><a href="linkControl?link=mySeries" target="_self"
+				title="My Series">My Series</a></li>
+			<%
+				}
+			%>
+			<li><a href="linkControl?link=series&action=getAll"
+				target="_self" title="Series">Series</a></li>
+			<li><a href="linkControl?link=people" target="_self"
+				title="People">People</a></li>
+			<li><a href="linkControl?link=about" target="_self"
+				title="About" class="current">About</a></li>
+			<%
+				}
+			%>
+
 		</ul>
 	</div>
 </div>
