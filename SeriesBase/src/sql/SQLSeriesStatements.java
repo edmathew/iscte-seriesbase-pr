@@ -68,20 +68,4 @@ public class SQLSeriesStatements {
 		return "INSERT INTO actoresDaSerie(Serie_idSerie, Pessoa_idPessoa) VALUES (?, ?)";
 	}
 
-	public static String insertGenre() {
-		return "INSERT INTO genero (Nome) VALUES (?)";
-	}
-
-	public static String countGenre() {
-		return "SELECT COUNT(*) FROM genero WHERE nome = ?";
-	}
-
-	public static String selectGenre() {
-		return "SELECT * FROM genero WHERE nome = ?";
-	}
-
-	public static String insertSeriesGenre() {
-		return "INSERT INTO generosdaserie (Genero_idGenero, Serie_idSerie) VALUES (?, ?)";
-	}
-
 }

@@ -275,3 +275,10 @@ p.submitButton {
 	max-width: 30%;
 	display: inline;
 }
+
+/************************************************/
+.search {
+	min-width: 20%;
+	float: left;
+	margin: 50px;
+}

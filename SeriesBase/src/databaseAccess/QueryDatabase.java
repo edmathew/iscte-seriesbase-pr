@@ -406,7 +406,7 @@ public class QueryDatabase {
 		int id = -1;
 		PreparedStatement ps = null;
 		try {
-			ps = db.preparedStatement(SQLSeriesStatements.insertGenre());
+			ps = db.preparedStatement(SQLGenreStatements.insertGenre());
 			ps.setString(1, genre);
 			ps.executeUpdate();
 			ResultSet s = ps.getGeneratedKeys();
@@ -427,7 +427,7 @@ public class QueryDatabase {
 		PreparedStatement ps = null;
 		Genre g = null;
 		try {
-			ps = db.preparedStatement(SQLSeriesStatements.selectGenre());
+			ps = db.preparedStatement(SQLGenreStatements.selectGenre());
 			ps.setString(1, genre);
 			ResultSet s = ps.executeQuery();
 			if (s != null && s.next()) {
@@ -449,7 +449,7 @@ public class QueryDatabase {
 		PreparedStatement ps = null;
 		boolean exists = false;
 		try {
-			ps = db.preparedStatement(SQLSeriesStatements.countGenre());
+			ps = db.preparedStatement(SQLGenreStatements.countGenre());
 			ps.setString(1, genre);
 			ResultSet s = ps.executeQuery();
 			if (s != null && s.next() && s.getInt(0) != 0)
@@ -468,7 +468,7 @@ public class QueryDatabase {
 	public void insertSeriesGenre(int seriesID, int genreID) {
 		PreparedStatement ps = null;
 		try {
-			ps = db.preparedStatement(SQLSeriesStatements.insertSeriesGenre());
+			ps = db.preparedStatement(SQLGenreStatements.insertSeriesGenre());
 			ps.setInt(2, seriesID);
 			ps.setInt(1, genreID);
 			ps.executeUpdate();
