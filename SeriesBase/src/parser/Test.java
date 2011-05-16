@@ -4,8 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import dto.*;
+
 import databaseAccess.QueryDatabase;
-import dto.Series;
 
 public class Test {
 

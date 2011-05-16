@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<%@ page import="dto.*"%>
+
+<%@page import="dto.Series"%>
 <%@ page import="java.util.LinkedList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%	session.setAttribute("menu", new String("mySeries"));%>

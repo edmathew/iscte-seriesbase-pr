@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
+
 <%@page import="dto.Episodio"%>
-<%@ page import="dto.Series"%>
+<%@page import="dto.Series"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <% if(request.getParameter("id") == null){ %>
@@ -26,16 +27,17 @@
 			<div class="contents">
 				<div class="seriesTitle">
 					<div><h1><%=s.getName()%></h1></div>
-					
-					<div class="favSeries">
-						<%if(!isFavorite){%>
-							<a href="seriesControl?action=addToFavorites">Add to Favorites</a>
-						<%}else{%>
-							<img alt="" src="images/Yes_check.png" />
-							Favorite
-						<%} %>
-						
-					</div>
+					<%if(session.getAttribute("loginname") != null){ %>
+						<div class="favSeries">
+							<%if(!isFavorite){%>
+								<a href="seriesControl?action=addToFavorites">Add to Favorites</a>
+							<%}else{%>
+								<img alt="" src="images/Yes_check.png" />
+								Favorite
+							<%} %>
+							
+						</div>
+					<%} %>
 				</div>
 				<div class="seriesImage">
 					<img alt="Image not found" src="<%=s.getImageURL()%>">

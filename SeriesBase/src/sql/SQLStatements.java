@@ -10,16 +10,32 @@ package sql;
  */
 public class SQLStatements {
 
+	/**
+	 * SQL statement to select all the series in the database.
+	 * 
+	 * @return SQL select statement.
+	 */
 	public static String getAllSeries() {
 		return "SELECT * FROM serie";
 	}
 
+	/**
+	 * SQL statement to select a series by an id.
+	 * 
+	 * @return SQL Prepared Statement
+	 */
 	public static String getSeriesById() {
 		return "SELECT * FROM serie WHERE idSerie = ?";
 	}
 
+	/**
+	 * SQL statement to select all the genres of a series.
+	 * 
+	 * @return SQL Prepared Statement
+	 */
 	public static String getGenresBySeriesId() {
-		return "SELECT Nome from genero, generosdaserie WHERE Serie_idSerie = ? AND idGenero = Genero_idGenero";
+		return "SELECT Nome from genero, generosdaserie WHERE Serie_idSerie = ? "
+				+ "AND idGenero = Genero_idGenero";
 	}
 
 	public static String getActorsBySeriesId() {
@@ -29,33 +45,6 @@ public class SQLStatements {
 
 	public static String getEpisodesBySeriesId() {
 		return "SELECT * FROM Episodio WHERE Serie_idSerie = ?";
-	}
-
-	// **************UTILIZADORES***********************//
-	public static String selectSeriesByUserId() {
-		return "SELECT idSerie, Nome, AnoInicial, Resumo, ImageURL, Network FROM Serie, SeriesDoUtilizador "
-				+ "WHERE Serie_idSerie = idSerie AND Utilizador_idUtilizador = ?";
-	}
-
-	public static String insertUserSeries() {
-		return "INSERT INTO SeriesDoUtilizador (Serie_idSerie, Utilizador_idUtilizador) VALUES (?, ?)";
-	}
-
-	public static String selectPassword(String user) {
-		return "SELECT idUtilizador, password FROM utilizador WHERE nome='"
-				+ user + "'";
-	}
-
-	public static String selectUserImageURL(int userId) {
-		return "SELECT ImageURL FROM utilizador WHERE idUtilizador=" + userId;
-	}
-
-	public static String selectUsername(String username) {
-		return "SELECT COUNT(*) FROM utilizador WHERE nome='" + username + "'";
-	}
-
-	public static String selectEmail(String email) {
-		return "SELECT COUNT(*) FROM utilizador WHERE email='" + email + "'";
 	}
 
 	public static String insertSeries() {

@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import databaseAccess.QueryDatabase;
 import dto.Series;
+
+import databaseAccess.QueryDatabase;
 
 @SuppressWarnings("serial")
 @WebServlet("/seriesControl")

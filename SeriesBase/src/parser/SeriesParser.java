@@ -11,11 +11,9 @@ import org.w3c.dom.DOMException;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import utilities.Utilities;
+import dto.*;
 
-import dto.Episodio;
-import dto.Person;
-import dto.Series;
+import utilities.Utilities;
 
 public class SeriesParser {
 

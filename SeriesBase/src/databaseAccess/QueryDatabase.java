@@ -5,15 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import dto.Episodio;
-import dto.Genre;
-import dto.Person;
-import dto.Series;
+import dto.*;
 
 import sql.SQLStatements;
 import sql.SQLUserStatements;
 
 /**
+ * Queries to the seriesbase database.
  * 
  * @author Edgar Mateus
  * 
@@ -52,7 +50,7 @@ public class QueryDatabase {
 		PreparedStatement ps = null;
 		LinkedList<Series> all = new LinkedList<Series>();
 		try {
-			ps = db.preparedStatement(SQLStatements.selectSeriesByUserId());
+			ps = db.preparedStatement(SQLUserStatements.selectSeriesByUserId());
 			ps.setInt(1, userId);
 			ResultSet set = ps.executeQuery();
 			while (set.next())
@@ -168,18 +166,25 @@ public class QueryDatabase {
 	 * @return userId or -1 if failed.
 	 */
 	public int validLogin(String username, String password) {
+		PreparedStatement ps;
 		int id = -1;
-		ResultSet set;
+
 		try {
-			set = db.selectStatement(SQLStatements.selectPassword(username));
+			ps = db.preparedStatement(SQLUserStatements.selectPassword());
+			ps.setString(1, username);
+			ResultSet set = ps.executeQuery();
 			String passInDB = null;
 			if (set != null && set.next())
 				passInDB = set.getString(2);
+
+			System.out.println(password);
+			System.out.println(passInDB);
 
 			if (password.equals(passInDB))
 				id = set.getInt(1);
 
 		} catch (SQLException e) {
+			e.printStackTrace();
 		} finally {
 			try {
 				db.closeStatement();
@@ -196,17 +201,19 @@ public class QueryDatabase {
 	 * @return
 	 */
 	public String getUserImageURL(int userId) {
+		PreparedStatement ps = null;
 		String URL = null;
-		ResultSet set;
 
 		try {
-			set = db.selectStatement(SQLStatements.selectUserImageURL(userId));
+			ps = db.preparedStatement(SQLUserStatements.selectUserImageURL());
+			ps.setInt(1, userId);
+			ResultSet set = ps.executeQuery();
 			if (set != null && set.next())
 				URL = set.getString(1);
 		} catch (SQLException e) {
 		} finally {
 			try {
-				db.closeStatement();
+				ps.close();
 			} catch (SQLException e) {
 			}
 		}
@@ -221,19 +228,23 @@ public class QueryDatabase {
 	 * @return true if the username is already taken and false otherwise.
 	 */
 	public boolean checkUsernameAvaliability(String username) {
-		ResultSet set;
+		PreparedStatement ps = null;
+
 		boolean avaliable = true;
 
 		try {
-			set = db.selectStatement(SQLStatements.selectUsername(username));
-			set.next();
-			int count = set.getInt(1);
-			if (count != 0)
-				avaliable = false;
+			ps = db.preparedStatement(SQLUserStatements.selectUsername());
+			ps.setString(1, username);
+			ResultSet set = ps.executeQuery();
+			if (set.next()) {
+				int count = set.getInt(1);
+				if (count != 0)
+					avaliable = false;
+			}
 		} catch (SQLException e) {
 		} finally {
 			try {
-				db.closeStatement();
+				ps.close();
 			} catch (SQLException e) {
 			}
 		}
@@ -249,19 +260,22 @@ public class QueryDatabase {
 	 * @return true if the email isn't in the database and false otherwise.
 	 */
 	public boolean checkEmailAvaliability(String email) {
-		ResultSet set;
+		PreparedStatement ps = null;
 		boolean avaliable = true;
 
 		try {
-			set = db.selectStatement(SQLStatements.selectEmail(email));
-			set.next();
-			int count = set.getInt(1);
-			if (count != 0)
-				avaliable = false;
+			ps = db.preparedStatement(SQLUserStatements.selectEmail());
+			ps.setString(1, email);
+			ResultSet set = ps.executeQuery();
+			if (set.next()) {
+				int count = set.getInt(1);
+				if (count != 0)
+					avaliable = false;
+			}
 		} catch (SQLException e) {
 		} finally {
 			try {
-				db.closeStatement();
+				ps.close();
 			} catch (SQLException e) {
 			}
 		}
@@ -470,7 +484,7 @@ public class QueryDatabase {
 	public void insertUserSeries(int seriesID, int userID) {
 		PreparedStatement ps = null;
 		try {
-			ps = db.preparedStatement(SQLStatements.insertUserSeries());
+			ps = db.preparedStatement(SQLUserStatements.insertUserSeries());
 			ps.setInt(1, seriesID);
 			ps.setInt(2, userID);
 			ps.executeUpdate();

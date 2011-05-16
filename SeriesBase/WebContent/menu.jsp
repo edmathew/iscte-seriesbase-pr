@@ -41,7 +41,7 @@
 			%>
 			<li>Hello <%=session.getAttribute("loginname")%>!</li>
 			<li>|</li>
-			<li><a href="linkControl?link=logout">Log Out</a>
+			<li><a href="loginControl?action=logout">Log Out</a>
 			</li>
 			<%
 				} else {

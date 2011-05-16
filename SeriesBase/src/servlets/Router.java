@@ -8,9 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * This class is the controller of the seriesbase website. It works like a
+ * internet router, receiving the requests from the JSP's files, and then
+ * forwarding to another page. According to the request, could be necessary,
+ * some work of the business layer of the application, became the role of
+ * calling to this class.
+ * 
+ * @author Edgar Mateus
+ * @author Nuno Dias
+ * @author Tiago Amaral
+ * 
+ * @version April 2011
+ */
 @SuppressWarnings("serial")
-@WebServlet("/linkControl")
-public class LinkControl extends HttpServlet {
+@WebServlet("/router")
+public class Router extends HttpServlet {
 
 	/**
 	 * Process get and post requests.
@@ -24,26 +37,7 @@ public class LinkControl extends HttpServlet {
 	 */
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String link = req.getParameter("link");
-		if (link != null) {
-			if (link.equals("register"))
-				resp.sendRedirect("forms/register.jsp");
-			else if (link.equals("home"))
-				resp.sendRedirect("index.jsp");
-			else if (link.equals("series"))
-				resp.sendRedirect("listSeries.jsp");
-			else if (link.equals("mySeries"))
-				resp.sendRedirect("mySeries.jsp");
-			else if (link.equals("getSeriesById"))
-				resp.sendRedirect("showSeriesInfo.jsp?id="
-						+ req.getParameter("id"));
-			else if (link.equals("people"))
-				resp.sendRedirect("people.jsp");
-			else if (link.equals("about"))
-				resp.sendRedirect("about.jsp");
-		} else {
-			resp.sendRedirect("error.jsp");
-		}
+
 	}
 
 	@Override
