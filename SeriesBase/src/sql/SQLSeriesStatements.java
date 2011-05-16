@@ -2,13 +2,16 @@ package sql;
 
 /**
  * This class has a compilation of several static functions that returns SQL
- * statements to be used in the seriesbase database.
+ * statements to be used in the seriesbase database. All the series related SQL
+ * statements are stored in this class.
  * 
  * @author Edgar Mateus
- * @version 5/4/2011
+ * @author Nuno Dias
+ * @author Tiago Amaral
  * 
+ * @version April 2011
  */
-public class SQLStatements {
+public class SQLSeriesStatements {
 
 	/**
 	 * SQL statement to select all the series in the database.
@@ -80,4 +83,5 @@ public class SQLStatements {
 	public static String insertSeriesGenre() {
 		return "INSERT INTO generosdaserie (Genero_idGenero, Serie_idSerie) VALUES (?, ?)";
 	}
+
 }

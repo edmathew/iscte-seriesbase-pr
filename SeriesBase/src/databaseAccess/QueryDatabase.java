@@ -7,8 +7,7 @@ import java.util.LinkedList;
 
 import dto.*;
 
-import sql.SQLStatements;
-import sql.SQLUserStatements;
+import sql.*;
 
 /**
  * Queries to the seriesbase database.
@@ -32,7 +31,8 @@ public class QueryDatabase {
 	public LinkedList<Series> getAllSeries() {
 		LinkedList<Series> all = new LinkedList<Series>();
 		try {
-			ResultSet set = db.selectStatement(SQLStatements.getAllSeries());
+			ResultSet set = db.selectStatement(SQLSeriesStatements
+					.getAllSeries());
 			while (set.next())
 				all.add(ResultSetReader.readSeries(set));
 
@@ -70,7 +70,7 @@ public class QueryDatabase {
 		PreparedStatement ps = null;
 		Series s = null;
 		try {
-			ps = db.preparedStatement(SQLStatements.getSeriesById());
+			ps = db.preparedStatement(SQLSeriesStatements.getSeriesById());
 			ps.setInt(1, id);
 			ResultSet set = ps.executeQuery();
 			if (set != null && set.next())
@@ -93,7 +93,7 @@ public class QueryDatabase {
 		LinkedList<String> result = new LinkedList<String>();
 		PreparedStatement ps = null;
 		try {
-			ps = db.preparedStatement(SQLStatements.getGenresBySeriesId());
+			ps = db.preparedStatement(SQLSeriesStatements.getGenresBySeriesId());
 			ps.setInt(1, id);
 			ResultSet set = ps.executeQuery();
 			if (set != null)
@@ -115,7 +115,7 @@ public class QueryDatabase {
 		LinkedList<Person> result = new LinkedList<Person>();
 		PreparedStatement ps = null;
 		try {
-			ps = db.preparedStatement(SQLStatements.getActorsBySeriesId());
+			ps = db.preparedStatement(SQLSeriesStatements.getActorsBySeriesId());
 			ps.setInt(1, id);
 			ResultSet set = ps.executeQuery();
 			if (set != null)
@@ -137,7 +137,8 @@ public class QueryDatabase {
 		LinkedList<Episodio> result = new LinkedList<Episodio>();
 		PreparedStatement ps = null;
 		try {
-			ps = db.preparedStatement(SQLStatements.getEpisodesBySeriesId());
+			ps = db.preparedStatement(SQLSeriesStatements
+					.getEpisodesBySeriesId());
 			ps.setInt(1, id);
 			ResultSet set = ps.executeQuery();
 			if (set != null)
@@ -289,7 +290,7 @@ public class QueryDatabase {
 	 */
 	public void insertSeries(Series series) {
 		try {
-			PreparedStatement ps = db.preparedStatement(SQLStatements
+			PreparedStatement ps = db.preparedStatement(SQLSeriesStatements
 					.insertSeries());
 			ps.setString(1, series.getName());
 			if (series.getAnoInicial() != -1)
@@ -335,7 +336,7 @@ public class QueryDatabase {
 	}
 
 	public void insertEpisode(int seriesID, Episodio e) throws SQLException {
-		PreparedStatement ps = db.preparedStatement(SQLStatements
+		PreparedStatement ps = db.preparedStatement(SQLSeriesStatements
 				.insertEpisode());
 		ps.setInt(1, seriesID);
 		ps.setInt(2, e.getTemporada());
@@ -355,7 +356,7 @@ public class QueryDatabase {
 		int personId = -1;
 		PreparedStatement ps = null;
 		try {
-			ps = db.preparedStatement(SQLStatements.insertPerson());
+			ps = db.preparedStatement(SQLSeriesStatements.insertPerson());
 			ps.setString(1, p.getName());
 			if (p.getImageURL() != null)
 				ps.setString(2, p.getImageURL());
@@ -380,7 +381,7 @@ public class QueryDatabase {
 	public void insertSeriesActor(int personId, int seriesID) {
 		PreparedStatement ps = null;
 		try {
-			ps = db.preparedStatement(SQLStatements.insertSeriesActor());
+			ps = db.preparedStatement(SQLSeriesStatements.insertSeriesActor());
 			ps.setInt(1, seriesID);
 			ps.setInt(2, personId);
 			ps.executeUpdate();
@@ -405,7 +406,7 @@ public class QueryDatabase {
 		int id = -1;
 		PreparedStatement ps = null;
 		try {
-			ps = db.preparedStatement(SQLStatements.insertGenre());
+			ps = db.preparedStatement(SQLSeriesStatements.insertGenre());
 			ps.setString(1, genre);
 			ps.executeUpdate();
 			ResultSet s = ps.getGeneratedKeys();
@@ -426,7 +427,7 @@ public class QueryDatabase {
 		PreparedStatement ps = null;
 		Genre g = null;
 		try {
-			ps = db.preparedStatement(SQLStatements.selectGenre());
+			ps = db.preparedStatement(SQLSeriesStatements.selectGenre());
 			ps.setString(1, genre);
 			ResultSet s = ps.executeQuery();
 			if (s != null && s.next()) {
@@ -448,7 +449,7 @@ public class QueryDatabase {
 		PreparedStatement ps = null;
 		boolean exists = false;
 		try {
-			ps = db.preparedStatement(SQLStatements.countGenre());
+			ps = db.preparedStatement(SQLSeriesStatements.countGenre());
 			ps.setString(1, genre);
 			ResultSet s = ps.executeQuery();
 			if (s != null && s.next() && s.getInt(0) != 0)
@@ -467,7 +468,7 @@ public class QueryDatabase {
 	public void insertSeriesGenre(int seriesID, int genreID) {
 		PreparedStatement ps = null;
 		try {
-			ps = db.preparedStatement(SQLStatements.insertSeriesGenre());
+			ps = db.preparedStatement(SQLSeriesStatements.insertSeriesGenre());
 			ps.setInt(2, seriesID);
 			ps.setInt(1, genreID);
 			ps.executeUpdate();
@@ -516,6 +517,46 @@ public class QueryDatabase {
 			}
 		}
 		return isFavorite;
+	}
+
+	public LinkedList<Series> getSeriesByGenre(int genreId) {
+		PreparedStatement ps = null;
+		LinkedList<Series> all = new LinkedList<Series>();
+		try {
+			ps = db.preparedStatement(SQLGenreStatements.getSeriesByGenre());
+			ps.setInt(1, genreId);
+			ResultSet set = ps.executeQuery();
+			while (set.next())
+				all.add(ResultSetReader.readSeries(set));
+
+		} catch (SQLException e) {
+		} finally {
+			try {
+				db.closeStatement();
+			} catch (SQLException e1) {
+			}
+		}
+		return all;
+	}
+
+	public LinkedList<Genre> getAllGenres() {
+		PreparedStatement ps = null;
+		LinkedList<Genre> all = new LinkedList<Genre>();
+		try {
+			ps = db.preparedStatement(SQLGenreStatements.getAllGenres());
+			ResultSet set = ps.executeQuery();
+			while (set.next())
+				all.add(ResultSetReader.readGenre(set));
+
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+		
+		return all;
 	}
 
 }

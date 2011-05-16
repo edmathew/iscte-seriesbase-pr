@@ -6,8 +6,10 @@ package sql;
  * the user related functions.
  * 
  * @author Edgar Mateus
- * @version 5/5/2011
+ * @author Nuno Dias
+ * @author Tiago Amaral
  * 
+ * @version May 2011
  */
 public class SQLUserStatements {
 
