@@ -61,12 +61,11 @@
 				return true;
 			}
 		</script>
-		<jsp:include page="../headerLinks.jsp"/>
+		<jsp:include page="headerLinks.jsp"/>
 	</head>
 		
 	<body>
-		<%-- <%@include file="../index.jsp" %> --%>
-		<jsp:include page="../menu.jsp"/>
+		<jsp:include page="menu.jsp"/>
 		
 		<div class="registerForm">
 			<p class="title">Register at Seriesbase</p>
@@ -103,6 +102,6 @@
 					style="height: 25px; width: 100px;"/></p>
 			</form>
 		</div>
-		<jsp:include page="../footer.jsp" />
+		<jsp:include page="footer.jsp" />
 	</body>
 </html>

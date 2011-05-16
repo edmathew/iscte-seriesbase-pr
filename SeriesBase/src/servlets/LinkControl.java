@@ -27,7 +27,7 @@ public class LinkControl extends HttpServlet {
 		String link = req.getParameter("link");
 		if (link != null) {
 			if (link.equals("register"))
-				resp.sendRedirect("forms/register.jsp");
+				resp.sendRedirect("register.jsp");
 			else if (link.equals("home"))
 				resp.sendRedirect("index.jsp");
 			else if (link.equals("series"))
