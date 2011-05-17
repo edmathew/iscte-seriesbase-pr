@@ -195,6 +195,39 @@ p.submitButton {
 }
 
 /***** Main Layout ****/
+.mainContainer {
+	width: 100%;
+	margin: 0px;
+	border: 1px solid gray;
+	line-height: 150%;
+}
+
+.mainHeader {
+	padding: 0.5em;
+	color: white;
+	background-color: #AB1616;
+	clear: left;
+}
+
+mainH1.header {
+	padding: 0;
+	margin: 0;
+}
+
+.mainLeft {
+	float: left;
+	width: 160px;
+	margin: 0;
+	padding: 1em;
+}
+
+.mainContent {
+	margin-left: 190px;
+	border-left: 1px solid gray;
+	padding: 1em;
+	background-color: #DEDEDE;
+}
+
 .container {
 	min-height: 100%;
 	width: auto;
@@ -203,7 +236,7 @@ p.submitButton {
 	margin-bottom: -36px;
 }
 
-.footer,.push {
+.push {
 	clear: both;
 	height: 4em;
 	float: left;
@@ -211,6 +244,12 @@ p.submitButton {
 	border-top: 1px solid #000;
 	margin-top: 10px;
 	margin-left: 10px;
+}
+.footer{
+	padding: 0.5em;
+	color: white;
+	background-color: #1E1E1E;
+	clear: left;
 }
 
 .rodTop {
