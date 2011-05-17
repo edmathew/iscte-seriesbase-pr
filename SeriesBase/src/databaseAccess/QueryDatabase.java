@@ -20,12 +20,11 @@ public class QueryDatabase {
 	private static DatabaseManager db;
 
 	public QueryDatabase() {
-		if (db == null)
-			try {
+		try {
+			if (db == null || db.isConnectionClose())
 				db = new DatabaseManager("localhost/seriesbase", "root", "");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (SQLException e) {
+		}
 	}
 
 	public LinkedList<Series> getAllSeries() {
@@ -555,7 +554,7 @@ public class QueryDatabase {
 			} catch (SQLException e) {
 			}
 		}
-		
+
 		return all;
 	}
 

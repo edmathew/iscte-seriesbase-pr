@@ -21,24 +21,24 @@
 			%>
 		</div> --%>
 	<jsp:include page="menu.jsp" />
-	<div class="mainContainer">
-		<div class="mainHeader">
-			<h1 class="mainHeader">Texto1</h1>
+		<div class="mainContainer">
+			<div class="mainHeader">
+				<h1 class="mainHeader">Texto1</h1>
+			</div>
+			<div class="mainLeft">
+				<p>"Never increase, beyond what is necessary, the number of
+					entities required to explain anything." William of Ockham
+					(1285-1349)</p>
+			</div>
+			<div class="mainContent">
+				<h2>Free Web Building Tutorials</h2>
+				<p>At W3Schools you will find all the Web-building tutorials you
+					need, from basic HTML and XHTML to advanced XML, XSL, Multimedia and
+					WAP.</p>
+				<p>W3Schools - The Largest Web Developers Site On The Net!</p>
+			</div>
+			
 		</div>
-		<div class="mainLeft">
-			<p>"Never increase, beyond what is necessary, the number of
-				entities required to explain anything." William of Ockham
-				(1285-1349)</p>
-		</div>
-		<div class="mainContent">
-			<h2>Free Web Building Tutorials</h2>
-			<p>At W3Schools you will find all the Web-building tutorials you
-				need, from basic HTML and XHTML to advanced XML, XSL, Multimedia and
-				WAP.</p>
-			<p>W3Schools - The Largest Web Developers Site On The Net!</p>
-		</div>
-		
-	</div>
 
 	<jsp:include page="footer.jsp" />
 
