@@ -21,8 +21,8 @@
 </head>
 <body>
 
-	<%-- <div class="container">
-			<jsp:include page="menu.jsp" />
+	<div class="container">
+			<%--<jsp:include page="menu.jsp" />
 			<%
 				for(int i = 0; i< 20; i++)
 					out.println(i+"<br />");
@@ -34,9 +34,7 @@
 			<h1 class="mainHeader">What's new?</h1>
 		</div>
 		<div class="mainLeft">
-			<div class="mainImagem1" id="imagemEpisodes">
 				<img src="images/episodes.jpg" alt=""  />
-			</div>
 		</div>
 		<div class="mainContent">
 			<h2>EPISODES</h2>
@@ -47,6 +45,7 @@
 				9:30 p.m. EST.</p>
 		</div>
 
+	</div>
 	</div>
 
 	<jsp:include page="footer.jsp" />

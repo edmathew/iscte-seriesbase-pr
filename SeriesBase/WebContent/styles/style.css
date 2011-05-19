@@ -223,6 +223,12 @@ mainH1.header {
 	padding: 1em;
 }
 
+.mainLeft img {
+	padding: 2px;
+	width: 160px;
+	height: 190px;
+}
+
 .mainContent {
 	margin-left: 190px;
 	margin-right: 590px;
