@@ -38,6 +38,124 @@ public class QueryDatabase {
 		}
 	}
 
+	/************************************************************************
+	 * TABLE utilizador
+	 ************************************************************************/
+
+	/**
+	 * Checks if the email already has a register in the database.
+	 * 
+	 * @param email
+	 *            email to check.
+	 * @return true if the email isn't in the database and false otherwise.
+	 */
+	public boolean checkEmailAvaliability(String email) {
+		PreparedStatement ps = null;
+		boolean avaliable = true;
+
+		try {
+			ps = db.preparedStatement(SQLUserStatements.selectEmail());
+			ps.setString(1, email);
+			ResultSet set = ps.executeQuery();
+			if (set.next()) {
+				int count = set.getInt(1);
+				if (count != 0)
+					avaliable = false;
+			}
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+
+		return avaliable;
+	}
+
+	public String getUserEmail(int userID) {
+		String email = null;
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLUserStatements.selectUserEmail());
+			ps.setInt(1, userID);
+			ResultSet set = ps.executeQuery();
+			if (set.next())
+				email = set.getString(1);
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+		return email;
+	}
+
+	public boolean setUserEmail(int userID, String newEmail) {
+		boolean sucess = false;
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLUserStatements.setUserEmail());
+			ps.setString(1, newEmail);
+			ps.setInt(2, userID);
+			int nCols = ps.executeUpdate();
+			sucess = nCols > 0;
+			db.commit();
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+		return sucess;
+	}
+
+	public String getUserPassword(String username) {
+		String pass = null;
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLUserStatements.selectPassword());
+			ps.setString(1, username);
+			ResultSet set = ps.executeQuery();
+			if (set.next())
+				pass = set.getString(2);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+		return pass;
+	}
+
+	public boolean setUserPassword(int userID, String password) {
+		boolean sucess = false;
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLUserStatements.setUserPassword());
+			ps.setString(1, password);
+			ps.setInt(2, userID);
+			int ncols = ps.executeUpdate();
+			sucess = ncols > 0;
+			db.commit();
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+		return sucess;
+	}
+
+	/************************************************************************
+	 * TABLE Series
+	 ************************************************************************/
+
 	public LinkedList<Series> getAllSeries() {
 		LinkedList<Series> all = new LinkedList<Series>();
 		try {
@@ -246,37 +364,6 @@ public class QueryDatabase {
 		try {
 			ps = db.preparedStatement(SQLUserStatements.selectUsername());
 			ps.setString(1, username);
-			ResultSet set = ps.executeQuery();
-			if (set.next()) {
-				int count = set.getInt(1);
-				if (count != 0)
-					avaliable = false;
-			}
-		} catch (SQLException e) {
-		} finally {
-			try {
-				ps.close();
-			} catch (SQLException e) {
-			}
-		}
-
-		return avaliable;
-	}
-
-	/**
-	 * Checks if the email already has a register in the database.
-	 * 
-	 * @param email
-	 *            email to check.
-	 * @return true if the email isn't in the database and false otherwise.
-	 */
-	public boolean checkEmailAvaliability(String email) {
-		PreparedStatement ps = null;
-		boolean avaliable = true;
-
-		try {
-			ps = db.preparedStatement(SQLUserStatements.selectEmail());
-			ps.setString(1, email);
 			ResultSet set = ps.executeQuery();
 			if (set.next()) {
 				int count = set.getInt(1);

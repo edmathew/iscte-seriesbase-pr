@@ -82,4 +82,31 @@ public class SQLUserStatements {
 		return "SELECT COUNT(*) FROM utilizador WHERE email= ?";
 	}
 
+	/**
+	 * SQL statement to select a user's email address.
+	 * 
+	 * @return SQL Prepared Statement
+	 */
+	public static String selectUserEmail() {
+		return "SELECT email FROM utilizador WHERE idUtilizador = ?";
+	}
+
+	/**
+	 * SQL statement to update a user's email address.
+	 * 
+	 * @return SQL Prepared Statement
+	 */
+	public static String setUserEmail() {
+		return "UPDATE utilizador SET email = ? WHERE idUtilizador = ?";
+	}
+
+	/**
+	 * SQL statement to change a user's password.
+	 * 
+	 * @return SQL Prepared Statement
+	 */
+	public static String setUserPassword() {
+		return "UPDATE utilizador SET password = ? WHERE idUtilizador = ?";
+	}
+
 }

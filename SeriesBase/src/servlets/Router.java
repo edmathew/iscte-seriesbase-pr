@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import business.UsersControl;
 
+import exceptions.ForbiddenException;
 import exceptions.NoLoginException;
 
 /**
@@ -44,23 +45,62 @@ public class Router extends HttpServlet {
 		try {
 			String link = req.getParameter("link");
 			String action = req.getParameter("action");
-			if (link != null) {
-				if (link.equals("userControlPanel")) {
-					if (req.getSession().getAttribute("loginID") == null)
-						throw new NoLoginException();
+			if (link != null)
+				processLinks(req, resp, link);
+			else if (action != null)
+				processActions(req, resp, action);
+			else
+				throw new ForbiddenException();
 
-					resp.sendRedirect("userControlPanel.jsp");
-				} else if (link.equals("login"))
-					resp.sendRedirect("login.jsp");
-			} else if (action != null) {
-				if (action.equals("login")) {
-					UsersControl.login(req);
-					
-				}
-
-			}
 		} catch (NoLoginException e) {
+			if (req.getSession().getAttribute("tempAddress") == null)
+				req.getSession().setAttribute("tempAddress", e.getPageDenied());
 			resp.sendRedirect("login.jsp");
+		} catch (ForbiddenException e) {
+			resp.sendRedirect("error.jsp");
+		}
+	}
+
+	/**
+	 * Process all the requests for new pages.
+	 */
+	private void processLinks(HttpServletRequest req, HttpServletResponse resp,
+			String link) throws NoLoginException, ServletException, IOException {
+		if (link.equals("userControlPanel")) {
+			if (req.getSession().getAttribute("loginID") == null)
+				throw new NoLoginException(link);
+			else
+				resp.sendRedirect("userControlPanel.jsp");
+
+		} else if (link.equals("login")) {
+			resp.sendRedirect("login.jsp");
+		}
+	}
+
+	/**
+	 * Process all the requests for actions.
+	 * 
+	 * @throws ForbiddenException
+	 */
+	private void processActions(HttpServletRequest req,
+			HttpServletResponse resp, String action) throws ServletException,
+			IOException, ForbiddenException {
+		if (action.equals("login")) {
+			UsersControl.login(req);
+			String tempAddress = (String) req.getSession().getAttribute(
+					"tempAddress");
+			if (tempAddress != null) {
+				resp.sendRedirect(tempAddress);
+				req.getSession().removeAttribute("tempAddress");
+			} else {
+				String referer = req.getHeader("Referer");
+				if (referer != null)
+					resp.sendRedirect(referer);
+				else
+					throw new ForbiddenException();
+			}
+		} else if (action.equals("updateUserData")) {
+			UsersControl.updateUserInfo(req);
 		}
 	}
 

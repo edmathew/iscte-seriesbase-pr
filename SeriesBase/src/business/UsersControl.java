@@ -5,6 +5,16 @@ import javax.servlet.http.HttpSession;
 
 import databaseAccess.QueryDatabase;
 
+/**
+ * Business class to deal with the users.
+ * 
+ * @author Edgar Mateus
+ * @author Nuno Dias
+ * @author Tiago Amaral
+ * 
+ * @version May 2011
+ * 
+ */
 public class UsersControl {
 
 	/**
@@ -14,7 +24,7 @@ public class UsersControl {
 	 * @param session
 	 *            HttpSession
 	 * @param req
-	 *            HttpResquest
+	 *            HttpRequest
 	 */
 	public static void login(HttpServletRequest req) {
 		HttpSession session = req.getSession();
@@ -26,5 +36,45 @@ public class UsersControl {
 			session.setAttribute("loginname", user);
 			session.setAttribute("loginID", userId);
 		}
+	}
+
+	/**
+	 * Updates the user info.
+	 * 
+	 * @param req
+	 *            HttpRequest
+	 */
+	public static int updateUserInfo(HttpServletRequest req) {
+		int nError = 0;
+		QueryDatabase query = QueryDatabase.getInstance();
+		int userID = (Integer) req.getSession().getAttribute("loginID");
+		String username = (String) req.getSession().getAttribute("loginname");
+		String email = req.getParameter("newEmail");
+		String oldPassword = req.getParameter("oldPassword");
+		String newPassword = req.getParameter("newPassword");
+		String confirmPassword = req.getParameter("confirmPassword");
+
+		//TODO MD5 Hash
+		if (!email.equals(query.getUserEmail(userID)))
+			if (!query.checkEmailAvaliability(email)) {
+				nError++;
+				req.getSession().setAttribute("invalidEmail", true);
+			}
+
+		String sysPassword = query.getUserPassword(username);
+		if (!sysPassword.equals(oldPassword)) {
+			req.getSession().setAttribute("wrongPassword", true);
+			nError++;
+		} else if (!newPassword.equals(confirmPassword)) {
+			req.getSession().setAttribute("wrongMatch", true);
+			nError++;
+		}
+
+		if (nError == 0) {
+			query.setUserEmail(userID, email);
+			query.setUserPassword(userID, newPassword);
+		}
+
+		return nError;
 	}
 }
