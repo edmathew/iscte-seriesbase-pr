@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import business.UsersControl;
+
+import exceptions.NoLoginException;
+
 /**
  * This class is the controller of the seriesbase website. It works like a
  * internet router, receiving the requests from the JSP's files, and then
@@ -37,7 +41,27 @@ public class Router extends HttpServlet {
 	 */
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		try {
+			String link = req.getParameter("link");
+			String action = req.getParameter("action");
+			if (link != null) {
+				if (link.equals("userControlPanel")) {
+					if (req.getSession().getAttribute("loginID") == null)
+						throw new NoLoginException();
 
+					resp.sendRedirect("userControlPanel.jsp");
+				} else if (link.equals("login"))
+					resp.sendRedirect("login.jsp");
+			} else if (action != null) {
+				if (action.equals("login")) {
+					UsersControl.login(req);
+					
+				}
+
+			}
+		} catch (NoLoginException e) {
+			resp.sendRedirect("login.jsp");
+		}
 	}
 
 	@Override

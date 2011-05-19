@@ -39,7 +39,7 @@
 			<%
 				if (logged) {
 			%>
-			<li>Hello <%=session.getAttribute("loginname")%>!</li>
+			<li><a href="router?link=userControlPanel">Hello <%=session.getAttribute("loginname")%>!</a></li>
 			<li>|</li>
 			<li><a href="loginControl?action=logout">Log Out</a>
 			</li>

@@ -12,7 +12,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		System.out.println("Database information.......");
-		QueryDatabase q = new QueryDatabase();
+		QueryDatabase q = QueryDatabase.getInstance();
 		try {
 			Scanner file = new Scanner(new File("SeriesIDs.txt"));
 			while (file.hasNextInt()) {

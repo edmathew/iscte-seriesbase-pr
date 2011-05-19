@@ -18,8 +18,19 @@ import sql.*;
 public class QueryDatabase {
 
 	private static DatabaseManager db;
+	private static QueryDatabase instance;
 
-	public QueryDatabase() {
+	public static QueryDatabase getInstance() {
+		try {
+			if (instance == null || QueryDatabase.db.isConnectionClose()) {
+				instance = new QueryDatabase();
+			}
+		} catch (SQLException e) {
+		}
+		return instance;
+	}
+
+	private QueryDatabase() {
 		try {
 			if (db == null || db.isConnectionClose())
 				db = new DatabaseManager("localhost/seriesbase", "root", "");

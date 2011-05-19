@@ -16,7 +16,7 @@ import databaseAccess.QueryDatabase;
 @WebServlet("/seriesControl")
 public class SeriesControl extends HttpServlet {
 
-	private QueryDatabase query = new QueryDatabase();
+	private QueryDatabase query = QueryDatabase.getInstance();
 
 	/**
 	 * Process get and post requests.

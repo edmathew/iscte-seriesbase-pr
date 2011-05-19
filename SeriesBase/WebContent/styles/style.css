@@ -93,42 +93,7 @@ form {
 }
 
 /***************** START OF LOGIN FORM ******************/
-.loginForm {
-	font-size: 14px;
-	text-align: right;
-	float: right;
-	height: 100px;
-	width: 250px;
-	color: #FFFFFF;
-}
 
-.loginFormLinks {
-	font-family: calibri;
-	line-height: normal;
-	float: left;
-	padding-top: -250px;
-	padding-left: 65px;
-}
-
-.loginImage {
-	width: 80px;
-	height: 80px;
-	float: right;
-	text-align: center;
-	vertical-align: middle;
-}
-
-.loginImageMin {
-	width: 80px;
-	height: 80px;
-}
-
-.loginText {
-	width: 160px;
-	float: left;
-	text-align: left;
-	font-family: verdana;
-}
 
 /***************** END OF LOGIN FORM ******************/
 
@@ -359,4 +324,48 @@ mainH1.header {
 
 #searchTable td {
 	min-width: 200px;
+}
+
+/*** LOGIN FORM ***/
+.loginForm {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 100px;
+	
+	
+	/*font-size: 14px;
+	text-align: right;
+	float: right;
+	height: 100px;
+	width: 250px;
+	color: #FFFFFF;*/
+}
+
+.loginFormLinks {
+	font-family: calibri;
+	line-height: normal;
+	float: left;
+	padding-top: -250px;
+	padding-left: 65px;
+}
+
+.loginImage {
+	width: 80px;
+	height: 80px;
+	float: right;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.loginImageMin {
+	width: 80px;
+	height: 80px;
+}
+
+.loginText {
+	width: 160px;
+	float: left;
+	text-align: left;
+	font-family: verdana;
 }

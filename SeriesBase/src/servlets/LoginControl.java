@@ -13,7 +13,7 @@ import databaseAccess.QueryDatabase;
 import exceptions.UsernameAlreadyTaken;
 
 /**
- * This Servlet is responsable for all of the login bussiness.
+ * This servlet is responsible for all of the login business.
  * 
  * @author Edgar Mateus
  * @version 5/04/2011
@@ -23,7 +23,7 @@ import exceptions.UsernameAlreadyTaken;
 @WebServlet("/loginControl")
 public class LoginControl extends HttpServlet {
 
-	private QueryDatabase query = new QueryDatabase();
+	private QueryDatabase query = QueryDatabase.getInstance();
 
 	/**
 	 * Process get and post requests.
