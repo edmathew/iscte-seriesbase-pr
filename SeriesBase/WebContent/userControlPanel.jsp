@@ -8,6 +8,7 @@
 	boolean invalidEmail = session.getAttribute("invalidEmail") != null;
 	boolean wrongPassword = session.getAttribute("wrongPassword") != null;
 	boolean wrongMatch = session.getAttribute("wrongMatch") != null;
+	boolean updateDone = session.getAttribute("updateDone") != null;
 
 %>
 <html>
@@ -22,13 +23,30 @@
 			<jsp:include page="menu.jsp" />
 				<div class="controlPanel">
 					<h1>Control Panel</h1>
+					
+					<%	if(updateDone){ %>
+							<p>Changes saved</p>
+							<!--  <script type="text/javascript">
+								alert("Changes saved!");
+							</script>
+							-->
+					<%	} %>
+					
 					<form method="post" action="router?action=updateUserData">
 						<label>Change e-mail address: </label>
-						<input type="text" size="20" name="newEmail" />
-						<br/>
+						<input type="text" size="20" name="newEmail" 
+							value="<%=invalidEmail ? (String)session.getAttribute("invalidEmail") : "" %>" />
+						<%	if(invalidEmail){ %>
+								<p>Email already in System</p>
+						<%	} %>
+						
+						
 						<p>Change Password</p>
 						<label>Old Password</label>
 						<input type="password" size="20" name="oldPassword" />
+						<%	if(wrongPassword){%>
+								<p>Wrong Password</p>
+						<%	} %>
 						
 						<label>New Password</label>
 						<input type="password" size="20" name="newPassword" />
@@ -46,3 +64,11 @@
 	
 	</body>
 </html>
+
+<%
+	/*Clean the control session variables  */
+	session.removeAttribute("invalidEmail");
+	session.removeAttribute("wrongPassword");
+	session.removeAttribute("wrongMatch");
+	session.removeAttribute("updateDone");
+%>

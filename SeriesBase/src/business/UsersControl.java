@@ -43,6 +43,8 @@ public class UsersControl {
 	 * 
 	 * @param req
 	 *            HttpRequest
+	 * 
+	 * @return the number of errors during the update.
 	 */
 	public static int updateUserInfo(HttpServletRequest req) {
 		int nError = 0;
@@ -54,18 +56,18 @@ public class UsersControl {
 		String newPassword = req.getParameter("newPassword");
 		String confirmPassword = req.getParameter("confirmPassword");
 
-		//TODO MD5 Hash
-		if (!email.equals(query.getUserEmail(userID)))
+		// TODO MD5 Hash
+		if (email != null && !email.equals(query.getUserEmail(userID)))
 			if (!query.checkEmailAvaliability(email)) {
 				nError++;
-				req.getSession().setAttribute("invalidEmail", true);
+				req.getSession().setAttribute("invalidEmail", email);
 			}
 
 		String sysPassword = query.getUserPassword(username);
 		if (!sysPassword.equals(oldPassword)) {
 			req.getSession().setAttribute("wrongPassword", true);
 			nError++;
-		} else if (!newPassword.equals(confirmPassword)) {
+		} else if (newPassword != null && !newPassword.equals(confirmPassword)) {
 			req.getSession().setAttribute("wrongMatch", true);
 			nError++;
 		}
@@ -77,4 +79,6 @@ public class UsersControl {
 
 		return nError;
 	}
+
+	
 }

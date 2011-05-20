@@ -100,7 +100,11 @@ public class Router extends HttpServlet {
 					throw new ForbiddenException();
 			}
 		} else if (action.equals("updateUserData")) {
-			UsersControl.updateUserInfo(req);
+			int nErrors = UsersControl.updateUserInfo(req);
+			if(nErrors == 0)
+				req.getSession().setAttribute("updateDone", true);
+			
+			resp.sendRedirect("userControlPanel.jsp");
 		}
 	}
 
