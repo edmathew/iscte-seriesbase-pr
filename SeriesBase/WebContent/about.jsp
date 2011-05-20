@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%	session.setAttribute("menu", new String("about")); %>
+<%
+	session.setAttribute("menu", new String("about"));
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,23 +30,38 @@
 					%>
 			</table>
 		</div> --%>
-
 		<div class="mainHeader">
 			<h1 class="mainHeader">Who are We?</h1>
 		</div>
-		<div class="article">
-			<img src="images/episodes.jpg" alt=""  />
-			<h2>EPISODES</h2>
-			<p>Matt LeBlanc returns to TV this weekend with Episodes, a new
-				Showtime series in which he plays himself as the star of a
-				disastrous American adaptation of a British sitcom. Read on for my
-				review of the show's first season, which premieres Sunday night at
-				9:30 p.m. EST.</p>
+		<div class="GeneralProfile">
+			<div class="Photo">
+				<img src="images/nunodias.png" alt="" />
+			</div>
+			<div class="Content">
+				<h2>Nuno Description</h2>
+				<p>texto do nuno</p>
+			</div>
 		</div>
+		<div class="GeneralProfile">
+			<div class="Photo">
+				<img src="images/edgarmateus.png" alt="" />
+			</div>
+			<div class="Content">
+				<h2>Edgar Description</h2>
+				<p>Texto do edgar</p>
+			</div>
+		</div>
+		<div class="GeneralProfile">
+			<div class="Photo">
+				<img src="images/tiagoamaral.png" alt="" />
+			</div>
+			<div class="Content">
+				<h2>Tiago Description</h2>
+				<p>texto do tiago</p>
+			</div>
+		</div>
+	</div>
 
-	</div>
-	</div>
 	<jsp:include page="footer.jsp" />
-
 </body>
 </html>

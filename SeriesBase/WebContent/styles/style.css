@@ -203,16 +203,17 @@ mainH1.header {
 }
 
 .mainImagem1 {
-	margin: 2px;
+	margin: 1px;
 	display: block;
 	float: left;
-	height: 330px;
+	height: 300px;
 	width: 300px;
 }
 
 #imagemEpisodes {
-	width: 50%;
-	height: 50%;
+	float: left;
+	width: 100%;
+	height: 100%;
 	border: 3px double #999;
 	margin: 2% auto;
 }
@@ -220,8 +221,30 @@ mainH1.header {
 #imagemEpisodes img {
 	width: 100%;
 	height: 100%;
+} 
+
+.GeneralProfile{
+	margin-bottom: 25px;
+	background-color: #DEDEDE;
+}
+.Photo {
+	width: 20px;
+	height: 20px;
 }
 
+.Photo img{
+	float: left;
+	max-width: 100px;
+	max-height: 300px;
+	margin-left: 2px;
+	padding: 1em;
+}
+
+.Content{
+	float: rigth;	
+ 	padding: 1em;
+	line-height: 20px;
+}
 /******************* END OF MAIN LAYOUT *******************/
 .container {
 	min-height: 100%;
