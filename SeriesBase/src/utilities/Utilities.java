@@ -24,4 +24,18 @@ public class Utilities {
 		return d;
 	}
 
+	public static boolean validEmail(String email){
+		if(email == null || email.length() == 0)
+			return false;
+		
+		int atPos = email.indexOf((int)'@');
+		int dotPos = email.lastIndexOf((int)'.');
+		
+		if(atPos < 1 || dotPos < atPos+2 || dotPos +2 >= email.length())
+			return false;
+		
+		
+		return true;
+	}
+
 }

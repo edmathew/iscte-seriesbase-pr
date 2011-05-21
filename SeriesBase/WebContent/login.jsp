@@ -1,5 +1,9 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%
+	boolean fromRegister = session.getAttribute("registerDone") != null;
+%>
+
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -15,6 +19,7 @@
 			<jsp:include page="menu.jsp" />
 			<%if(session.getAttribute("loginID")== null){%>
 				<div class="loginForm">
+					<%=fromRegister ? "Now you can log in\n" : "\n" %>
 					O recurso pretendido não está disponivel para utilizadores anonimos.
 					<form method="post" action="router?action=login">
 						<label>Username: </label>
@@ -34,3 +39,7 @@
 	
 	</body>
 </html>
+<%
+	/*Clean the session control variables  */
+	session.removeAttribute("registerDone");
+%>

@@ -3,6 +3,9 @@ package business;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import utilities.HashUtilities;
+import utilities.Utilities;
+
 import databaseAccess.QueryDatabase;
 
 /**
@@ -12,7 +15,7 @@ import databaseAccess.QueryDatabase;
  * @author Nuno Dias
  * @author Tiago Amaral
  * 
- * @version May 2011
+ * @version April 2011
  * 
  */
 public class UsersControl {
@@ -31,7 +34,8 @@ public class UsersControl {
 		String user = req.getParameter("log");
 		String pass = req.getParameter("pwd");
 
-		int userId = QueryDatabase.getInstance().validLogin(user, pass);
+		int userId = QueryDatabase.getInstance().validLogin(user,
+				HashUtilities.getMD5Hash(pass));
 		if (userId > 0) {
 			session.setAttribute("loginname", user);
 			session.setAttribute("loginID", userId);
@@ -39,7 +43,9 @@ public class UsersControl {
 	}
 
 	/**
-	 * Updates the user info.
+	 * This method tries to update the user info, like email or password. If
+	 * there isn't error the update is complete and the function returns 0,
+	 * else, is returned the number of errors.
 	 * 
 	 * @param req
 	 *            HttpRequest
@@ -56,7 +62,6 @@ public class UsersControl {
 		String newPassword = req.getParameter("newPassword");
 		String confirmPassword = req.getParameter("confirmPassword");
 
-		// TODO MD5 Hash
 		if (email != null && !email.equals(query.getUserEmail(userID)))
 			if (!query.checkEmailAvaliability(email)) {
 				nError++;
@@ -64,7 +69,7 @@ public class UsersControl {
 			}
 
 		String sysPassword = query.getUserPassword(username);
-		if (!sysPassword.equals(oldPassword)) {
+		if (oldPassword != null && !sysPassword.equals(HashUtilities.getMD5Hash(oldPassword))) {
 			req.getSession().setAttribute("wrongPassword", true);
 			nError++;
 		} else if (newPassword != null && newPassword.length() > 0
@@ -74,13 +79,60 @@ public class UsersControl {
 		}
 
 		if (nError == 0) {
-			if(email != null && email.length() > 0)
+			if (email != null && email.length() > 0)
 				query.setUserEmail(userID, email);
-			if(newPassword != null && newPassword.length() > 0)
+			if (newPassword != null && newPassword.length() > 0)
 				query.setUserPassword(userID, newPassword);
 		}
 
 		return nError;
 	}
 
+	/**
+	 * Terminates a user session.
+	 * 
+	 * @param s
+	 *            Session to terminate.
+	 */
+	public static void logout(HttpSession s) {
+		s.invalidate();
+	}
+
+	public static int register(HttpServletRequest req) {
+		int nErrors = 0;
+		QueryDatabase query = QueryDatabase.getInstance();
+		String username = req.getParameter("username");
+		String email = req.getParameter("email");
+		String pass = req.getParameter("password");
+		String repeatPass = req.getParameter("repeatPassword");
+
+		if (username != null && username.length() < 3) {
+			req.getSession().setAttribute("invalidUsername", true);
+			nErrors++;
+		} else if (!query.checkUsernameAvaliability(username)) {
+			req.getSession().setAttribute("duplicatedUsername", true);
+			nErrors++;
+		}
+
+		if (!Utilities.validEmail(email)) {
+			req.getSession().setAttribute("invalidEmail", true);
+			nErrors++;
+		} else if (!query.checkEmailAvaliability(email)) {
+			req.getSession().setAttribute("duplicatedEmail", true);
+			nErrors++;
+		}
+
+		if (pass == null || pass.length() < 5) {
+			req.getSession().setAttribute("invalidPassword", true);
+			nErrors++;
+		} else if (!pass.equals(repeatPass)) {
+			req.getSession().setAttribute("invalidMatch", true);
+			nErrors++;
+		}
+
+		if (nErrors == 0)
+			query.insertUser(username, HashUtilities.getMD5Hash(pass), email);
+
+		return nErrors;
+	}
 }

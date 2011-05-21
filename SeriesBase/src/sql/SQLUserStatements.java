@@ -14,6 +14,15 @@ package sql;
 public class SQLUserStatements {
 
 	/**
+	 * SQL statement to insert a new user in the database.
+	 * 
+	 * @return SQL Prepared Statement.
+	 */
+	public static String insertUser() {
+		return "INSERT INTO utilizador (Nome, Password, email, DataRegisto) VALUES (?, ?, ?, ?)";
+	}
+
+	/**
 	 * SQL select statement to check if a series is in the favorites table of an
 	 * user
 	 * 

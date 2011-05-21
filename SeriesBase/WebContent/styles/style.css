@@ -12,11 +12,32 @@ html,body {
 	height: 100%;
 }
 
+form {
+	font-family: verdana;
+	line-height: 40px;
+}
+
 /*** GENERIC TAGS ***/
 p.noBreak{
 	display: inline;
 	margin-right: 5px;	
 }
+
+.tooltip {
+	background-color:#000;
+	border:1px solid #fff;
+	padding:10px 15px;
+	width:200px;
+	display:none;
+	color:#fff;
+	text-align:left;
+	font-size:12px;
+
+	/* outline radius for mozilla/firefox only */
+	-moz-box-shadow:0 0 10px #000;
+	-webkit-box-shadow:0 0 10px #000;
+}
+
 
 /***************** START OF LOGO ZONE ******************/
 .wrapper {
@@ -77,10 +98,6 @@ a:hover {
 	text-decoration: underline;
 }
 
-form {
-	font-family: verdana;
-	line-height: 40px;
-}
 
 .header {
 	background-image: url('../images/SeriesBaseLogo.gif');
@@ -99,23 +116,6 @@ form {
 	text-align: center;
 }
 
-/***************** START OF LOGIN FORM ******************/
-
-
-/***************** END OF LOGIN FORM ******************/
-
-/***************** START OF REGISTER FORM ******************/
-.registerForm {
-	padding-top: 5px;
-	clear: both;
-	width: 700px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: right;
-	font-size: 14px;
-}
-
-/***************** END OF REGISTER FORM ******************/
 
 /***************** TABLES ******************/
 td.label {
@@ -374,6 +374,36 @@ mainH1.header {
 	font-size: 180%;
 }
 
+/*** REGISTER FORM ***/
+.registerForm {
+	padding-top: 5px;
+	clear: both;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: right;
+	font-size: 14px;
+}
+
+.field{
+	padding: 3px;
+}
+
+.field label{
+	float: left;
+	text-align: left;
+}
+
+.field input{
+	width: 50%;
+}
+
+label.warning{
+	color: red;
+	margin-left: 10px;	
+}
+
+
 /*** PERSONS SEARCH ***/
 .peopleSearch{
 	width: 700px;
@@ -383,7 +413,6 @@ mainH1.header {
 }
 
 .results{
-		
 }
 	
 	/*font-size: 14px;

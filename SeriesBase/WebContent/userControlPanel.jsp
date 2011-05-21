@@ -66,7 +66,7 @@
 </html>
 
 <%
-	/*Clean the control session variables  */
+	/*Clean the session control variables  */
 	session.removeAttribute("invalidEmail");
 	session.removeAttribute("wrongPassword");
 	session.removeAttribute("wrongMatch");

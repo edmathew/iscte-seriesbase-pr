@@ -4,12 +4,13 @@
 	boolean bruteForce = session.getAttribute("bruteForceLogin") != null;
 	String loginImage = (String) session.getAttribute("loginImageURL");
 	String location = request.getContextPath();
-	String currentMenu = (String) session.getAttribute("menu");
+	String currentMenu = session.getAttribute("menu")!= null ?(String) session.getAttribute("menu"):"";
 %>
+
 <div id="rodTop"></div>
 <div id="login">
 	<div class="loginContent">
-		<form action="<%=location%>/loginControl?action=login" method="post">
+		<form action="<%=location%>/router?action=login" method="post">
 			<label for="log"><b>Username: </b> </label> <input class="field"
 				type="text" name="log" id="log" value="" size="23" /> <label
 				for="pwd"><b>Password:</b> </label> <input class="field"
@@ -41,7 +42,7 @@
 			%>
 			<li><a href="router?link=userControlPanel">Hello <%=session.getAttribute("loginname")%>!</a></li>
 			<li>|</li>
-			<li><a href="loginControl?action=logout">Log Out</a>
+			<li><a href="router?action=logout">Log Out</a>
 			</li>
 			<%
 				} else {
@@ -172,6 +173,29 @@
 				title="People">People</a></li>
 			<li><a href="linkControl?link=about" target="_self"
 				title="About" class="current">About</a></li>
+			<%
+				}
+			%>
+			
+			<%
+				if (currentMenu.equals("")) {
+			%>
+			<li><a href="linkControl?link=home" target="_self" title="Home">Home</a>
+			</li>
+			<%
+				if (logged) {
+			%>
+			<li><a href="linkControl?link=mySeries" target="_self"
+				title="My Series">My Series</a></li>
+			<%
+				}
+			%>
+			<li><a href="linkControl?link=series&action=getAll"
+				target="_self" title="Series">Series</a></li>
+			<li><a href="linkControl?link=people" target="_self"
+				title="People">People</a></li>
+			<li><a href="linkControl?link=about" target="_self"
+				title="About">About</a></li>
 			<%
 				}
 			%>

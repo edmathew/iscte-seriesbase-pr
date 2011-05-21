@@ -1,5 +1,6 @@
 package databaseAccess;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -73,6 +74,33 @@ public class QueryDatabase {
 		return avaliable;
 	}
 
+	public boolean insertUser(String name, String passMD5, String email){
+		boolean success = false;
+		PreparedStatement ps = null;
+		try{
+			ps = db.preparedStatement(SQLUserStatements.insertUser());
+			ps.setString(1, name);
+			ps.setString(2, passMD5);
+			ps.setString(3, email);
+			ps.setDate(4, new Date(System.currentTimeMillis()));
+			ps.execute();
+			db.commit();
+		}catch (SQLException e) {
+			try {
+				db.rollback();
+			} catch (SQLException e1) {
+			}
+		}finally{
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+		
+		return success;
+	}
+	
+	
 	public String getUserEmail(int userID) {
 		String email = null;
 		PreparedStatement ps = null;
@@ -286,15 +314,14 @@ public class QueryDatabase {
 
 	/**
 	 * Check if the password matches the username.<br />
-	 * TODO MD5 - Password steel in Clear text.
 	 * 
 	 * @param username
 	 *            user identifier
-	 * @param password
-	 *            user password
+	 * @param MD5hashPassword
+	 *            the MD5 hash of the user's password
 	 * @return userId or -1 if failed.
 	 */
-	public int validLogin(String username, String password) {
+	public int validLogin(String username, String MD5hashPassword) {
 		PreparedStatement ps;
 		int id = -1;
 
@@ -306,10 +333,10 @@ public class QueryDatabase {
 			if (set != null && set.next())
 				passInDB = set.getString(2);
 
-			System.out.println(password);
+			System.out.println(MD5hashPassword);
 			System.out.println(passInDB);
 
-			if (password.equals(passInDB))
+			if (MD5hashPassword.equals(passInDB))
 				id = set.getInt(1);
 
 		} catch (SQLException e) {
@@ -354,7 +381,7 @@ public class QueryDatabase {
 	 * 
 	 * @param username
 	 *            username to check.
-	 * @return true if the username is already taken and false otherwise.
+	 * @return true if the username is available and false otherwise.
 	 */
 	public boolean checkUsernameAvaliability(String username) {
 		PreparedStatement ps = null;

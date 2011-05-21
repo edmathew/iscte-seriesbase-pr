@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import business.UsersControl;
 
+import exceptions.AccessDeniedException;
 import exceptions.ForbiddenException;
 import exceptions.NoLoginException;
 
@@ -58,6 +59,8 @@ public class Router extends HttpServlet {
 			resp.sendRedirect("login.jsp");
 		} catch (ForbiddenException e) {
 			resp.sendRedirect("error.jsp");
+		} catch (AccessDeniedException e) {
+			resp.sendRedirect("forbidden.jsp");
 		}
 	}
 
@@ -81,10 +84,11 @@ public class Router extends HttpServlet {
 	 * Process all the requests for actions.
 	 * 
 	 * @throws ForbiddenException
+	 * @throws AccessDeniedException 
 	 */
 	private void processActions(HttpServletRequest req,
 			HttpServletResponse resp, String action) throws ServletException,
-			IOException, ForbiddenException {
+			IOException, ForbiddenException, AccessDeniedException {
 		if (action.equals("login")) {
 			UsersControl.login(req);
 			String tempAddress = (String) req.getSession().getAttribute(
@@ -105,6 +109,18 @@ public class Router extends HttpServlet {
 				req.getSession().setAttribute("updateDone", true);
 			
 			resp.sendRedirect("userControlPanel.jsp");
+		} else if(action.equals("logout")){
+			UsersControl.logout(req.getSession());
+			if(req.getHeader("Referer")== null)
+				throw new AccessDeniedException();
+			resp.sendRedirect(req.getHeader("Referer"));
+		} else if(action.equals("register")){
+			int nErrors = UsersControl.register(req);
+			if(nErrors == 0){
+				req.getSession().setAttribute("registerDone", true);
+				resp.sendRedirect("login.jsp");
+			}else
+				resp.sendRedirect("register.jsp");
 		}
 	}
 
