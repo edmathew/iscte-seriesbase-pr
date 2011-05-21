@@ -67,18 +67,20 @@ public class UsersControl {
 		if (!sysPassword.equals(oldPassword)) {
 			req.getSession().setAttribute("wrongPassword", true);
 			nError++;
-		} else if (newPassword != null && !newPassword.equals(confirmPassword)) {
+		} else if (newPassword != null && newPassword.length() > 0
+				&& !newPassword.equals(confirmPassword)) {
 			req.getSession().setAttribute("wrongMatch", true);
 			nError++;
 		}
 
 		if (nError == 0) {
-			query.setUserEmail(userID, email);
-			query.setUserPassword(userID, newPassword);
+			if(email != null && email.length() > 0)
+				query.setUserEmail(userID, email);
+			if(newPassword != null && newPassword.length() > 0)
+				query.setUserPassword(userID, newPassword);
 		}
 
 		return nError;
 	}
 
-	
 }

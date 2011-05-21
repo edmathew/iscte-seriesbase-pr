@@ -11,6 +11,13 @@ body {
 html,body {
 	height: 100%;
 }
+
+/*** GENERIC TAGS ***/
+p.noBreak{
+	display: inline;
+	margin-right: 5px;	
+}
+
 /***************** START OF LOGO ZONE ******************/
 .wrapper {
 	min-height: 100%;
@@ -365,6 +372,18 @@ mainH1.header {
 
 .controlPanel h1{
 	font-size: 180%;
+}
+
+/*** PERSONS SEARCH ***/
+.peopleSearch{
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+}
+
+.results{
+		
 }
 	
 	/*font-size: 14px;
