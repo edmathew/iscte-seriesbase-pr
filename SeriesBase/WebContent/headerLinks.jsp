@@ -16,4 +16,10 @@
 		<script type="text/javascript" src="scripts/fx.slide.js"></script>
 		<!-- END Fx.Slide -->
 		
+		<script type="text/javascript" src="scripts/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript">
+ 			$.noConflict();
+  			// Code that uses other library's $ can follow here.
+		</script>
+		
 		

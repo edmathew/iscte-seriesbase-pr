@@ -333,9 +333,6 @@ public class QueryDatabase {
 			if (set != null && set.next())
 				passInDB = set.getString(2);
 
-			System.out.println(MD5hashPassword);
-			System.out.println(passInDB);
-
 			if (MD5hashPassword.equals(passInDB))
 				id = set.getInt(1);
 

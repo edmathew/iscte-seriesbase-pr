@@ -106,19 +106,19 @@ public class UsersControl {
 		String pass = req.getParameter("password");
 		String repeatPass = req.getParameter("repeatPassword");
 
-		if (username != null && username.length() < 3) {
-			req.getSession().setAttribute("invalidUsername", true);
+		if (username == null || username.length() < 3) {
+			req.getSession().setAttribute("invalidUsername", username);
 			nErrors++;
 		} else if (!query.checkUsernameAvaliability(username)) {
-			req.getSession().setAttribute("duplicatedUsername", true);
+			req.getSession().setAttribute("duplicatedUsername", username);
 			nErrors++;
 		}
 
 		if (!Utilities.validEmail(email)) {
-			req.getSession().setAttribute("invalidEmail", true);
+			req.getSession().setAttribute("invalidEmail", email);
 			nErrors++;
 		} else if (!query.checkEmailAvaliability(email)) {
-			req.getSession().setAttribute("duplicatedEmail", true);
+			req.getSession().setAttribute("duplicatedEmail", email);
 			nErrors++;
 		}
 

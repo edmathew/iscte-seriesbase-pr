@@ -2,22 +2,18 @@
 <!DOCTYPE HTML>
 <%
 	boolean duplicatedUsername = session.getAttribute("duplicatedUsername")!= null;
+	boolean invalidUsername = session.getAttribute("invalidUsername") != null;
+	String username = duplicatedUsername ? (String) session.getAttribute("duplicatedUsername") : 
+			invalidUsername ? (String)session.getAttribute("invalidUsername") : "";
+	
 	boolean duplicatedEmail = session.getAttribute("duplicatedEmail") != null;
-	boolean validPassword = session.getAttribute("validPassword") != null;
-	boolean postBack = duplicatedEmail || duplicatedUsername;
-	String username = null, email = null, birth = null, imageURL = null;
-	if(duplicatedUsername){
-		session.removeAttribute("duplicatedUsername");
-		session.removeAttribute("duplicatedEmail");
-		username = (String)session.getAttribute("username");
-		email = (String)session.getAttribute("email");
-		birth = (String)session.getAttribute("birth");
-		imageURL = (String)session.getAttribute("imageURL");
-		session.removeAttribute("username");
-		session.removeAttribute("email");
-		session.removeAttribute("birth");
-		session.removeAttribute("imageURL");
-	}
+	boolean invalidEmail = session.getAttribute("invalidEmail") != null;
+	
+	String email = duplicatedEmail ? (String) session.getAttribute("duplicatedEmail") : 
+		invalidEmail ? (String) session.getAttribute("invalidEmail") : "";
+	
+	boolean invalidPassword = session.getAttribute("invalidPassword") != null;
+	boolean invalidMatch = session.getAttribute("invalidMatch") != null;
 %>
 <html>
 	<head>
@@ -37,30 +33,32 @@
 				<form id="registerForm" name="registerForm" action="router?action=register" method="post">
 					<div class="field">
 						<label>Username</label>
-						<label class="warning"><%=duplicatedUsername ? "Username already in the system" : "" %></label>
-						<input type="text" name="username" size="30" value="<%=postBack ? username : "" %>" title="Must be at least 3 characters."/>
+						<label class="warning"><%=duplicatedUsername ? "Username already in the system" : 
+								invalidUsername ? "Invalid Username": "" %></label>
+						<input type="text" name="username" size="30" value="<%=username %>" title="Must be at least 3 characters."/>
 					</div>
 					
 					<div class="field">
 						<label>E-Mail</label>
-						<label class="warning"><%=duplicatedEmail ? "E-Mail already in the system" : "" %></label>
-						<input type="email" name="email" size="30" value="<%=postBack ? email : "" %>" title="Mandatory"/>
+						<label class="warning"><%=duplicatedEmail ? "E-Mail already in the system" : 
+								invalidEmail ? "Invalid Email":"" %></label>
+						<input type="email" name="email" size="30" value="<%=email%>" title="Mandatory"/>
 					</div>
 					
 					<div class="field">
 						<label>Password</label>
-						<label class="warning"><%=duplicatedEmail ? "E-Mail already in the system" : "" %></label>
+						<label class="warning"><%=invalidPassword ? "InvalidPassword" : "" %></label>
 						<input type="password" name="password" size="30" title="Must be at least 5 characters."/>
 					</div>
 					
 					<div class="field">
 						<label>Repeat Password</label>
-						<label class="warning"><%=duplicatedEmail ? "E-Mail already in the system" : "" %></label>
+						<label class="warning"><%=invalidMatch ? "Passwords must match" : "" %></label>
 						<input type="password" name="repeatPassword" size="30" title="Repeat the password"/>
 					</div>
 					
 								
-						<p class="submitButton"><input type="submit" value="Register" style="height: 25px; width: 100px;" title="Register"/></p>
+					<p class="submitButton"><input type="submit" value="Register" style="height: 25px; width: 100px;" title="Register"/></p>
 				</form>
 			</div>
 		</div>
@@ -80,3 +78,12 @@
 		
 	</body>
 </html>
+<%
+	/*Clean the session control variables  */
+	session.removeAttribute("duplicatedUsername");
+	session.removeAttribute("invalidUsername");
+	session.removeAttribute("duplicatedEmail");
+	session.removeAttribute("invalidEmail");
+	session.removeAttribute("invalidPassword");
+	session.removeAttribute("invalidMatch");
+%>
