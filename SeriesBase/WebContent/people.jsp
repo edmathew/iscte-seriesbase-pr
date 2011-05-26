@@ -31,6 +31,12 @@
 		<jsp:include page="footer.jsp" />
 		<script type="text/javascript">
 			jQuery("button").click(function () {
+				/*var divs = document.getElementsByTagName("div");
+				for(var i = 0; i < divs.length; i++){
+				   //do something to each div like
+				   divs[i].innerHTML = "something new...";
+				}*/
+
 				jQuery(".results").toggle("slow");
 			});   
 			
