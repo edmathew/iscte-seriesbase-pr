@@ -3,11 +3,13 @@ package dto;
 import java.io.Serializable;
 
 /**
- * Represents a Person.
+ * DTO class that represents a Person.
  * 
- * @author Ed Mateus
+ * @author Edgar Mateus
+ * @author Nuno Dias
+ * @author Tiago Amaral
+ * 
  * @version April 2011
- * 
  */
 @SuppressWarnings("serial")
 public class Person implements Serializable {

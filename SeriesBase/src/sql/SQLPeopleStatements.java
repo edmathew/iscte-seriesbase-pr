@@ -18,9 +18,10 @@ public class SQLPeopleStatements {
 	 * 
 	 * @return SQL Statement
 	 */
-	public String getAllPersons() {
+	public static String getAllPersons() {
 		return "SELECT * FROM Pessoa";
 	}
+	
 	
 	
 

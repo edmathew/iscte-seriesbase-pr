@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import business.PeopleControl;
 import business.SeriesControl;
 import business.UsersControl;
 
@@ -32,6 +33,18 @@ import exceptions.NoLoginException;
 @WebServlet("/router")
 public class Router extends HttpServlet {
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		processRequest(req, resp);
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		processRequest(req, resp);
+	}
+
 	/**
 	 * Process get and post requests.
 	 * 
@@ -48,12 +61,15 @@ public class Router extends HttpServlet {
 			String link = req.getParameter("link");
 			String seriesAction = req.getParameter("seriesAction");
 			String userAction = req.getParameter("userAction");
+			String peopleAction = req.getParameter("peopleAction");
 			if (link != null)
 				processLinks(req, resp, link);
 			else if (userAction != null)
 				processUserActions(req, resp, userAction);
 			else if (seriesAction != null)
 				processSeriesActions(req, resp, seriesAction);
+			else if (peopleAction != null)
+				processPeopleActions(req, resp, peopleAction);
 			else
 				throw new ForbiddenException();
 
@@ -179,15 +195,18 @@ public class Router extends HttpServlet {
 		}
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		processRequest(req, resp);
+	/**
+	 * Process all the request for the people related actions.
+	 * @param req
+	 * @param resp
+	 * @param action
+	 */
+	private void processPeopleActions(HttpServletRequest req,
+			HttpServletResponse resp, String action) {
+		if(action.equals("getAll"))
+			PeopleControl.getAllPeople(req);
+		
+
 	}
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		processRequest(req, resp);
-	}
 }

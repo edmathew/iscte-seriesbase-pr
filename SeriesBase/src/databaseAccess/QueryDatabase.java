@@ -25,6 +25,11 @@ public class QueryDatabase {
 	private static DatabaseManager db;
 	private static QueryDatabase instance;
 
+	/**
+	 * Get's the current instance of this class.
+	 * 
+	 * @return a QueryDatabase instance.
+	 */
 	public static QueryDatabase getInstance() {
 		try {
 			if (instance == null || QueryDatabase.db.isConnectionClose()) {
@@ -45,7 +50,7 @@ public class QueryDatabase {
 
 	/************************************************************************
 	 * TABLE utilizador
-	 ************************************************************************/
+	 ***********************************************************************/
 
 	/**
 	 * Checks if the email already has a register in the database.
@@ -78,10 +83,21 @@ public class QueryDatabase {
 		return avaliable;
 	}
 
-	public boolean insertUser(String name, String passMD5, String email){
+	/**
+	 * Inserts a new user in the database
+	 * 
+	 * @param name
+	 *            Username
+	 * @param passMD5
+	 *            Password's MD5 hash code
+	 * @param email
+	 *            User email.
+	 * @return true if the insert was sucefully and false otherwise.
+	 */
+	public boolean insertUser(String name, String passMD5, String email) {
 		boolean success = false;
 		PreparedStatement ps = null;
-		try{
+		try {
 			ps = db.preparedStatement(SQLUserStatements.insertUser());
 			ps.setString(1, name);
 			ps.setString(2, passMD5);
@@ -89,23 +105,23 @@ public class QueryDatabase {
 			ps.setDate(4, new Date(System.currentTimeMillis()));
 			ps.execute();
 			db.commit();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			try {
 				db.rollback();
 			} catch (SQLException e1) {
 			}
-		}finally{
+		} finally {
 			try {
 				ps.close();
 			} catch (SQLException e) {
 			}
 		}
-		
+
 		return success;
 	}
-	
+
 	/**
-	 * Check if the password matches the username.<br />
+	 * Check if the password matches the username.
 	 * 
 	 * @param username
 	 *            user identifier
@@ -139,7 +155,6 @@ public class QueryDatabase {
 		return id;
 	}
 
-
 	/**
 	 * Checks if the username is already taken.
 	 * 
@@ -171,8 +186,13 @@ public class QueryDatabase {
 
 		return avaliable;
 	}
-	
-	
+
+	/**
+	 * Gets a email according to a userId
+	 * 
+	 * @param userID
+	 * @return
+	 */
 	public String getUserEmail(int userID) {
 		String email = null;
 		PreparedStatement ps = null;
@@ -192,6 +212,15 @@ public class QueryDatabase {
 		return email;
 	}
 
+	/**
+	 * Sets a new email for a user.
+	 * 
+	 * @param userID
+	 *            Database User ID
+	 * @param newEmail
+	 *            Email to Set
+	 * @return true if success and false otherwise.
+	 */
 	public boolean setUserEmail(int userID, String newEmail) {
 		boolean sucess = false;
 		PreparedStatement ps = null;
@@ -212,6 +241,13 @@ public class QueryDatabase {
 		return sucess;
 	}
 
+	/**
+	 * Gets the password MD5 hash according to a user.
+	 * 
+	 * @param username
+	 *            the username
+	 * @return the md5 hash.
+	 */
 	public String getUserPassword(String username) {
 		String pass = null;
 		PreparedStatement ps = null;
@@ -232,6 +268,15 @@ public class QueryDatabase {
 		return pass;
 	}
 
+	/**
+	 * Sets a new password for a user.
+	 * 
+	 * @param userID
+	 *            User ID
+	 * @param password
+	 *            Password MD5 Hash.
+	 * @return true if success and false otherwise.
+	 */
 	public boolean setUserPassword(int userID, String password) {
 		boolean sucess = false;
 		PreparedStatement ps = null;
@@ -252,6 +297,69 @@ public class QueryDatabase {
 		return sucess;
 	}
 
+	/************************************************************************
+	 * TABLE pessoa
+	 ************************************************************************/
+
+	/**
+	 * Inserts a new Person in the database.
+	 * 
+	 * @param p
+	 *            Person to insert
+	 * @return Inserted ID.
+	 */
+	public int insertPerson(Person p) {
+		int personId = -1;
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLSeriesStatements.insertPerson());
+			ps.setString(1, p.getName());
+			if (p.getImageURL() != null)
+				ps.setString(2, p.getImageURL());
+			else
+				ps.setNull(2, java.sql.Types.VARCHAR);
+
+			ps.executeUpdate();
+			ResultSet s = ps.getGeneratedKeys();
+			if (s != null && s.next())
+				personId = s.getInt(1);
+			db.commit();
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+		return personId;
+	}
+
+	/**
+	 * Get all the people in the database.
+	 * 
+	 * @return Person LinkedList
+	 */
+	public LinkedList<Person> getAllPersons() {
+		LinkedList<Person> all = new LinkedList<Person>();
+		try {
+			ResultSet set = db.selectStatement(SQLPeopleStatements
+					.getAllPersons());
+			while (set.next())
+				all.add(ResultSetReader.readPerson(set));
+
+		} catch (SQLException e) {
+		} finally {
+			try {
+				db.closeStatement();
+			} catch (SQLException e1) {
+			}
+		}
+		return all;
+	}
+
+	
+	
+	
 	/************************************************************************
 	 * TABLE Series
 	 ************************************************************************/
@@ -384,8 +492,6 @@ public class QueryDatabase {
 		return result;
 	}
 
-	
-
 	/**
 	 * 
 	 * @param serie
@@ -452,32 +558,6 @@ public class QueryDatabase {
 
 		ps.executeUpdate();
 		db.commit();
-	}
-
-	public int insertPerson(Person p) {
-		int personId = -1;
-		PreparedStatement ps = null;
-		try {
-			ps = db.preparedStatement(SQLSeriesStatements.insertPerson());
-			ps.setString(1, p.getName());
-			if (p.getImageURL() != null)
-				ps.setString(2, p.getImageURL());
-			else
-				ps.setNull(2, java.sql.Types.VARCHAR);
-
-			ps.executeUpdate();
-			ResultSet s = ps.getGeneratedKeys();
-			if (s != null && s.next())
-				personId = s.getInt(1);
-			db.commit();
-		} catch (SQLException e) {
-		} finally {
-			try {
-				ps.close();
-			} catch (SQLException e) {
-			}
-		}
-		return personId;
 	}
 
 	public void insertSeriesActor(int personId, int seriesID) {

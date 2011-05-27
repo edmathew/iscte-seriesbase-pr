@@ -22,7 +22,6 @@
 		<title>Seriesbase - Register</title>
 		
 		<jsp:include page="headerLinks.jsp"/>
-		<script src="scripts/jquery.tools.min.js"></script>
 	</head>
 		
 	<body>
@@ -64,7 +63,7 @@
 		</div>
 		<jsp:include page="footer.jsp" />
 		<script type="text/javascript">
-			$("#registerForm :input").tooltip({
+			jQuery("#registerForm :input").tooltip({
 				// place tooltip on the right edge
 				position: "center right",
 				// a little tweaking of the position
