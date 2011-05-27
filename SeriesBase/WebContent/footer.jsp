@@ -1,8 +1,12 @@
-	
-	<div class=footer>
-		<img src="images/footer.png" alt="" />
-	</div>
-			<!-- <table align="center" border="0" width="960">
+		<div class="footer">
+			<div class="footerimg">
+				<img src="images/logofooter.png" alt="" />
+			</div>
+			<div class="footerContent">
+				<h2>© 2011, grupo 7 from PR ISCTE, Inc. or its affiliates</h2>
+			</div>
+		</div>
+<!-- <table align="center" border="0" width="960">
 				<tr>
 					<td align="left" width="200"><a
 						href="http://www.w3schools.com"><img border="0"
@@ -40,5 +44,3 @@
 
 				</tr>
 			</table> <br />-->
-	</div>
-

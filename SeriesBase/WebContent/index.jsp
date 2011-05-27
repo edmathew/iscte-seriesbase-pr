@@ -27,7 +27,6 @@
 			%>
 		</div> --%>
 		<jsp:include page="menu.jsp" />
-		<div class="mainContainer">
 			<div class="mainHeader">
 				<h1 class="mainHeader">What's new?</h1>
 			</div>
@@ -53,7 +52,6 @@
 				</object>
 			</div>
 		</div>
-	</div>
 
 	<jsp:include page="footer.jsp" />
 

@@ -59,6 +59,7 @@ ul#menu {
 	list-style-type: none;
 	float: left;
 	padding-top: 0px;
+	margin-bottom: -0px;
 }
 
 ul#menu li {
@@ -175,10 +176,18 @@ p.submitButton {
 }
 
 .mainHeader {
-	padding: 0.5em;
+	padding: 1px;
 	color: white;
 	background-color: /* #232DA3  #343EB5*/ #4751C7  ;
 	clear: left;
+	margin-bottom: 15px;
+
+}
+
+.mainHeader h1{
+	padding-left: 10px;
+	font-family: verdana;
+	font-size: 20px;
 }
 
 mainH1.header {
@@ -187,7 +196,6 @@ mainH1.header {
 }
 
 .mainLeft {
-	float: left;
 	width: 160px;
 	margin: 0;
 	padding: 1em;
@@ -243,8 +251,10 @@ mainH1.header {
 
 
 .GeneralProfile{
-	margin-bottom: 25px;
+	height: 122px;
 	background-color: #DEDEDE;
+	margin-bottom: 15px;
+	
 }
 .Photo {
 	width: 20px;
@@ -255,22 +265,35 @@ mainH1.header {
 	float: left;
 	max-width: 100px;
 	max-height: 300px;
-	margin-left: 2px;
-	padding: 1em;
 }
 
 .Content{
 	float: rigth;	
- 	padding: 1em;
+	padding: 1em;
 	line-height: 20px;
+	
+}
+
+.Content h2{
+	font-family: verdana;
+	font-size: 15px;
+	margin-top: -30px;
+	margin-left: 100px;
+	
+}
+
+.Content p{
+	font-family: verdana;
+	font-size: 12px;
+	margin-left: 100px;
+
 }
 /******************* END OF MAIN LAYOUT *******************/
 .container {
-	min-height: 100%;
+	min-height: 90%;
 	width: 75%;
 	height: auto;
 	/*text-align: center;/* IE fix to center the page */
-	margin-bottom: -36px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -286,17 +309,15 @@ mainH1.header {
 }
 
 .footer {
-	padding-top: 0.5em;
-	color: white;
 	/* background-color: #1E1E1E; */
+	padding-top: -40em;
+	text-align: center;
 	margin-left: auto;
-	margin-rigth: auto;
-	/* clear: left; */
+	margin-right: auto;
+	font-family:verdana, arial, helvetica, sans-serif;
+  	font-size: 6px;
 }
 
-.footer img {
-
-}
 
 .rodTop {
 	position: absolute;
@@ -310,8 +331,10 @@ mainH1.header {
 }
 
 .contents {
+	text-align: center;
+	table-layout: inherit;
 	float: left;
-	display: block;
+	display: table;
 	margin-left: 10px;
 }
 

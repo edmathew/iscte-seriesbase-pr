@@ -19,8 +19,8 @@
 
 	<body>
 		<div class="container">
-		<jsp:include page="menu.jsp"/>
-			<div class="contents">
+			<jsp:include page="menu.jsp"/>
+			<div class="peopleSearch">
 				<table border="1" id="s1">
 					<%
 						for (int i = 0; i < series.length; i++) {

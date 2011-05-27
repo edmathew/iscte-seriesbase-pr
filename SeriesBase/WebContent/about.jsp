@@ -32,7 +32,7 @@
 			</div> --%>
 
 			<div class="mainHeader">
-				<h1 class="mainHeader">Who are We?</h1>
+				<h1>Who are We?</h1>
 			</div>
 			<div class="GeneralProfile">
 				<div class="Photo">
