@@ -58,7 +58,7 @@ ul#menu {
 	font-weight: bold;
 	list-style-type: none;
 	float: left;
-	padding-top: 0px;
+padding-top: 0px;
 }
 
 ul#menu li {
@@ -114,7 +114,6 @@ a:hover {
 	text-decoration: bold;
 	text-align: center;
 }
-
 
 /***************** TABLES ******************/
 td.label {
@@ -228,6 +227,7 @@ mainH1.header {
 	width: 100%;
 	height: 100%;
 }
+}
 
 .Logo{
 	width: 270px;
@@ -240,16 +240,17 @@ mainH1.header {
 	height 50%;
 }
 
-.GeneralProfile{
+.GeneralProfile {
 	margin-bottom: 25px;
 	background-color: #DEDEDE;
 }
+
 .Photo {
 	width: 20px;
 	height: 20px;
 }
 
-.Photo img{
+.Photo img {
 	float: left;
 	max-width: 100px;
 	max-height: 300px;
@@ -257,9 +258,9 @@ mainH1.header {
 	padding: 1em;
 }
 
-.Content{
-	float: rigth;	
- 	padding: 1em;
+.Content {
+	float: rigth;
+	padding: 1em;
 	line-height: 20px;
 }
 /******************* END OF MAIN LAYOUT *******************/
@@ -375,12 +376,12 @@ mainH1.header {
 }
 
 /*** CONTROL PANEL ***/
-.controlPanel{
+.controlPanel {
 	float: left;
 	margin: 5px;
 }
 
-.controlPanel h1{
+.controlPanel h1 {
 	font-size: 180%;
 }
 
@@ -424,15 +425,13 @@ label.warning{
 
 .results{
 }
-	
-	/*font-size: 14px;
+
+/*font-size: 14px;
 	text-align: right;
 	float: right;
 	height: 100px;
 	width: 250px;
 	color: #FFFFFF;*/
-
-
 .loginFormLinks {
 	font-family: calibri;
 	line-height: normal;
