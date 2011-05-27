@@ -18,8 +18,8 @@
 	</head>
 
 	<body>
-		<jsp:include page="menu.jsp"/>
 		<div class="container">
+		<jsp:include page="menu.jsp"/>
 			<div class="contents">
 				<table border="1" id="s1">
 					<%

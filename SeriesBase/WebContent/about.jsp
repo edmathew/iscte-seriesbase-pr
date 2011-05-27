@@ -30,12 +30,10 @@
 						%>
 				</table>
 			</div> --%>
-		<div class="mainHeader">
-			<h1 class="mainHeader">Who are We?</h1>
-		</div>
 
-		<div class="center">
-
+			<div class="mainHeader">
+				<h1 class="mainHeader">Who are We?</h1>
+			</div>
 			<div class="GeneralProfile">
 				<div class="Photo">
 					<img src="images/nunodias.png" alt="" />
@@ -64,7 +62,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 
 	<jsp:include page="footer.jsp" />
 </body>
