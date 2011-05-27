@@ -59,6 +59,9 @@
 		</ul>
 	</div>
 
+	<div class = "Logo">
+		<img src="images/logo.png" alt="" />
+	</div>
 	<!-- <div class="clearfix"></div> -->
 	<div class="mainMenu">
 		<ul id="menu">

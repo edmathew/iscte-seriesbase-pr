@@ -1,6 +1,7 @@
 	
 	<div class=footer>
-			SeriesBase---O melhor site de series.
+		<img src="images/footer.png" alt="" />
+	</div>
 			<!-- <table align="center" border="0" width="960">
 				<tr>
 					<td align="left" width="200"><a

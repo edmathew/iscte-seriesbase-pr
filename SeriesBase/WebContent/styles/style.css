@@ -58,7 +58,6 @@ ul#menu {
 	font-weight: bold;
 	list-style-type: none;
 	float: left;
-	margin: 50px 0 0 0;
 	padding-top: 0px;
 }
 
@@ -178,7 +177,7 @@ p.submitButton {
 .mainHeader {
 	padding: 0.5em;
 	color: white;
-	background-color: /* #232DA3  #343EB5*/ #4751C7 ;
+	background-color: /* #232DA3  #343EB5*/ #4751C7  ;
 	clear: left;
 }
 
@@ -228,7 +227,18 @@ mainH1.header {
 #imagemEpisodes img {
 	width: 100%;
 	height: 100%;
-} 
+}
+
+.Logo{
+	width: 270px;
+	heigth: 70px;
+	margin-bottom: -10px;
+}
+
+.Logo img{
+	width 50%;
+	height 50%;
+}
 
 .GeneralProfile{
 	margin-bottom: 25px;
@@ -272,9 +282,9 @@ mainH1.header {
 }
 
 .footer {
-	padding: 0.5em;
+	padding-top: 0.5em;
 	color: white;
-	background-color: #1E1E1E;
+	/* background-color: #1E1E1E; */
 	clear: left;
 }
 
