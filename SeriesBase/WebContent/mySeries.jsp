@@ -27,7 +27,7 @@
 					<tr>
 						<td><%=s.getName()%></td>
 						<td><%=s.getAnoInicial()%></td>
-						<td><a href="linkControl?link=getSeriesById&id=<%=s.getId()%>">Page</a>
+						<td><a href="router?link=getSeriesById&id=<%=s.getId()%>">Page</a>
 					</tr>
 					<%
 						}

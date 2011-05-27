@@ -70,18 +70,38 @@ public class Router extends HttpServlet {
 
 	/**
 	 * Process all the requests for new pages.
+	 * 
+	 * @throws ForbiddenException
 	 */
 	private void processLinks(HttpServletRequest req, HttpServletResponse resp,
-			String link) throws NoLoginException, ServletException, IOException {
+			String link) throws NoLoginException, ServletException,
+			IOException, ForbiddenException {
 		if (link.equals("userControlPanel")) {
 			if (req.getSession().getAttribute("loginID") == null)
 				throw new NoLoginException(link);
-			else
-				resp.sendRedirect("userControlPanel.jsp");
 
-		} else if (link.equals("login")) {
+			resp.sendRedirect("userControlPanel.jsp");
+
+		} else if (link.equals("login"))
 			resp.sendRedirect("login.jsp");
-		}
+		else if (link.equals("register"))
+			resp.sendRedirect("register.jsp");
+		else if (link.equals("home"))
+			resp.sendRedirect("index.jsp");
+		else if (link.equals("series"))
+			resp.sendRedirect("listSeries.jsp");
+		else if (link.equals("mySeries")) {
+			if (req.getSession().getAttribute("loginID") == null)
+				throw new NoLoginException("mySeries.jsp");
+			resp.sendRedirect("mySeries.jsp");
+		} else if (link.equals("getSeriesById"))
+			resp.sendRedirect("showSeriesInfo.jsp?id=" + req.getParameter("id"));
+		else if (link.equals("people"))
+			resp.sendRedirect("people.jsp");
+		else if (link.equals("about"))
+			resp.sendRedirect("about.jsp");
+		else
+			throw new ForbiddenException();
 	}
 
 	/**

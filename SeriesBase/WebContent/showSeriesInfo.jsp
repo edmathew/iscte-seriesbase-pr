@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <% if(request.getParameter("id") == null){ %>
-		<jsp:forward page="linkControl?link=error"/>
+		<jsp:forward page="router?link=error"/>
 <%}
 	request.getRequestDispatcher("/router?seriesAction=getById&id="+request.getParameter("id")).include(request,response);
 	Series s = (Series) session.getAttribute("series");

@@ -24,7 +24,7 @@
 				value="forever" /> Remember me</label>
 		</div>
 		<div class="right">
-			Not a member? <a href="linkControl?link=register">Register</a> | <a
+			Not a member? <a href="router?link=register">Register</a> | <a
 				href="#">Lost your password?</a>
 		</div>
 	</div>
@@ -68,21 +68,21 @@
 			<%
 				if (currentMenu.equals("home")) {
 			%>
-			<li><a href="linkControl?link=home" target="_self" title="Home"
+			<li><a href="router?link=home" target="_self" title="Home"
 				class="current">Home</a></li>
 			<%
 				if (logged) {
 			%>
-			<li><a href="linkControl?link=mySeries" target="_self"
+			<li><a href="router?link=mySeries" target="_self"
 				title="My Series">My Series</a></li>
 			<%
 				}
 			%>
-			<li><a href="linkControl?link=series&action=getAll"
+			<li><a href="router?link=series&action=getAll"
 				target="_self" title="Series">Series</a></li>
-			<li><a href="linkControl?link=people" target="_self"
+			<li><a href="router?link=people" target="_self"
 				title="People">People</a></li>
-			<li><a href="linkControl?link=about" target="_self"
+			<li><a href="router?link=about" target="_self"
 				title="About">About</a></li>
 			<%
 				}
@@ -91,21 +91,21 @@
 			<%
 				if (currentMenu.equals("mySeries")) {
 			%>
-			<li><a href="linkControl?link=home" target="_self" title="Home">Home</a>
+			<li><a href="router?link=home" target="_self" title="Home">Home</a>
 			</li>
 			<%
 				if (logged) {
 			%>
-			<li><a href="linkControl?link=mySeries" target="_self"
+			<li><a href="router?link=mySeries" target="_self"
 				title="My Series" class="current">My Series</a></li>
 			<%
 				}
 			%>
-			<li><a href="linkControl?link=series&action=getAll"
+			<li><a href="router?link=series&action=getAll"
 				target="_self" title="Series">Series</a></li>
-			<li><a href="linkControl?link=people" target="_self"
+			<li><a href="router?link=people" target="_self"
 				title="People">People</a></li>
-			<li><a href="linkControl?link=about" target="_self"
+			<li><a href="router?link=about" target="_self"
 				title="About">About</a></li>
 			<%
 				}
@@ -114,21 +114,21 @@
 			<%
 				if (currentMenu.equals("series")) {
 			%>
-			<li><a href="linkControl?link=home" target="_self" title="Home">Home</a>
+			<li><a href="router?link=home" target="_self" title="Home">Home</a>
 			</li>
 			<%
 				if (logged) {
 			%>
-			<li><a href="linkControl?link=mySeries" target="_self"
+			<li><a href="router?link=mySeries" target="_self"
 				title="My Series">My Series</a></li>
 			<%
 				}
 			%>
-			<li><a href="linkControl?link=series&action=getAll"
+			<li><a href="router?link=series&action=getAll"
 				target="_self" title="Series" class="current">Series</a></li>
-			<li><a href="linkControl?link=people" target="_self"
+			<li><a href="router?link=people" target="_self"
 				title="People">People</a></li>
-			<li><a href="linkControl?link=about" target="_self"
+			<li><a href="router?link=about" target="_self"
 				title="About">About</a></li>
 			<%
 				}
@@ -137,21 +137,21 @@
 			<%
 				if (currentMenu.equals("people")) {
 			%>
-			<li><a href="linkControl?link=home" target="_self" title="Home">Home</a>
+			<li><a href="router?link=home" target="_self" title="Home">Home</a>
 			</li>
 			<%
 				if (logged) {
 			%>
-			<li><a href="linkControl?link=mySeries" target="_self"
+			<li><a href="router?link=mySeries" target="_self"
 				title="My Series">My Series</a></li>
 			<%
 				}
 			%>
-			<li><a href="linkControl?link=series&action=getAll"
+			<li><a href="router?link=series&action=getAll"
 				target="_self" title="Series">Series</a></li>
-			<li><a href="linkControl?link=people" target="_self"
+			<li><a href="router?link=people" target="_self"
 				title="People" class="current">People</a></li>
-			<li><a href="linkControl?link=about" target="_self"
+			<li><a href="router?link=about" target="_self"
 				title="About">About</a></li>
 			<%
 				}
@@ -160,21 +160,21 @@
 			<%
 				if (currentMenu.equals("about")) {
 			%>
-			<li><a href="linkControl?link=home" target="_self" title="Home">Home</a>
+			<li><a href="router?link=home" target="_self" title="Home">Home</a>
 			</li>
 			<%
 				if (logged) {
 			%>
-			<li><a href="linkControl?link=mySeries" target="_self"
+			<li><a href="router?link=mySeries" target="_self"
 				title="My Series">My Series</a></li>
 			<%
 				}
 			%>
-			<li><a href="linkControl?link=series&action=getAll"
+			<li><a href="router?link=series&action=getAll"
 				target="_self" title="Series">Series</a></li>
-			<li><a href="linkControl?link=people" target="_self"
+			<li><a href="router?link=people" target="_self"
 				title="People">People</a></li>
-			<li><a href="linkControl?link=about" target="_self"
+			<li><a href="router?link=about" target="_self"
 				title="About" class="current">About</a></li>
 			<%
 				}
@@ -183,21 +183,21 @@
 			<%
 				if (currentMenu.equals("")) {
 			%>
-			<li><a href="linkControl?link=home" target="_self" title="Home">Home</a>
+			<li><a href="router?link=home" target="_self" title="Home">Home</a>
 			</li>
 			<%
 				if (logged) {
 			%>
-			<li><a href="linkControl?link=mySeries" target="_self"
+			<li><a href="router?link=mySeries" target="_self"
 				title="My Series">My Series</a></li>
 			<%
 				}
 			%>
-			<li><a href="linkControl?link=series&action=getAll"
+			<li><a href="router?link=series&action=getAll"
 				target="_self" title="Series">Series</a></li>
-			<li><a href="linkControl?link=people" target="_self"
+			<li><a href="router?link=people" target="_self"
 				title="People">People</a></li>
-			<li><a href="linkControl?link=about" target="_self"
+			<li><a href="router?link=about" target="_self"
 				title="About">About</a></li>
 			<%
 				}

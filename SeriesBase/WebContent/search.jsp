@@ -77,7 +77,7 @@
 						%>
 							<tr>
 								<td>
-									<a href="linkControl?link=getSeriesById&id=<%=s.getId()%>"><%=s.getName()%></a>
+									<a href="router?link=getSeriesById&id=<%=s.getId()%>"><%=s.getName()%></a>
 								</td>
 								<td><%=s.getAnoInicial()%></td>
 								<td><%=s.getNetwork() %></td>
