@@ -30,7 +30,7 @@
 			<jsp:include page="menu.jsp" />
 			<div class="registerForm">
 				<p class="title">Register at Seriesbase</p>
-				<form id="registerForm" name="registerForm" action="router?action=register" method="post">
+				<form id="registerForm" name="registerForm" action="router?userAction=register" method="post">
 					<div class="field">
 						<label>Username</label>
 						<label class="warning"><%=duplicatedUsername ? "Username already in the system" : 

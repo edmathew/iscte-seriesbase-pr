@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%	session.setAttribute("menu", new String("mySeries"));%>
 <%
-	request.getRequestDispatcher("/seriesControl?action=getByUserId").include(request,response);
+	request.getRequestDispatcher("/router?seriesAction=getByUserId").include(request,response);
 	Object[] series = (Object[]) session.getAttribute("seriesList");
 	session.removeAttribute("seriesList");
 %>

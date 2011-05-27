@@ -32,7 +32,7 @@
 							-->
 					<%	} %>
 					
-					<form method="post" action="router?action=updateUserData">
+					<form method="post" action="router?userAction=updateUserData">
 						<label>Change e-mail address: </label>
 						<input type="text" size="20" name="newEmail" 
 							value="<%=invalidEmail ? (String)session.getAttribute("invalidEmail") : "" %>" />

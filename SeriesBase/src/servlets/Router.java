@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import business.SeriesControl;
 import business.UsersControl;
 
 import exceptions.AccessDeniedException;
@@ -45,11 +46,14 @@ public class Router extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			String link = req.getParameter("link");
-			String action = req.getParameter("action");
+			String seriesAction = req.getParameter("seriesAction");
+			String userAction = req.getParameter("userAction");
 			if (link != null)
 				processLinks(req, resp, link);
-			else if (action != null)
-				processActions(req, resp, action);
+			else if (userAction != null)
+				processUserActions(req, resp, userAction);
+			else if (seriesAction != null)
+				processSeriesActions(req, resp, seriesAction);
 			else
 				throw new ForbiddenException();
 
@@ -81,12 +85,14 @@ public class Router extends HttpServlet {
 	}
 
 	/**
-	 * Process all the requests for actions.
+	 * Process all the requests for the user related actions.
 	 * 
 	 * @throws ForbiddenException
-	 * @throws AccessDeniedException 
+	 *             When the action or the context is inexistent.
+	 * @throws AccessDeniedException
+	 *             When the action needs a login.
 	 */
-	private void processActions(HttpServletRequest req,
+	private void processUserActions(HttpServletRequest req,
 			HttpServletResponse resp, String action) throws ServletException,
 			IOException, ForbiddenException, AccessDeniedException {
 		if (action.equals("login")) {
@@ -105,22 +111,51 @@ public class Router extends HttpServlet {
 			}
 		} else if (action.equals("updateUserData")) {
 			int nErrors = UsersControl.updateUserInfo(req);
-			if(nErrors == 0)
+			if (nErrors == 0)
 				req.getSession().setAttribute("updateDone", true);
-			
+
 			resp.sendRedirect("userControlPanel.jsp");
-		} else if(action.equals("logout")){
-			UsersControl.logout(req.getSession());
-			if(req.getHeader("Referer")== null)
+		} else if (action.equals("logout")) {
+			if (req.getHeader("Referer") == null)
 				throw new AccessDeniedException();
+			UsersControl.logout(req.getSession());
 			resp.sendRedirect(req.getHeader("Referer"));
-		} else if(action.equals("register")){
+		} else if (action.equals("register")) {
 			int nErrors = UsersControl.register(req);
-			if(nErrors == 0){
+			if (nErrors == 0) {
 				req.getSession().setAttribute("registerDone", true);
 				resp.sendRedirect("login.jsp");
-			}else
+			} else
 				resp.sendRedirect("register.jsp");
+		}
+	}
+
+	/**
+	 * Process all the requests for the series related actions.
+	 * 
+	 * @throws ForbiddenException
+	 *             When there are errors.
+	 * @throws NoLoginException
+	 */
+	private void processSeriesActions(HttpServletRequest req,
+			HttpServletResponse resp, String action) throws ServletException,
+			IOException, ForbiddenException, NoLoginException {
+		if (req.getHeader("Referer") == null)
+			throw new ForbiddenException();
+
+		try {
+			if (action.equals("getAll"))
+				SeriesControl.getAllSeries(req);
+			else if (action.equals("getById"))
+				SeriesControl.getById(req);
+			else if (action.equals("getByUserId"))
+				SeriesControl.getByUserId(req);
+			else if (action.equals("addToFavorites")) {
+				SeriesControl.addSeriesToFavorites(req);
+				resp.sendRedirect(req.getHeader("Referer"));
+			}
+		} catch (NumberFormatException e) {
+			throw new ForbiddenException();
 		}
 	}
 

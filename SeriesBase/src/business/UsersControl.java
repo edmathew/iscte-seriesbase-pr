@@ -9,7 +9,7 @@ import utilities.Utilities;
 import databaseAccess.QueryDatabase;
 
 /**
- * Business class to deal with the users.
+ * Library to deal with the users.
  * 
  * @author Edgar Mateus
  * @author Nuno Dias
@@ -69,7 +69,8 @@ public class UsersControl {
 			}
 
 		String sysPassword = query.getUserPassword(username);
-		if (oldPassword != null && !sysPassword.equals(HashUtilities.getMD5Hash(oldPassword))) {
+		if (oldPassword != null
+				&& !sysPassword.equals(HashUtilities.getMD5Hash(oldPassword))) {
 			req.getSession().setAttribute("wrongPassword", true);
 			nError++;
 		} else if (newPassword != null && newPassword.length() > 0
@@ -96,6 +97,11 @@ public class UsersControl {
 	 */
 	public static void logout(HttpSession s) {
 		s.invalidate();
+	}
+
+	public static int getUserId(HttpSession s) {
+		return s.getAttribute("loginID") != null ? (Integer) s
+				.getAttribute("loginID") : -1;
 	}
 
 	public static int register(HttpServletRequest req) {

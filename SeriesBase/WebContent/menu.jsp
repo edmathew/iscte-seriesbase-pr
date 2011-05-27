@@ -10,7 +10,7 @@
 <div id="rodTop"></div>
 <div id="login">
 	<div class="loginContent">
-		<form action="<%=location%>/router?action=login" method="post">
+		<form action="<%=location%>/router?userAction=login" method="post">
 			<label for="log"><b>Username: </b> </label> <input class="field"
 				type="text" name="log" id="log" value="" size="23" /> <label
 				for="pwd"><b>Password:</b> </label> <input class="field"
@@ -42,7 +42,7 @@
 			%>
 			<li><a href="router?link=userControlPanel">Hello <%=session.getAttribute("loginname")%>!</a></li>
 			<li>|</li>
-			<li><a href="router?action=logout">Log Out</a>
+			<li><a href="router?userAction=logout">Log Out</a>
 			</li>
 			<%
 				} else {

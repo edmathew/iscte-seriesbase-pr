@@ -21,7 +21,7 @@
 				<div class="loginForm">
 					<%=fromRegister ? "Now you can log in\n" : "\n" %>
 					O recurso pretendido não está disponivel para utilizadores anonimos.
-					<form method="post" action="router?action=login">
+					<form method="post" action="router?userAction=login">
 						<label>Username: </label>
 						<input type="text" name="log" id="log" size="23" />
 						<label>Password: </label>
