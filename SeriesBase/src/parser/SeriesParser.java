@@ -115,7 +115,7 @@ public class SeriesParser {
 			try {
 				BufferedImage img = ImageIO.read((new URL(BANNER_URL+imageURL)));
 				ImageTester.save(img, "jpg", "images\\posters\\"+ name.hashCode()+".jpg");
-				s.setImageURL("images\\posters\\"+ name.hashCode()+".jpg");
+				s.setImageURL("images/posters/"+ name.hashCode()+".jpg");
 			} catch (MalformedURLException e) {
 			} catch (IOException e) {
 			}
