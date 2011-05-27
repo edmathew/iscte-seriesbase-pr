@@ -63,15 +63,6 @@ public class SQLUserStatements {
 	}
 
 	/**
-	 * SQL select statement to select the user image URL.
-	 * 
-	 * @return SQL Prepared Statement
-	 */
-	public static String selectUserImageURL() {
-		return "SELECT ImageURL FROM utilizador WHERE idUtilizador= ?";
-	}
-
-	/**
 	 * SQL select statement to check if a username already exists in the
 	 * database.
 	 * 

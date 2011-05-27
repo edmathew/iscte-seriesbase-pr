@@ -1,9 +1,14 @@
 package parser;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.LinkedList;
 
+import javax.imageio.ImageIO;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 
@@ -19,7 +24,7 @@ public class SeriesParser {
 
 	private Parser p;
 	private int tvDB_ID;
-	private static final String BANNER_URL = "http://cache.thetvdb.com/banners/";
+	private static final String BANNER_URL = "http://thetvdb.com/banners/";
 
 	public SeriesParser(int tvDB_ID) {
 		this.tvDB_ID = tvDB_ID;
@@ -31,7 +36,7 @@ public class SeriesParser {
 	}
 
 	private static String getURL(int tvDB_ID) {
-		return "http://cache.thetvdb.com/api/61512BD7136BE55F/series/"
+		return "http://thetvdb.com/api/61512BD7136BE55F/series/"
 				+ tvDB_ID + "/all/en.xml";
 	}
 
@@ -106,8 +111,17 @@ public class SeriesParser {
 			i++;
 		} while (nodes != null);
 
-		if (!imageURL.equals(""))
-			s.setImageURL(BANNER_URL + imageURL);
+		if (!imageURL.equals("")){
+			try {
+				BufferedImage img = ImageIO.read((new URL(BANNER_URL+imageURL)));
+				ImageTester.save(img, "jpg", "images\\posters\\"+ name.hashCode()+".jpg");
+				s.setImageURL("images\\posters\\"+ name.hashCode()+".jpg");
+			} catch (MalformedURLException e) {
+			} catch (IOException e) {
+			}
+			
+		}
+			
 
 		s.setEpisodes(eps);
 		return s;

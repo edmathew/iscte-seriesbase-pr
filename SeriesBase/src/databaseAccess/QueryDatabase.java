@@ -14,6 +14,10 @@ import sql.*;
  * Queries to the seriesbase database.
  * 
  * @author Edgar Mateus
+ * @author Nuno Dias
+ * @author Tiago Amaral
+ * 
+ * @version April 2011
  * 
  */
 public class QueryDatabase {
@@ -98,6 +102,74 @@ public class QueryDatabase {
 		}
 		
 		return success;
+	}
+	
+	/**
+	 * Check if the password matches the username.<br />
+	 * 
+	 * @param username
+	 *            user identifier
+	 * @param MD5hashPassword
+	 *            the MD5 hash of the user's password
+	 * @return userId or -1 if failed.
+	 */
+	public int validLogin(String username, String MD5hashPassword) {
+		PreparedStatement ps;
+		int id = -1;
+
+		try {
+			ps = db.preparedStatement(SQLUserStatements.selectPassword());
+			ps.setString(1, username);
+			ResultSet set = ps.executeQuery();
+			String passInDB = null;
+			if (set != null && set.next())
+				passInDB = set.getString(2);
+
+			if (MD5hashPassword.equals(passInDB))
+				id = set.getInt(1);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				db.closeStatement();
+			} catch (SQLException e) {
+			}
+		}
+		return id;
+	}
+
+
+	/**
+	 * Checks if the username is already taken.
+	 * 
+	 * @param username
+	 *            username to check.
+	 * @return true if the username is available and false otherwise.
+	 */
+	public boolean checkUsernameAvaliability(String username) {
+		PreparedStatement ps = null;
+
+		boolean avaliable = true;
+
+		try {
+			ps = db.preparedStatement(SQLUserStatements.selectUsername());
+			ps.setString(1, username);
+			ResultSet set = ps.executeQuery();
+			if (set.next()) {
+				int count = set.getInt(1);
+				if (count != 0)
+					avaliable = false;
+			}
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+
+		return avaliable;
 	}
 	
 	
@@ -312,98 +384,7 @@ public class QueryDatabase {
 		return result;
 	}
 
-	/**
-	 * Check if the password matches the username.<br />
-	 * 
-	 * @param username
-	 *            user identifier
-	 * @param MD5hashPassword
-	 *            the MD5 hash of the user's password
-	 * @return userId or -1 if failed.
-	 */
-	public int validLogin(String username, String MD5hashPassword) {
-		PreparedStatement ps;
-		int id = -1;
-
-		try {
-			ps = db.preparedStatement(SQLUserStatements.selectPassword());
-			ps.setString(1, username);
-			ResultSet set = ps.executeQuery();
-			String passInDB = null;
-			if (set != null && set.next())
-				passInDB = set.getString(2);
-
-			if (MD5hashPassword.equals(passInDB))
-				id = set.getInt(1);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				db.closeStatement();
-			} catch (SQLException e) {
-			}
-		}
-		return id;
-	}
-
-	/**
-	 * Returns the userImage URL.
-	 * 
-	 * @param userId
-	 * @return
-	 */
-	public String getUserImageURL(int userId) {
-		PreparedStatement ps = null;
-		String URL = null;
-
-		try {
-			ps = db.preparedStatement(SQLUserStatements.selectUserImageURL());
-			ps.setInt(1, userId);
-			ResultSet set = ps.executeQuery();
-			if (set != null && set.next())
-				URL = set.getString(1);
-		} catch (SQLException e) {
-		} finally {
-			try {
-				ps.close();
-			} catch (SQLException e) {
-			}
-		}
-		return URL;
-	}
-
-	/**
-	 * Checks if the username is already taken.
-	 * 
-	 * @param username
-	 *            username to check.
-	 * @return true if the username is available and false otherwise.
-	 */
-	public boolean checkUsernameAvaliability(String username) {
-		PreparedStatement ps = null;
-
-		boolean avaliable = true;
-
-		try {
-			ps = db.preparedStatement(SQLUserStatements.selectUsername());
-			ps.setString(1, username);
-			ResultSet set = ps.executeQuery();
-			if (set.next()) {
-				int count = set.getInt(1);
-				if (count != 0)
-					avaliable = false;
-			}
-		} catch (SQLException e) {
-		} finally {
-			try {
-				ps.close();
-			} catch (SQLException e) {
-			}
-		}
-
-		return avaliable;
-	}
+	
 
 	/**
 	 * 

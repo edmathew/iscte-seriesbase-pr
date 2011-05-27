@@ -7,7 +7,7 @@
 <% if(request.getParameter("id") == null){ %>
 		<jsp:forward page="linkControl?link=error"/>
 <%}
-	request.getRequestDispatcher("/seriesControl?action=getById&id="+request.getParameter("id")).include(request,response);
+	request.getRequestDispatcher("/router?seriesAction=getById&id="+request.getParameter("id")).include(request,response);
 	Series s = (Series) session.getAttribute("series");
 	boolean isFavorite = false;
 	if(session.getAttribute("isFavorite") != null){
@@ -30,7 +30,7 @@
 					<%if(session.getAttribute("loginname") != null){ %>
 						<div class="favSeries">
 							<%if(!isFavorite){%>
-								<a href="seriesControl?action=addToFavorites">Add to Favorites</a>
+								<a href="router?seriesAction=addToFavorites">Add to Favorites</a>
 							<%}else{%>
 								<img alt="" src="images/Yes_check.png" />
 								Favorite

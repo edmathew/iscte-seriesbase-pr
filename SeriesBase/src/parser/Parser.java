@@ -1,13 +1,9 @@
 package parser;
 
-import java.io.IOException;
-
 import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
@@ -24,9 +20,8 @@ public class Parser {
 		b.setNamespaceAware(true);
 		try {
 			doc = b.newDocumentBuilder().parse(uri);
-		} catch (SAXException e) {
-		} catch (IOException e) {
-		} catch (ParserConfigurationException e) {
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 
 		xpath = XPathFactory.newInstance().newXPath();

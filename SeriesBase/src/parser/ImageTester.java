@@ -9,9 +9,8 @@ import javax.imageio.ImageIO;
 
 public class ImageTester {
 
-	private static void save(BufferedImage image, String ext) {
-		String fileName = "savingAnImage";
-		File file = new File("WebContent/" + fileName + "." + ext);
+	public static void save(BufferedImage image, String ext, String fileName) {
+		File file = new File("WebContent\\" + fileName);
 		try {
 			ImageIO.write(image, ext, file); // ignore returned boolean
 		} catch (IOException e) {
@@ -25,12 +24,14 @@ public class ImageTester {
 		try {
 			// Read from a URL
 			URL url = new URL(
-					"http://cache.thetvdb.com/banners/posters/80348-6.jpg");
+					"http://thetvdb.com/banners/posters/80348-6.jpg");
 			image = ImageIO.read(url);
-			save(image, "jpg");
+			save(image, "jpg", "savingAnImage.jpg");
 		} catch (IOException e) {
 			System.out.println("I didn't read that crap");
 		}
+		
+		System.out.println("DONE");
 
 	}
 }

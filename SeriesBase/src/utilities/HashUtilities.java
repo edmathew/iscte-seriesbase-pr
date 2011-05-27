@@ -24,10 +24,9 @@ public class HashUtilities {
 		}
 		
 		return hashText;
-		
+	}
 	
-		
-		
-
+	public static void main(String[] args) {
+		System.out.println(getMD5Hash("atuaprima"));
 	}
 }
