@@ -18,26 +18,24 @@ form {
 }
 
 /*** GENERIC TAGS ***/
-p.noBreak{
+p.noBreak {
 	display: inline;
-	margin-right: 5px;	
+	margin-right: 5px;
 }
 
 .tooltip {
-	background-color:#000;
-	border:1px solid #fff;
-	padding:10px 15px;
-	width:200px;
-	display:none;
-	color:#fff;
-	text-align:left;
-	font-size:12px;
-
+	background-color: #000;
+	border: 1px solid #fff;
+	padding: 10px 15px;
+	width: 200px;
+	display: none;
+	color: #fff;
+	text-align: left;
+	font-size: 12px;
 	/* outline radius for mozilla/firefox only */
-	-moz-box-shadow:0 0 10px #000;
-	-webkit-box-shadow:0 0 10px #000;
+	-moz-box-shadow: 0 0 10px #000;
+	-webkit-box-shadow: 0 0 10px #000;
 }
-
 
 /***************** START OF LOGO ZONE ******************/
 .wrapper {
@@ -50,7 +48,7 @@ p.noBreak{
 
 /***************** START OF MENU BAR ******************/
 ul#menu {
-	width: 95.8%;
+	width: 96%;
 	height: 43px;
 	background: #FFF url("images/menu-bg.gif") top left;
 	font-size: 0.8em;
@@ -98,7 +96,6 @@ a:hover {
 	text-decoration: underline;
 }
 
-
 .header {
 	background-image: url('../images/SeriesBaseLogo.gif');
 	background: fixed;
@@ -115,7 +112,6 @@ a:hover {
 	text-decoration: bold;
 	text-align: center;
 }
-
 
 /***************** TABLES ******************/
 td.label {
@@ -169,16 +165,22 @@ p.submitButton {
 }
 
 /********************** MAIN LAYOUT **********************/
-.mainContainer {
-	width: 50%;
+.mainContainer { /* width: 50%;
 	margin: 0px;
-	line-height: 80%;
+	line-height: 80%; */
+	min-height: 100%;
+	width: 75%;
+	height: auto;
+	/*text-align: center;/* IE fix to center the page */
+	margin-bottom: -36px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .mainHeader {
 	padding: 1px;
 	color: white;
-	background-color: /* #232DA3  #343EB5*/ #4751C7  ;
+	background-color: /* #232DA3  #343EB5*/ #4751C7 ;
 	clear: left;
 	margin-bottom: 15px;
 
@@ -195,6 +197,7 @@ mainH1.header {
 	margin: 0;
 }
 
+
 .mainLeft {
 	width: 160px;
 	margin: 0;
@@ -205,15 +208,6 @@ mainH1.header {
 	padding: 2px;
 	width: 160px;
 	height: 190px;
-}
-
-.mainContent {
-	margin-left: 190px;
-	margin-right: 590px;
-	border-left: 1px solid gray;
-	padding: 1em;
-	line-height: 28px;
-	background-color: #DEDEDE;
 }
 
 .mainImagem1 {
@@ -232,47 +226,80 @@ mainH1.header {
 	margin: 2% auto;
 }
 
-
 #imagemEpisodes img {
 	width: 50%;
 	height: 100%;
 }
 
-.Logo{
+.Logo {
 	width: 270px;
 	heigth: 70px;
 	margin-bottom: -10px;
 }
 
-.Logo img{
-	width 50%;
-	height 50%;
-}
-
-
-.GeneralProfile{
-	height: 122px;
-	background-color: #DEDEDE;
-	margin-bottom: 15px;
+.Logo img {width 50%;height 50%;
 	
 }
+
+.mainNews {
+	margin-bottom: 25px;
+	background-color: #DEDEDE;
+
+}
+
+.mainImg {
+	float: left;
+	width: 150px;
+	height: 220px;
+}
+
+.mainImg img {
+	float: left;
+	max-width: 100%;
+	max-height: 100%;
+	margin-left: 2px;
+	padding: 1em;
+}
+
+.mainContent {
+	float: right;
+	padding: 1em;
+	width: 75%;
+	line-height: 20px;
+}
+
+.mainVideo{
+	float: inherit;
+	padding: 1em;
+	width: 70%;
+	line-height: 20px;
+}
+
+.GeneralProfile {
+	height: 122px;
+        background-color: #DEDEDE;
+        margin-bottom: 15px;
+
+	
+}
+
 .Photo {
 	width: 20px;
 	height: 20px;
 }
 
-.Photo img{
+.Photo img {
 	float: left;
 	max-width: 100px;
 	max-height: 300px;
 }
 
 .Content{
-	float: rigth;	
 	padding: 1em;
 	line-height: 20px;
 	
 }
+
 
 .Content h2{
 	font-family: verdana;
@@ -287,6 +314,11 @@ mainH1.header {
 	font-size: 12px;
 	margin-left: 100px;
 
+}
+
+.clear{
+	clear: both;
+	
 }
 /******************* END OF MAIN LAYOUT *******************/
 .container {
@@ -318,7 +350,7 @@ mainH1.header {
   	font-size: 6px;
 }
 
-
+	
 .rodTop {
 	position: absolute;
 }
@@ -406,12 +438,12 @@ mainH1.header {
 }
 
 /*** CONTROL PANEL ***/
-.controlPanel{
+.controlPanel {
 	float: left;
 	margin: 5px;
 }
 
-.controlPanel h1{
+.controlPanel h1 {
 	font-size: 180%;
 }
 
@@ -426,44 +458,42 @@ mainH1.header {
 	font-size: 14px;
 }
 
-.field{
+.field {
 	padding: 3px;
 }
 
-.field label{
+.field label {
 	float: left;
 	text-align: left;
 }
 
-.field input{
+.field input {
 	width: 50%;
 }
 
-label.warning{
+label.warning {
 	color: red;
-	margin-left: 10px;	
+	margin-left: 10px;
 }
 
-
 /*** PERSONS SEARCH ***/
-.peopleSearch{
+.peopleSearch {
 	width: 700px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 100px;
 }
 
-.results{
-}
+.results {
 	
-	/*font-size: 14px;
+}
+
+/*font-size: 14px;
 	text-align: right;
 	float: right;
 	height: 100px;
 	width: 250px;
 	color: #FFFFFF;*/
-
-
 .loginFormLinks {
 	font-family: calibri;
 	line-height: normal;
