@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%
 	session.setAttribute("menu", new String("about"));
 %>
 
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>SeriesBase - About</title>
-		<jsp:include page="headerLinks.jsp" />
-	</head>
-	<body>
-		<div class="container">
-			<jsp:include page="menu.jsp" />
-			<%-- <div class="contents">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>SeriesBase - About</title>
+<jsp:include page="headerLinks.jsp" />
+</head>
+<body>
+	<div class="container">
+		<jsp:include page="menu.jsp" />
+		<%-- <div class="contents">
 				<table border="1" id="s1">
 					<%
 							for (int i = 0; i < series.length; i++) {
@@ -29,9 +30,12 @@
 						%>
 				</table>
 			</div> --%>
-			<div class="mainHeader">
-				<h1 class="mainHeader">Who are We?</h1>
-			</div>
+		<div class="mainHeader">
+			<h1 class="mainHeader">Who are We?</h1>
+		</div>
+
+		<div class="center">
+
 			<div class="GeneralProfile">
 				<div class="Photo">
 					<img src="images/nunodias.png" alt="" />
@@ -60,7 +64,8 @@
 				</div>
 			</div>
 		</div>
-	
-		<jsp:include page="footer.jsp" />
-	</body>
+	</div>
+
+	<jsp:include page="footer.jsp" />
+</body>
 </html>
