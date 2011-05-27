@@ -35,7 +35,7 @@
 				<img src="images/episodes.jpg" alt="" />
 			</div>
 			<div class="mainContent">
-				<h2>EPISODES2</h2>
+				<h2>EPISODES</h2>
 				<p>Matt LeBlanc returns to TV this weekend with Episodes, a new
 					Showtime series in which he plays himself as the star of a
 					disastrous American adaptation of a British sitcom. Read on for my
