@@ -41,7 +41,10 @@
 					<ul>
 					<%for(int i = 0; i < series.length; i++){ 
 						Series s = (Series)series[i];%>
-							<li><%=s.getName()%></li>
+							<li>
+								<a href="router?link=getSeriesById&id=<%=s.getId()%>">
+									<%=s.getName()%></a>
+							</li>
 						
 					<%}%>
 					</ul>
@@ -51,7 +54,7 @@
 		</div>
 				
 		
-		<jsp:include page="footer.jsp" />
+		<jsp:include page="footer.jsp"/>
 	
 	</body>
 </html>

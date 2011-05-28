@@ -16,6 +16,9 @@
 	<body>
 		<div class="container">
 			<jsp:include page="menu.jsp" />
+			<div class="mainHeader">
+				<h1>People</h1>
+			</div>
 			<div class="peopleSearch">
 				<p class="noBreak">Search</p>
 					<input type="text" id="personFilter" size="80" />
