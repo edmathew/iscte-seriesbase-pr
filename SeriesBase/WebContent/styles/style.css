@@ -202,7 +202,6 @@ mainH1.header {
 	width: 300px;
 }
 
-
 .Logo {
 	width: 270px;
 	heigth: 70px;
@@ -441,9 +440,19 @@ label.warning {
 /*** PERSONS SEARCH ***/
 .peopleSearch {
 	background-color: #DEDEDE;
-	margin-left: auto;
-	margin-right: auto;
 	text-align: center;
+	margin-left: 60%;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.resultsDiv {
+	background-color: #DEDEDE;
+	min-width: 300px;
+	min-height: 300px;
+	float: left;
+	margin-left: 20px;
+	display: block;
 }
 
 .results {
@@ -484,7 +493,6 @@ label.warning {
 	display: inline;
 	width: 65px;
 	height: 60px;
-	
 }
 
 .bubblewrap li img {

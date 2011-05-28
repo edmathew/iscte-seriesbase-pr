@@ -19,24 +19,27 @@
 			<div class="mainHeader">
 				<h1>People</h1>
 			</div>
-			<div class="peopleSearch">
-				<p class="noBreak">Search</p>
-					<input type="text" id="personFilter" size="80" />
-					<button>Go</button>
-								
-				<%
-					for(int i= 0; i < list.length; i++){
-						Person p = (Person) list[i];
-				%>
+			<div style="diplay: table;">
+				<div class="resultsDiv">
+					<%
+						for(int i= 0; i < list.length; i++){
+							Person p = (Person) list[i];
+					%>
 					
 					<div class="results" id="<%=p.getName()%>">
-						<a href="router?link=getPersonById&id=<%=p.getId()%>">
-							<b><%=p.getName() %></b>
-						</a>
-					</div>
-				<%} %>
+							<a href="router?link=getPersonById&id=<%=p.getId()%>">
+								<b><%=p.getName() %></b>
+							</a>
+						</div>
+					<%} %>
+				</div>
+				<div class="peopleSearch">	
+					<p class="noBreak">Search</p>
+						<input type="text" id="personFilter" size="40" />
+				</div>
+				
 			</div>
-			
+			<div style="clear:both;"></div>
 		
 		</div>
 		<jsp:include page="footer.jsp" />
@@ -72,10 +75,6 @@
 						else
 							jQuery(this).hide();
 					});					
-			});
-			
-			jQuery('button').click(function(){
-				jQuery('#personFilter').trigger('keydown');
 			});
 			
 			jQuery('#personFilter').keypress(function(event){
