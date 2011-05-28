@@ -18,9 +18,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link rel="stylesheet" href="../styles/style.css" type="text/css" media="screen"/> 
 		<title>Seriesbase - Register</title>
-		
 		<jsp:include page="headerLinks.jsp"/>
 	</head>
 		

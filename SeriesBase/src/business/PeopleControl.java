@@ -31,5 +31,4 @@ public class PeopleControl {
 		req.getSession().setAttribute("personsList", persons.toArray());
 	}
 
-	
 }

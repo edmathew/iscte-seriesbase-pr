@@ -322,7 +322,7 @@ mainH1.header {
 }
 /******************* END OF MAIN LAYOUT *******************/
 .container {
-	min-height: 90%;
+	min-height: 87%;
 	width: 75%;
 	height: auto;
 	/*text-align: center;/* IE fix to center the page */
@@ -485,7 +485,7 @@ label.warning {
 }
 
 .results {
-	
+	display: none;
 }
 
 /*font-size: 14px;

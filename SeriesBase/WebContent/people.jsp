@@ -35,22 +35,40 @@
 		
 		</div>
 		<jsp:include page="footer.jsp" />
+		
 		<script type="text/javascript">
-			jQuery('button').click(function () {
-				
-				//jQuery(".results").toggle("slow");
-				//jQuery(".results").hide("slow");
-				jQuery('.results').each(function(el){
-					var text = document.getElementById('personFilter').value.toLowerCase();
+			jQuery('#personFilter').change(function(){
+				var text = jQuery(this).attr("value").toLowerCase();
+				if(text === "")
+					jQuery('.results').each(function(){
+						jQuery(this).hide();
+					}); 
+				else
+					jQuery('.results').each(function(el){
+						var idValue = jQuery(this).attr("id").toLowerCase();
+						if(idValue.search(text) != -1)
+							jQuery(this).show();
+						else
+							jQuery(this).hide();
+					});					
+			});
+		
+			jQuery('#personFilter').keydown(function(){
+				var text = jQuery(this).attr("value").toLowerCase();
+				if(text === "")
+					jQuery('.results').each(function(){
+						jQuery(this).hide();
+					}); 
+				else
+					jQuery('.results').each(function(el){
+						var idValue = jQuery(this).attr("id").toLowerCase();
+						if(idValue.search(text) != -1)
+							jQuery(this).show();
+						else
+							jQuery(this).hide();
+					});					
+			});
 					
-					if(jQuery(this).attr("id").search(text)!= -1)
-						jQuery(this).show("slow");
-					else
-						jQuery(this).hide("slow");
-			
-				});
-			});   
-			
 		</script>
 		
 	

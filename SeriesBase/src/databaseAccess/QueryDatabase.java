@@ -357,9 +357,32 @@ public class QueryDatabase {
 		return all;
 	}
 
-	
-	
-	
+	/**
+	 * Checks if a person is already in the database.
+	 * 
+	 * @param name
+	 *            Name to Search
+	 * @return Persons id or -1 if there isn't register in the database.
+	 */
+	public int checkIfPersonExists(String name) {
+		int id = -1;
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLPeopleStatements.getPersonId());
+			ps.setString(1, name);
+			ResultSet set = ps.executeQuery();
+			if(set.next())
+				id = set.getInt(1);
+		} catch (SQLException e) {
+		} finally {
+			try {
+				db.closeStatement();
+			} catch (SQLException e1) {
+			}
+		}
+		return id;
+	}
+
 	/************************************************************************
 	 * TABLE Series
 	 ************************************************************************/
@@ -519,9 +542,11 @@ public class QueryDatabase {
 					insertEpisode(id, e);
 
 				for (Person p : series.getActors()) {
-					int pId = insertPerson(p);
-					if (pId != -1)
-						insertSeriesActor(pId, id);
+					int personsId = checkIfPersonExists(p.getName());
+					if(personsId == -1)
+						personsId = insertPerson(p);
+					
+					insertSeriesActor(personsId, id);
 				}
 				for (String g : series.getGenres()) {
 					int genreId = getGenreId(g);
@@ -634,7 +659,7 @@ public class QueryDatabase {
 			ps = db.preparedStatement(SQLGenreStatements.countGenre());
 			ps.setString(1, genre);
 			ResultSet s = ps.executeQuery();
-			if (s != null && s.next() && s.getInt(0) != 0)
+			if (s.next() && s.getInt(1) != 0)
 				exists = true;
 		} catch (SQLException e) {
 		} finally {

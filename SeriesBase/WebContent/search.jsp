@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <%@page import="dto.Series"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%	session.setAttribute("menu", new String("series")); %>
-<%
+<%	
+	session.setAttribute("menu", new String("series"));
 	request.getRequestDispatcher("/router?seriesAction=getAll").include(request,response);
 	Object[] series = (Object[]) session.getAttribute("seriesList");
 	session.removeAttribute("seriesList");
@@ -10,11 +10,10 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Search</title>
+		<title>Seriesbase - Search</title>
 		<jsp:include page="headerLinks.jsp"/>
 		
 		<!-- Loading Filters -->
-		<script type="text/javascript" src="scripts/jquery-1.6.1.min.js"></script>
 		<script type="text/javascript" src="scripts/picnet.table.filter.min.js"></script>
 		<script type="text/javascript" src="scripts/searchFilter.js"></script>
 	</head>

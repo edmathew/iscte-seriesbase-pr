@@ -88,6 +88,7 @@ public class SeriesParser {
 		}
 		LinkedList<String> genres = splitNames(getNode(nodes, "Genre")
 				.getTextContent());
+		System.out.println(genres);
 		String network = getNode(nodes, "Network").getTextContent().trim();
 		String overview = getNode(nodes, "Overview").getTextContent().trim();
 		String name = getNode(nodes, "SeriesName").getTextContent().trim();
