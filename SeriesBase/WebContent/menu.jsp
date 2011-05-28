@@ -60,15 +60,14 @@
 		<div class="bubblewrap">
 			<ul>
 				<li><a
-					href="http://www.facebook.com/pages/SeriesBase/175664412488584"><img
+					href="http://www.facebook.com/pages/SeriesBase/175664412488584" target="_blank"><img
 						src="images/facebook.png" title="Add to Facebook" /> </a></li>
-				<li><a href="http://twitter.com/SeriesBase"><img
+				<li><a href="http://twitter.com/SeriesBase" target="_blank"><img
 						src="images/twitter.png" title="Add to Twitter" /> </a></li>
 			</ul>
 		</div>
 	</div>
 
-	<!-- <div class="clearfix"></div> -->
 	<div class="mainMenu">
 		<ul id="menu">
 			<%
