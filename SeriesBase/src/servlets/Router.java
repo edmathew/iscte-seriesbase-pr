@@ -114,6 +114,8 @@ public class Router extends HttpServlet {
 			resp.sendRedirect("showSeriesInfo.jsp?id=" + req.getParameter("id"));
 		else if (link.equals("people"))
 			resp.sendRedirect("people.jsp");
+		else if (link.equals("getPersonById"))
+			resp.sendRedirect("personPage.jsp?id=" + req.getParameter("id"));
 		else if (link.equals("about"))
 			resp.sendRedirect("about.jsp");
 		else
@@ -197,15 +199,27 @@ public class Router extends HttpServlet {
 
 	/**
 	 * Process all the request for the people related actions.
+	 * 
 	 * @param req
+	 *            Http Request
 	 * @param resp
+	 *            Http Response
 	 * @param action
+	 *            action to do
+	 * @throws ForbiddenException
+	 *             if there are errors in the request
 	 */
 	private void processPeopleActions(HttpServletRequest req,
-			HttpServletResponse resp, String action) {
-		if(action.equals("getAll"))
-			PeopleControl.getAllPeople(req);
-		
+			HttpServletResponse resp, String action) throws ForbiddenException {
+		try {
+			if (action.equals("getAll"))
+				PeopleControl.getAllPeople(req);
+			else if (action.equals("getById"))
+				PeopleControl.getById(req);
+
+		} catch (NumberFormatException e) {
+			throw new ForbiddenException();
+		}
 
 	}
 

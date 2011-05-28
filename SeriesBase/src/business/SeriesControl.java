@@ -59,9 +59,12 @@ public class SeriesControl {
 	 * 
 	 * @param req
 	 *            HttpServletResponse
+	 * @throws NoLoginException if the user isn't logged
 	 */
-	public static void getByUserId(HttpServletRequest req) {
+	public static void getByUserId(HttpServletRequest req) throws NoLoginException {
 		int userId = UsersControl.getUserId(req.getSession());
+		if(userId < 0)
+			throw new NoLoginException("mySeries.jsp");
 		LinkedList<Series> series = QueryDatabase.getInstance()
 				.getSeriesByUserId(userId);
 		req.getSession().setAttribute("seriesList", series.toArray());

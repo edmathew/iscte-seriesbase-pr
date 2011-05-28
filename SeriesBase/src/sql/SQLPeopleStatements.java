@@ -21,16 +21,24 @@ public class SQLPeopleStatements {
 	public static String getAllPersons() {
 		return "SELECT * FROM Pessoa";
 	}
-	
+
 	/**
 	 * SQL select statement to retrieve a persons id by it's name.
+	 * 
 	 * @return SQL Prepared Statement
 	 */
-	public static String getPersonId(){
+	public static String getPersonId() {
 		return "SELECT idPessoa FROM Pessoa WHERE Nome = ?";
 	}
-	
-	
-	
+
+	/**
+	 * SQL statement to select a person by it's ID.
+	 * 
+	 * @return SQL Prepared Statement
+	 */
+	public static String getPersonById() {
+		return "SELECT * FROM Pessoa WHERE idPessoa = ?";
+
+	}
 
 }

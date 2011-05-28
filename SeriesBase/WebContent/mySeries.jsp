@@ -1,13 +1,24 @@
 <!DOCTYPE HTML>
 
+<%@page import="exceptions.NoLoginException"%>
 <%@page import="dto.Series"%>
 <%@ page import="java.util.LinkedList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%	session.setAttribute("menu", new String("mySeries"));%>
+
 <%
-	request.getRequestDispatcher("/router?seriesAction=getByUserId").include(request,response);
-	Object[] series = (Object[]) session.getAttribute("seriesList");
-	session.removeAttribute("seriesList");
+	boolean logged = session.getAttribute("loginID") != null;
+	Object[] series = new Object[0];
+	
+	if(!logged){
+		session.setAttribute("tempAddress", "mySeries.jsp");
+		response.sendRedirect("router?link=login");
+	}else{
+		request.getRequestDispatcher("/router?seriesAction=getByUserId").include(request,response);
+		series = (Object[]) session.getAttribute("seriesList");
+		session.removeAttribute("seriesList");
+	}
+	
 %>
 <html>
 	<head>

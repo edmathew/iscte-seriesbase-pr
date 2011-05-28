@@ -371,16 +371,42 @@ public class QueryDatabase {
 			ps = db.preparedStatement(SQLPeopleStatements.getPersonId());
 			ps.setString(1, name);
 			ResultSet set = ps.executeQuery();
-			if(set.next())
+			if (set.next())
 				id = set.getInt(1);
 		} catch (SQLException e) {
 		} finally {
 			try {
-				db.closeStatement();
+				ps.close();
 			} catch (SQLException e1) {
 			}
 		}
 		return id;
+	}
+
+	/**
+	 * Gets a person from the database according to a id.
+	 * 
+	 * @param personID
+	 *            person's ID
+	 * @return Person with id personID or null if the person doesn't exists.
+	 */
+	public Person getPersonByID(int personID) {
+		Person p = null;
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLPeopleStatements.getPersonById());
+			ps.setInt(1, personID);
+			ResultSet set = ps.executeQuery();
+			if (set.next())
+				p = ResultSetReader.readPerson(set);
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e1) {
+			}
+		}
+		return p;
 	}
 
 	/************************************************************************
@@ -543,9 +569,9 @@ public class QueryDatabase {
 
 				for (Person p : series.getActors()) {
 					int personsId = checkIfPersonExists(p.getName());
-					if(personsId == -1)
+					if (personsId == -1)
 						personsId = insertPerson(p);
-					
+
 					insertSeriesActor(personsId, id);
 				}
 				for (String g : series.getGenres()) {

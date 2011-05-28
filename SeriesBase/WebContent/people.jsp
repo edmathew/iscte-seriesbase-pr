@@ -18,7 +18,7 @@
 			<jsp:include page="menu.jsp" />
 			<div class="peopleSearch">
 				<p class="noBreak">Search</p>
-					<input type="text"  id="personFilter" size="80" />
+					<input type="text" id="personFilter" size="80" />
 					<button>Go</button>
 								
 				<%
@@ -27,7 +27,9 @@
 				%>
 					
 					<div class="results" id="<%=p.getName()%>">
-						<b><%=p.getName() %></b>
+						<a href="router?link=getPersonById&id=<%=p.getId()%>">
+							<b><%=p.getName() %></b>
+						</a>
 					</div>
 				<%} %>
 			</div>
