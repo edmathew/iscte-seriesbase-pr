@@ -6,7 +6,7 @@
 	String location = request.getContextPath();
 	String currentMenu = session.getAttribute("menu") != null ? (String) session
 			.getAttribute("menu") : "";
-%> 
+%>
 
 <div id="rodTop"></div>
 <div id="login">
@@ -52,10 +52,23 @@
 
 		</ul>
 	</div>
+	<div class="entreLoginMenu">
 
-	<div class="Logo">
-		<img src="images/logo.png" alt="" />
+		<div class="Logo">
+			<img src="images/logo.png" alt="" />
+		</div>
+		<div class="clear"></div> 
+		<div class="bubblewrap">
+			<ul>
+				<li><a
+					href="http://www.facebook.com/pages/SeriesBase/175664412488584"><img
+						src="images/facebook.png" title="Add to Facebook" /> </a></li>
+				<li><a href="http://twitter.com/SeriesBase"><img
+						src="images/twitter.png" title="Add to Twitter" /> </a></li>
+			</ul>
+		</div>
 	</div>
+
 	<!-- <div class="clearfix"></div> -->
 	<div class="mainMenu">
 		<ul id="menu">
