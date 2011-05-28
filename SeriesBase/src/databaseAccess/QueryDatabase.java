@@ -312,7 +312,7 @@ public class QueryDatabase {
 		int personId = -1;
 		PreparedStatement ps = null;
 		try {
-			ps = db.preparedStatement(SQLSeriesStatements.insertPerson());
+			ps = db.preparedStatement(SQLPeopleStatements.insertPerson());
 			ps.setString(1, p.getName());
 			if (p.getImageURL() != null)
 				ps.setString(2, p.getImageURL());
@@ -413,6 +413,11 @@ public class QueryDatabase {
 	 * TABLE Series
 	 ************************************************************************/
 
+	/**
+	 * Gets all the series in the database.
+	 * 
+	 * @return Series List
+	 */
 	public LinkedList<Series> getAllSeries() {
 		LinkedList<Series> all = new LinkedList<Series>();
 		try {
@@ -430,6 +435,34 @@ public class QueryDatabase {
 		}
 		return all;
 	}
+	
+	/**
+	 * Gets all the series with a person which id is equals to personID.
+	 * 
+	 * @param personID
+	 *            The person's ID
+	 * @return Series List
+	 */
+	public LinkedList<Series> getSeriesByPersonId(int personID) {
+		LinkedList<Series> all = new LinkedList<Series>();
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLSeriesStatements.getSeriesByPersonId());
+			ps.setInt(1, personID);
+			ResultSet set = ps.executeQuery();
+			while (set.next())
+				all.add(ResultSetReader.readSeries(set));
+
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e1) {
+			}
+		}
+		return all;
+	}
+
 
 	public LinkedList<Series> getSeriesByUserId(int userId) {
 		PreparedStatement ps = null;
@@ -450,6 +483,7 @@ public class QueryDatabase {
 		}
 		return all;
 	}
+	
 
 	public Series getSeriesById(int id) {
 		PreparedStatement ps = null;

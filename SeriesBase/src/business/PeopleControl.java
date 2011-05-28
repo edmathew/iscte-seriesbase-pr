@@ -46,9 +46,11 @@ public class PeopleControl {
 		Person p = QueryDatabase.getInstance().getPersonByID(id);
 		if (p == null)
 			throw new ForbiddenException();
-		else
+		else {
 			req.getSession().setAttribute("person", p);
+			req.getSession().setAttribute("seriesList",
+					QueryDatabase.getInstance().getSeriesByPersonId(p.getId()).toArray());
+		}
 	}
 
-	
 }

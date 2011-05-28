@@ -41,6 +41,16 @@ public class SQLSeriesStatements {
 				+ "AND idGenero = Genero_idGenero";
 	}
 
+	/**
+	 * SQL statement to select all the series with a person by the person's id.
+	 * 
+	 * @return SQL Prepared Statement
+	 */
+	public static String getSeriesByPersonId() {
+		return "SELECT idSerie, Nome, AnoInicial, Resumo, ImageURL, Network FROM Serie, actoresdaserie" +
+				" WHERE idSerie = Serie_idSerie AND Pessoa_idPessoa = ?";
+	}
+
 	public static String getActorsBySeriesId() {
 		return "SELECT idPessoa, Nome, PhotoURL FROM pessoa, actoresdaserie WHERE Serie_idSerie = ? "
 				+ "AND idPessoa = Pessoa_idPessoa";
@@ -58,10 +68,6 @@ public class SQLSeriesStatements {
 	public static String insertEpisode() {
 		return "INSERT INTO episodio (Serie_idSerie, temporada, n_episodio, titulo, "
 				+ "resumo, data_exibicao) VALUES (?, ?, ?, ?, ?, ?)";
-	}
-
-	public static String insertPerson() {
-		return "INSERT INTO pessoa (Nome, PhotoURL) VALUES (?, ?)";
 	}
 
 	public static String insertSeriesActor() {

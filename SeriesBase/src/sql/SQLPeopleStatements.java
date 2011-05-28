@@ -23,6 +23,15 @@ public class SQLPeopleStatements {
 	}
 
 	/**
+	 * SQL statement to insert a new person in the database.
+	 * 
+	 * @return SQL Prepared Statement
+	 */
+	public static String insertPerson() {
+		return "INSERT INTO pessoa (Nome, PhotoURL) VALUES (?, ?)";
+	}
+
+	/**
 	 * SQL select statement to retrieve a persons id by it's name.
 	 * 
 	 * @return SQL Prepared Statement

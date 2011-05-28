@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<%@page import="dto.Series"%>
 <%@page import="dto.Person"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <% if(request.getParameter("id") == null){ %>
@@ -7,7 +8,11 @@
 	request.getRequestDispatcher("/router?peopleAction=getById&id="+request.
 			getParameter("id")).include(request,response);
 	Person p = (Person) session.getAttribute("person");
+	Object [] series = (Object[]) session.getAttribute("seriesList");
+	
+	/*Clean the session control variables*/
 	session.removeAttribute("person");
+	session.removeAttribute("seriesList");
 %>
 <html>
 	<head>
@@ -33,7 +38,13 @@
 				</div>
 				
 				<div class="personData">
-					asdas
+					<ul>
+					<%for(int i = 0; i < series.length; i++){ 
+						Series s = (Series)series[i];%>
+							<li><%=s.getName()%></li>
+						
+					<%}%>
+					</ul>
 				</div>
 			</div>
 			
