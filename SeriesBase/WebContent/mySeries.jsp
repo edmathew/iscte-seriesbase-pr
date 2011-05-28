@@ -23,7 +23,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>My Series</title>
+		<title>SeriesBase - My Series</title>
 		<jsp:include page="headerLinks.jsp"/>
 	</head>
 	<body>

@@ -4,11 +4,6 @@
 <%@page import="dto.Series"%>
 <%
 	session.setAttribute("menu", new String("home"));
-	/* request.getRequestDispatcher(
-			"/seriesControl?action=getById&id="
-					+ request.getParameter("id")).include(request,
-			response);
-	 */Series s = (Series) session.getAttribute("series");
 %>
 
 <html>
@@ -27,16 +22,18 @@
 		</div>
 		<div class="mainNews">
 			<div class="mainImg">
-				<img src="images/episodes.jpg" />
+				<%
+					request.getRequestDispatcher(
+							"/router?seriesAction=getById&id=5").include(request,
+							response);
+					Series s1 = new Series((Series) session.getAttribute("series"));
+				%>
+				<img src="<%=s1.getImageURL()%>" />
 			</div>
 			<div class="mainContent">
-				<h2>EPISODES</h2>
+				<h2><%=s1.getName()%></h2>
 				<hr />
-				<div class="mainText">Matt LeBlanc returns to TV this weekend
-					with Episodes, a new Showtime series in which he plays himself as
-					the star of a disastrous American adaptation of a British sitcom.
-					Read on for my review of the show's first season, which premieres
-					Sunday night at 9:30 p.m. EST.</div>
+				<div class="mainText"><%=s1.getResumo()%></div>
 				<div class="mainVideo">
 					<object width="292" height="200">
 						<param name="movie"
@@ -52,7 +49,71 @@
 			</div>
 			<div class="clear"></div>
 		</div>
-
+		
+		<div class="mainNews">
+			<div class="mainImg">
+				<%
+					request.getRequestDispatcher(
+							"/router?seriesAction=getById&id=18"
+									).include(request,
+							response);
+					Series s2 = new Series((Series) session.getAttribute("series"));
+				%>
+				<img src="<%=s2.getImageURL()%>" />
+			</div>
+			<div class="mainContent">
+				<h2><%=s2.getName()%></h2>
+				<hr />
+				<div class="mainText"><%=s2.getResumo()%></div>
+				<div class="mainVideo">
+					<object width="292" height="200">
+						<param name="movie"
+							value="http://www.youtube.com/v/TqYX-qI9oxw?fs=1"></param>
+						<param name="allowFullScreen" value="true"></param>
+						<param name="allowScriptAccess" value="always"></param>
+						<embed src="http://www.youtube.com/v/TqYX-qI9oxw?fs=1"
+							type="application/x-shockwave-flash" allowfullscreen="true"
+							allowscriptaccess="always" width="292" height="200">
+						</embed>
+					</object>
+				</div>
+			</div>
+			
+			<div class="clear"></div>
+		</div>
+		
+		<div class="mainNews">
+			<div class="mainImg">
+				<%
+					request.getRequestDispatcher(
+							"/router?seriesAction=getById&id=50"
+									).include(request,
+							response);
+					Series s3 = new Series((Series) session.getAttribute("series"));
+				%>
+				<img src="<%=s3.getImageURL()%>" />
+			</div>
+			<div class="mainContent">
+				<h2><%=s3.getName()%></h2>
+				<hr />
+				<div class="mainText"><%=s3.getResumo()%></div>
+				<div class="mainVideo">
+					<object width="292" height="200">
+						<param name="movie"
+							value="http://www.youtube.com/v/ud8AJDaAW7c?fs=1"></param>
+						<param name="allowFullScreen" value="true"></param>
+						<param name="allowScriptAccess" value="always"></param>
+						<embed src="http://www.youtube.com/v/ud8AJDaAW7c?fs=1"
+							type="application/x-shockwave-flash" allowfullscreen="true"
+							allowscriptaccess="always" width="292" height="200">
+						</embed>
+					</object>
+				</div>
+			</div>
+			
+			<div class="clear"></div>
+		</div>
+		
 
 		<jsp:include page="footer.jsp" />
 </body>

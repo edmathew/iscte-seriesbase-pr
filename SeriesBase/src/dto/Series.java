@@ -26,6 +26,16 @@ public class Series implements Serializable {
 		this.genres = genres;
 		this.network = network;
 	}
+	
+	public Series(Series s){
+		this.name = s.name;
+		this.anoInicial = s.anoInicial;
+		this.resumo = s.resumo;
+		this.actors = s.actors;
+		this.genres = s.genres;
+		this.network = s.network;
+		this.imageURL = s.getImageURL();
+	}
 
 	public Series(String nome, int anoInicial, String resumo, String network) {
 		this.name = nome;

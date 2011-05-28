@@ -92,22 +92,12 @@ a:hover {
 	text-decoration: underline;
 }
 
-.header {
-	background-image: url('../images/SeriesBaseLogo.gif');
-	background: fixed;
-	font-family: verdana;
-	font-size: 20px;
-	text-decoration: blink;
-	height: 70px;
-	float: left;
-}
-
-.title {
+/* .title {
 	font-family: verdana;
 	font-size: 20px;
 	text-decoration: bold;
 	text-align: center;
-}
+} */
 
 /***************** TABLES ******************/
 td.label {
@@ -328,7 +318,7 @@ mainH1.header {
 	margin-left: 10px;
 }
 
-.footer { /* background-color: #1E1E1E; */
+.footer { 
 	padding-top: -40em;
 	text-align: center;
 	margin-left: auto;
@@ -509,8 +499,8 @@ label.warning {
 }
 
 .bubblewrap li img:hover {
-	-moz-transform: scale(1.5); /*scale up image 1.8x*/
-	-webkit-transform: scale(1.5);
-	-o-transform: scale(1.5);
+	-moz-transform: scale(1.8); /*scale up image 1.8x*/
+	-webkit-transform: scale(1.8);
+	-o-transform: scale(1.8);
 }
 /******************* END OF BUBBLES *******************/
