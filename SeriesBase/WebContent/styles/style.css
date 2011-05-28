@@ -512,12 +512,15 @@ label.warning {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	margin: -97px 0 0 80%;
+	height: 80px;
 }
 
 .bubblewrap li {
 	display: inline;
 	width: 65px;
 	height: 60px;
+	
 }
 
 .bubblewrap li img {
@@ -532,8 +535,8 @@ label.warning {
 }
 
 .bubblewrap li img:hover {
-	-moz-transform: scale(1.8); /*scale up image 1.8x*/
-	-webkit-transform: scale(1.8);
-	-o-transform: scale(1.8);
+	-moz-transform: scale(1.5); /*scale up image 1.8x*/
+	-webkit-transform: scale(1.5);
+	-o-transform: scale(1.5);
 }
 /******************* END OF BUBBLES *******************/

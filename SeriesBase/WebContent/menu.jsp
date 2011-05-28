@@ -57,7 +57,6 @@
 		<div class="Logo">
 			<img src="images/logo.png" alt="" />
 		</div>
-		<div class="clear"></div> 
 		<div class="bubblewrap">
 			<ul>
 				<li><a
