@@ -68,6 +68,15 @@
 							jQuery(this).hide();
 					});					
 			});
+			
+			jQuery('button').click(function(){
+				jQuery('#personFilter').trigger('keydown');
+			});
+			
+			jQuery('#personFilter').keypress(function(event){
+				if(event.which == '13')
+					jQuery('#personFilter').trigger('keydown');
+			});
 					
 		</script>
 		

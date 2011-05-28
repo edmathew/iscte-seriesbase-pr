@@ -1,11 +1,7 @@
 @CHARSET "ISO-8859-1";
 
 body {
-	/*background: url('../images/fundo3.jpg') bottom right no-repeat fixed;
-	
-	/*background-color: orange;
-	background-attachment:fixed;*/
-	
+	overflow-y: scroll;
 }
 
 html,body {
