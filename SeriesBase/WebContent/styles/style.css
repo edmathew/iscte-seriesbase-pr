@@ -631,3 +631,15 @@ label.warning {
 	left: 60px;
 	/*position where enlarged image should offset horizontally */
 }
+
+/*******************Forbidden**********************/
+.errorLog {
+	background-color: #DEDEDE;
+	font-family: Verdana, Arial;
+	font-weight: bold;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 80px;
+	color: red;
+}
