@@ -82,10 +82,12 @@ public class SeriesControl {
 	public static void addSeriesToFavorites(HttpServletRequest req)
 			throws NoLoginException {
 		int userId = UsersControl.getUserId(req.getSession());
-		if (userId < 0)
-			throw new NoLoginException("router?seriesAction=addToFavorites");
+		
 		int seriesId = ((Series) req.getSession().getAttribute("series"))
 				.getId();
+		
+		if (userId < 0)
+			throw new NoLoginException("router?seriesAction=addToFavorites");
 		QueryDatabase.getInstance().insertUserSeries(seriesId, userId);
 	}
 
@@ -98,7 +100,6 @@ public class SeriesControl {
 					"router?seriesAction=removeFromFavorites");
 		
 		QueryDatabase.getInstance().removeUserSeries(seriesId, userId);
-
 	}
 
 }

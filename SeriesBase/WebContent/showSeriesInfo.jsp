@@ -34,17 +34,17 @@
 				</div>
 				
 				<div class="seriesInfo">
-					<div class="favoriteState">
-						<%if(!isFavorite){%>
-									<a href="router?seriesAction=addToFavorites">
-										<img src="images/favorite.png">
-										Add to Favorites
-									</a>
-								<%}else{%>
-									<img alt="" src="images/Yes_check.png" />
-									Favorite
-						<%} %>
-					</div>
+						<div class="favoriteState">
+							<%if(!isFavorite){%>
+										<a href="router?seriesAction=addToFavorites">
+											<img src="images/favorite.png">
+											Add to Favorites
+										</a>
+									<%}else{%>
+										<img alt="" src="images/Yes_check.png" />
+										Favorite
+							<%} %>
+						</div>
 					
 					<div class="seriesDescription">
 						<b>Premiere Year</b><br/>

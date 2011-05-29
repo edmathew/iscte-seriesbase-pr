@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.Series;
+
 import business.PeopleControl;
 import business.SeriesControl;
 import business.UsersControl;
@@ -187,13 +189,19 @@ public class Router extends HttpServlet {
 				SeriesControl.getByUserId(req);
 			else if (action.equals("addToFavorites")
 					|| action.equals("removeFromFavorites")) {
+				int id = 0;
 				if (req.getHeader("Referer") == null)
 					throw new ForbiddenException();
-				if (action.equals("addToFavorites"))
+				if (action.equals("addToFavorites")) {
 					SeriesControl.addSeriesToFavorites(req);
-				else
+					id = ((Series) req.getSession().getAttribute("series"))
+							.getId();
+				} else {
 					SeriesControl.removeSeriesFromFavorites(req);
-				resp.sendRedirect(req.getHeader("Referer"));
+					id = Integer.parseInt(req.getParameter("id"));
+				}
+
+				resp.sendRedirect("showSeriesInfo.jsp?id=" + id);
 			}
 		} catch (NumberFormatException e) {
 			throw new ForbiddenException();
