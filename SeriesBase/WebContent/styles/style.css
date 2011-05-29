@@ -393,10 +393,20 @@ mainH1.header {
 	margin-bottom: 5px;
 	text-align: center;
 	background-color: #ECE2C6;
-	border-color: #E0E0E0 #C0C0C0 #C0C0C0 #E0E0E0;
+	border-color: #E0E0E0 #4751C7 #4751C7 #E0E0E0;
 	border-radius: 3px 3px 3px 3px;
 	border-style: solid;
 	font-size: medium;
+	-webkit-box-shadow: 5px 5px 8px #33CCCC;
+	-moz-box-shadow: 5px 5px 8px #33CCCC;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-topleft: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
 }
 
 .favSeries:HOVER {
