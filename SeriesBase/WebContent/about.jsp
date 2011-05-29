@@ -23,8 +23,9 @@
 				<img src="images/nunodias.png" alt="" />
 			</div>
 			<div class="Content">
-				<h2>Nuno Description</h2>
-				<p>texto do nuno</p>
+				<h2>Nuno Dias</h2>
+				<p>Estudante Finalista de Engenharia Informática no ISCTE-IUL</p>
+				<p>Residente em Lisboa, 25 anos</p>
 			</div>
 		</div>
 		<div class="GeneralProfile">
@@ -32,8 +33,9 @@
 				<img src="images/edgarmateus.png" alt="" />
 			</div>
 			<div class="Content">
-				<h2>Edgar Description</h2>
-				<p>Texto do edgar</p>
+				<h2>Edgar Mateus</h2>
+				<p>Estudante Finalista de Engenharia Informática no ISCTE-IUL</p>
+				<p>Residente em Arruda dos Vinhos, 20 anos</p>
 			</div>
 		</div>
 		<div class="GeneralProfile">
@@ -41,8 +43,9 @@
 				<img src="images/tiagoamaral.png" alt="" />
 			</div>
 			<div class="Content">
-				<h2>Tiago Description</h2>
-				<p>texto do tiago</p>
+				<h2>Tiago Amaral</h2>
+				<p>Estudante Finalista de Engenharia Informática no ISCTE-IUL</p>
+				<p>Residente em Sintra, 23 anos</p>
 			</div>
 		</div>
 	</div>

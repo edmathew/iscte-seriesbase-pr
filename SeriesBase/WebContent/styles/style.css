@@ -188,6 +188,10 @@ ul#menu li a.current {
 	background-color: /* #232DA3  #343EB5*/ #4751C7 ;
 	clear: left;
 	margin-bottom: 15px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
 }
 
 .mainHeader h1 {
@@ -236,10 +240,11 @@ mainH1.header {
 	background-color: #DEDEDE;
 	-webkit-box-shadow: 5px 5px 8px #818181;
 	-moz-box-shadow: 5px 5px 8px #818181;
-	-moz-border-radius-topleft: 25px;
-	-moz-border-radius-bottomright: 25px;
-	-webkit-border-top-left-radius: 25px;
-	-webkit-border-bottom-right-radius: 25px;
+	-moz-border-radius-topleft: 50px;
+	-moz-border-radius-bottomright: 100px;
+	-webkit-border-top-left-radius: 50px;
+	-webkit-border-bottom-right-radius: 100px;
+	
 }
 
 .mainImg {
@@ -288,6 +293,12 @@ mainH1.header {
 	height: 122px;
 	background-color: #DEDEDE;
 	margin-bottom: 15px;
+	-webkit-box-shadow: 5px 5px 8px #818181;
+	-moz-box-shadow: 5px 5px 8px #818181;
+	-moz-border-radius-bottomright: 25px;
+	-moz-border-radius-topright: 25px;
+	-webkit-border-top-right-radius: 25px;
+	-webkit-border-bottom-right-radius: 25px;
 }
 
 .Photo {
