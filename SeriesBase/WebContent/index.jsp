@@ -4,6 +4,20 @@
 <%@page import="dto.Series"%>
 <%
 	session.setAttribute("menu", new String("home"));
+
+	request.getRequestDispatcher("/router?seriesAction=getById&id=5").include(request,response);
+	Series s = new Series((Series) session.getAttribute("series"));
+	request.getRequestDispatcher("/router?seriesAction=getById&id=5")
+		.include(request,response);
+	Series s1 = new Series((Series) session.getAttribute("series"));
+	
+	request.getRequestDispatcher("/router?seriesAction=getById&id=18")
+		.include(request,response);
+	Series s2 = new Series((Series) session.getAttribute("series"));
+	
+	request.getRequestDispatcher("/router?seriesAction=getById&id=50")
+		.include(request,response);
+	Series s3 = new Series((Series) session.getAttribute("series"));
 %>
 
 <html>
@@ -22,12 +36,6 @@
 		</div>
 		<div class="mainNews">
 			<div class="mainImg">
-				<%
-					request.getRequestDispatcher(
-							"/router?seriesAction=getById&id=5").include(request,
-							response);
-					Series s1 = new Series((Series) session.getAttribute("series"));
-				%>
 				<img src="<%out.println(s1.getImageURL());%>" />
 			</div>
 			<div class="mainContent">
@@ -50,15 +58,9 @@
 			<div class="clear"></div>
 		</div>
 		
+		
 		<div class="mainNews">
 			<div class="mainImg">
-				<%
-					request.getRequestDispatcher(
-							"/router?seriesAction=getById&id=18"
-									).include(request,
-							response);
-					Series s2 = new Series((Series) session.getAttribute("series"));
-				%>
 				<img src="<%=s2.getImageURL()%>" />
 			</div>
 			<div class="mainContent">
@@ -84,13 +86,6 @@
 		
 		<div class="mainNews">
 			<div class="mainImg">
-				<%
-					request.getRequestDispatcher(
-							"/router?seriesAction=getById&id=50"
-									).include(request,
-							response);
-					Series s3 = new Series((Series) session.getAttribute("series"));
-				%>
 				<img src="<%=s3.getImageURL()%>" />
 			</div>
 			<div class="mainContent">
@@ -114,7 +109,7 @@
 			<div class="clear"></div>
 		</div>
 		
-
+</div>
 		<jsp:include page="footer.jsp" />
 </body>
 </html>

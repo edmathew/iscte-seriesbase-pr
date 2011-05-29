@@ -178,9 +178,6 @@ public class Router extends HttpServlet {
 	private void processSeriesActions(HttpServletRequest req,
 			HttpServletResponse resp, String action) throws ServletException,
 			IOException, ForbiddenException, NoLoginException {
-		if (req.getHeader("Referer") == null)
-			throw new ForbiddenException();
-
 		try {
 			if (action.equals("getAll"))
 				SeriesControl.getAllSeries(req);

@@ -100,6 +100,48 @@ ul#menu li a.current {
 /**********************************************/
 /*** 			SERIES & MY SERIES			***/
 /**********************************************/
+.seriesLine{
+	background-color: #DEDEDE;
+	width: 80%;
+	height: 25px;
+	margin-bottom: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: Verdana, Arial;
+	font-size: 13px;
+}
+
+.infoName{
+	margin-left: 10px;
+	float:left;
+	width: 50%;
+}
+
+.infoName a{
+	color: #136CB2;
+}
+
+.infoYear{
+	margin-left: 10px;
+	float: left;
+	width: 20%;	
+}
+
+.deleteSeries{
+	float:right;
+	clear:both;
+	text-align: right;
+	margin-right: 30px;
+	margin-left: 10px;
+	margin-top: -17px;
+	width: 20%;	
+}
+
+.deleteSeries img{
+	width: 25px;
+	height: 25px;	
+}
+
 .seriesInfo {
 	clear: right;
 	display: table;

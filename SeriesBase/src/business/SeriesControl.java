@@ -42,8 +42,10 @@ public class SeriesControl {
 	 */
 	public static void getById(HttpServletRequest req)
 			throws ForbiddenException {
+		System.out.println("getById");
 		QueryDatabase query = QueryDatabase.getInstance();
 		int id = Integer.parseInt(req.getParameter("id"));
+		System.out.println(id);
 		int userId = UsersControl.getUserId(req.getSession());
 		Series s = query.getSeriesById(id);
 		if (s != null) {
