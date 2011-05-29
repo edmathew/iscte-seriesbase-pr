@@ -43,6 +43,7 @@ public class QueryDatabase {
 	private QueryDatabase() {
 		try {
 			if (db == null || db.isConnectionClose())
+//				db = new DatabaseManager("72.13.93.202/seriesbase", "seriesbase", "atuaprima");
 				db = new DatabaseManager("localhost/seriesbase", "root", "");
 		} catch (SQLException e) {
 		}
