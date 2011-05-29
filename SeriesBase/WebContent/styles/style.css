@@ -537,8 +537,8 @@ label.warning {
 	-moz-box-shadow: 5px 5px 8px #4751c7;
 	-moz-border-radius-bottomright: 25px;
 	-moz-border-radius-topright: 25px;
-	-moz-border-radius-bottomleft: 25px;
-	-moz-border-radius-topleft: 25px;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-topleft: 5px;
 	-webkit-border-top-right-radius: 25px;
 	-webkit-border-bottom-right-radius: 25px;
 	-webkit-border-top-left-radius: 25px;
@@ -548,6 +548,7 @@ label.warning {
 
 .results {
 	display: none;
+	margin-left: 8px;
 }
 
 /*** PERSON PAGE ***/
