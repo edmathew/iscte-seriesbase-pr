@@ -122,12 +122,11 @@ ul#menu li a.current {
 
 .loginForm {
 	background-color: #DEDEDE;
-	width: 80%;	
+	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 }
-
 
 /**********************************************/
 /*** 			SERIES & MY SERIES			***/
@@ -183,13 +182,13 @@ ul#menu li a.current {
 }
 
 .favoriteState {
-	margin-left: 1%;
+	margin-left: 10px;
 	padding-top: 10px;
 }
 
-.favoriteState a{
+.favoriteState a {
 	font-size: large;
-} 
+}
 
 .favoriteState img {
 	width: 20px;
@@ -223,6 +222,10 @@ ul#menu li a.current {
 	margin-top: 2px;
 	background-color: #DEDEDE;
 	min-height: 420px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
 }
 
 .contents {
@@ -524,6 +527,7 @@ label.warning {
 
 .resultsDiv {
 	background-color: #DEDEDE;
+	border-style:solid;
 	min-width: 300px;
 	min-height: 300px;
 	float: left;
@@ -539,6 +543,7 @@ label.warning {
 	-webkit-border-bottom-right-radius: 25px;
 	-webkit-border-top-left-radius: 25px;
 	-webkit-border-bottom-left-radius: 25px;
+	
 }
 
 .results {

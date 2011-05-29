@@ -34,7 +34,7 @@
 					<a class="thumbnail"
 						href="router?link=getSeriesById&id=<%=s.getId()%>"> <%=s.getName()%> 
 						<span> <img src="<%=s.getImageURL()%>" width="300px" height="400px" border="0"> <br>
-							TEXTO </span> </a>
+							<%=s.getName()%> </span> </a>
 				</div>
 				<div class="infoYear"><%=s.getAnoInicial()%></div>
 				<div><%=s.getNetwork()%></div>
