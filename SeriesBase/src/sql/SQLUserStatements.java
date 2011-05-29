@@ -41,6 +41,17 @@ public class SQLUserStatements {
 	public static String insertUserSeries() {
 		return "INSERT INTO SeriesDoUtilizador (Serie_idSerie, Utilizador_idUtilizador) VALUES (?, ?)";
 	}
+	
+	/**
+	 * SQL delete statement to remove a favorite series.
+	 * 
+	 * @return SQL Prepared Statement.
+	 */
+	public static String deleteSeriesFromFavorites() {
+		return "DELETE FROM seriesdoutilizador WHERE Serie_idSerie = ? "
+				+ "AND Utilizador_idUtilizador = ?";
+
+	}
 
 	/**
 	 * SQL statement to select statement to select all the user favorites

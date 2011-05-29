@@ -185,8 +185,14 @@ public class Router extends HttpServlet {
 				SeriesControl.getById(req);
 			else if (action.equals("getByUserId"))
 				SeriesControl.getByUserId(req);
-			else if (action.equals("addToFavorites")) {
-				SeriesControl.addSeriesToFavorites(req);
+			else if (action.equals("addToFavorites")
+					|| action.equals("removeFromFavorites")) {
+				if (req.getHeader("Referer") == null)
+					throw new ForbiddenException();
+				if (action.equals("addToFavorites"))
+					SeriesControl.addSeriesToFavorites(req);
+				else
+					SeriesControl.removeSeriesFromFavorites(req);
 				resp.sendRedirect(req.getHeader("Referer"));
 			}
 		} catch (NumberFormatException e) {

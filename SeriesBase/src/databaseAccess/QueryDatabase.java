@@ -765,6 +765,23 @@ public class QueryDatabase {
 			}
 		}
 	}
+	
+	public void removeUserSeries(int seriesID, int userID) {
+		PreparedStatement ps = null;
+		try {
+			ps = db.preparedStatement(SQLUserStatements.deleteSeriesFromFavorites());
+			ps.setInt(1, seriesID);
+			ps.setInt(2, userID);
+			ps.executeUpdate();
+			db.commit();
+		} catch (SQLException e) {
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
 
 	public boolean isFavorite(int seriesId, int userId) {
 		PreparedStatement ps = null;

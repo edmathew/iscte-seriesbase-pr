@@ -47,8 +47,8 @@ public class SQLSeriesStatements {
 	 * @return SQL Prepared Statement
 	 */
 	public static String getSeriesByPersonId() {
-		return "SELECT idSerie, Nome, AnoInicial, Resumo, ImageURL, Network FROM Serie, actoresdaserie" +
-				" WHERE idSerie = Serie_idSerie AND Pessoa_idPessoa = ?";
+		return "SELECT idSerie, Nome, AnoInicial, Resumo, ImageURL, Network FROM Serie, actoresdaserie"
+				+ " WHERE idSerie = Serie_idSerie AND Pessoa_idPessoa = ?";
 	}
 
 	public static String getActorsBySeriesId() {

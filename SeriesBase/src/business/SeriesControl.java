@@ -42,10 +42,8 @@ public class SeriesControl {
 	 */
 	public static void getById(HttpServletRequest req)
 			throws ForbiddenException {
-		System.out.println("getById");
 		QueryDatabase query = QueryDatabase.getInstance();
 		int id = Integer.parseInt(req.getParameter("id"));
-		System.out.println(id);
 		int userId = UsersControl.getUserId(req.getSession());
 		Series s = query.getSeriesById(id);
 		if (s != null) {
@@ -61,11 +59,13 @@ public class SeriesControl {
 	 * 
 	 * @param req
 	 *            HttpServletResponse
-	 * @throws NoLoginException if the user isn't logged
+	 * @throws NoLoginException
+	 *             if the user isn't logged
 	 */
-	public static void getByUserId(HttpServletRequest req) throws NoLoginException {
+	public static void getByUserId(HttpServletRequest req)
+			throws NoLoginException {
 		int userId = UsersControl.getUserId(req.getSession());
-		if(userId < 0)
+		if (userId < 0)
 			throw new NoLoginException("mySeries.jsp");
 		LinkedList<Series> series = QueryDatabase.getInstance()
 				.getSeriesByUserId(userId);
@@ -82,13 +82,23 @@ public class SeriesControl {
 	public static void addSeriesToFavorites(HttpServletRequest req)
 			throws NoLoginException {
 		int userId = UsersControl.getUserId(req.getSession());
-		int seriesId = ((Series) req.getSession().getAttribute("series"))
-				.getId();
 		if (userId < 0)
 			throw new NoLoginException("router?seriesAction=addToFavorites");
+		int seriesId = ((Series) req.getSession().getAttribute("series"))
+				.getId();
 		QueryDatabase.getInstance().insertUserSeries(seriesId, userId);
 	}
-	
-	
+
+	public static void removeSeriesFromFavorites(HttpServletRequest req)
+			throws NoLoginException {
+		int userId = UsersControl.getUserId(req.getSession());
+		int seriesId = Integer.parseInt(req.getParameter("id"));
+		if (userId < 0)
+			throw new NoLoginException(
+					"router?seriesAction=removeFromFavorites");
+		
+		QueryDatabase.getInstance().removeUserSeries(seriesId, userId);
+
+	}
 
 }
