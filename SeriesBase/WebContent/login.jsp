@@ -1,8 +1,16 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%!int noLoginCount = 0; %>
 <%
 	boolean fromRegister = session.getAttribute("registerDone") != null;
 	boolean noLogin = session.getAttribute("tempAddress") != null;
+	if(noLogin)
+		noLoginCount ++;
+	if(noLoginCount == 2){
+		noLoginCount = 0;
+		noLogin = false;
+		session.removeAttribute("tempAddress");
+	}
 %>
 
 <html>
@@ -21,10 +29,17 @@
 			<div class="mainHeader">
 				<h1>Login Page</h1>
 			</div>
+			
+			<div class="warningLog">
+				<%=noLogin? "To acess this feature you need to log in":"" %>
+			</div>
+			<div class="confirm">
+				<%=fromRegister ? "Now you can log in\n" : "" %>
+			</div>
+			
 			<%if(session.getAttribute("loginID")== null){%>
 				<div class="loginForm">
-					<%=fromRegister ? "Now you can log in\n" : "" %>
-					<%=noLogin? "To acess this feature you need to log in":"" %>
+					
 					<form method="post" action="router?userAction=login">
 						<label>Username: </label>
 						<input type="text" name="log" id="log" size="23" />
