@@ -20,21 +20,27 @@
 	<body>
 		<div class="container">
 			<jsp:include page="menu.jsp"/>
-			<div class="peopleSearch">
-				<table border="1" id="s1">
-					<%
-						for (int i = 0; i < series.length; i++) {
+			<div class="mainHeader">
+				<h1>Find a new Series to Watch</h1>
+			</div>
+			<div style="display: table; width: 100%;">
+				<%
+					for (int i = 0; i < series.length; i++) {
 							Series s = (Series) series[i];
-					%>
-					<tr>
-						<td><%=s.getName()%></td>
-						<td><%=s.getAnoInicial()%></td>
-						<td><a href="router?link=getSeriesById&id=<%=s.getId()%>">Page</a>
-					</tr>
-					<%
-						}
-					%>
-				</table>
+				%>
+				<div class="seriesLine">
+					<div class="infoName">
+						<a href="router?link=getSeriesById&id=<%=s.getId()%>">
+							<%=s.getName()%>
+						</a>
+					</div>
+					<div class="infoYear"><%=s.getAnoInicial()%></div>
+					<div><%=s.getNetwork()%></div>
+				</div>
+				
+				
+				<%} %>
+				
 			</div>
 		</div>
 		

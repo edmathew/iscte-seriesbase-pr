@@ -44,6 +44,7 @@
 						</a>
 					</div>
 					<div class="infoYear"><%=s.getAnoInicial()%></div>
+					<div><%=s.getNetwork()%></div>
 					<div class="deleteSeries">
 						<a href="router?seriesAction=removeFromFavorites&id=<%=s.getId()%>">
 							<img src="images/remove.gif" title="Remove from Favorites"></a>
