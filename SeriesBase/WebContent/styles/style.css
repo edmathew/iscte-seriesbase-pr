@@ -529,6 +529,16 @@ label.warning {
 	float: left;
 	margin-left: 20px;
 	display: block;
+	-webkit-box-shadow: 5px 5px 8px #818181;
+	-moz-box-shadow: 5px 5px 8px #4751c7;
+	-moz-border-radius-bottomright: 25px;
+	-moz-border-radius-topright: 25px;
+	-moz-border-radius-bottomleft: 25px;
+	-moz-border-radius-topleft: 25px;
+	-webkit-border-top-right-radius: 25px;
+	-webkit-border-bottom-right-radius: 25px;
+	-webkit-border-top-left-radius: 25px;
+	-webkit-border-bottom-left-radius: 25px;
 }
 
 .results {
