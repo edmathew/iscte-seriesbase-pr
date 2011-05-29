@@ -38,6 +38,7 @@
 				</div>
 				
 				<div class="personData">
+					<h3>Known For</h3>
 					<ul>
 					<%for(int i = 0; i < series.length; i++){ 
 						Series s = (Series)series[i];%>

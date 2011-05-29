@@ -28,7 +28,7 @@
 							response);
 					Series s1 = new Series((Series) session.getAttribute("series"));
 				%>
-				<img src="<%=s1.getImageURL()%>" />
+				<img src="<%out.println(s1.getImageURL());%>" />
 			</div>
 			<div class="mainContent">
 				<h2><%=s1.getName()%></h2>
@@ -118,3 +118,6 @@
 		<jsp:include page="footer.jsp" />
 </body>
 </html>
+<%
+	session.removeAttribute("series");
+%>

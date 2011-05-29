@@ -29,6 +29,22 @@
 	<body>
 		<div class="container">
 			<jsp:include page="menu.jsp" />
+			<div class="mainHeader">
+				<h1>Your Favorite Series</h1>
+			</div>
+			<div style="display: table">
+				<%
+					for (int i = 0; i < series.length; i++) {
+							Series s = (Series) series[i];
+				%>
+				<div class="seriesLine">
+					sere
+				</div>
+				
+				
+				<%} %>
+				
+			</div>
 				<div class="contents">
 				<table border="1" id="s1">
 					<%

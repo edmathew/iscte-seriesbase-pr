@@ -14,9 +14,22 @@ form {
 }
 
 /*** GENERIC TAGS ***/
+a:link {
+	text-decoration: none;
+	color: gray;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 p.noBreak {
 	display: inline;
 	margin-right: 5px;
+}
+
+p.submitButton {
+	text-align: center;
 }
 
 .tooltip {
@@ -83,43 +96,10 @@ ul#menu li a.current {
 }
 
 /***************** END OF MENU BAR ******************/
-a:link {
-	text-decoration: none;
-	color: gray;
-}
 
-a:hover {
-	text-decoration: underline;
-}
-
-/* .title {
-	font-family: verdana;
-	font-size: 20px;
-	text-decoration: bold;
-	text-align: center;
-} */
-
-/***************** TABLES ******************/
-td.label {
-	width: 250px;
-	text-align: left;
-}
-
-td.field {
-	width: 250px;
-	text-align: left;
-}
-
-td.error {
-	width: 200px;
-	color: red;
-	text-align: left;
-	font: bold;
-	font-size: 16px;
-}
-/***************** END OF TABLES ******************/
-
-/***************** SERIES TABLES ******************/
+/**********************************************/
+/*** 			SERIES & MY SERIES			***/
+/**********************************************/
 .seriesInfo {
 	clear: right;
 	display: table;
@@ -146,9 +126,7 @@ td.error {
 }
 
 /***************** END OF SERIES TABLES ******************/
-p.submitButton {
-	text-align: center;
-}
+
 
 /********************** MAIN LAYOUT **********************/
 .mainContainer { /* width: 50%;
@@ -391,8 +369,9 @@ mainH1.header {
 	display: inline;
 }
 
-/************************************************/
-/*** LOGIN FORM ***/
+/**********************************************/
+/*** 			LOGIN FORM 					***/
+/**********************************************/
 .loginForm {
 	width: 500px;
 	padding-top: 100px;
@@ -408,7 +387,9 @@ mainH1.header {
 	font-size: 180%;
 }
 
-/*** REGISTER FORM ***/
+/**********************************************/
+/*** 			REGISTER FORM				***/
+/**********************************************/
 .registerForm {
 	padding-top: 5px;
 	clear: both;
@@ -437,7 +418,9 @@ label.warning {
 	margin-left: 10px;
 }
 
-/*** PERSONS SEARCH ***/
+/**********************************************/
+/*** 			PERSONS SEARCH				***/
+/**********************************************/
 .peopleSearch {
 	background-color: #DEDEDE;
 	text-align: center;

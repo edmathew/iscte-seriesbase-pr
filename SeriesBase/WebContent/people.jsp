@@ -17,7 +17,7 @@
 		<div class="container">
 			<jsp:include page="menu.jsp" />
 			<div class="mainHeader">
-				<h1>People</h1>
+				<h1>Find your Favorite Actors</h1>
 			</div>
 			<div style="diplay: table;">
 				<div class="resultsDiv">
