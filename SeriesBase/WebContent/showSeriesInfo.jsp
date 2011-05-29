@@ -24,56 +24,74 @@
 	<body>
 		<div class="container">
 			<jsp:include page="menu.jsp" />
-			<div class="contents">
-				<div class="seriesTitle">
-					<div><h1><%=s.getName()%></h1></div>
-					<%if(session.getAttribute("loginname") != null){ %>
-						<div class="favSeries">
-							<%if(!isFavorite){%>
-								<a href="router?seriesAction=addToFavorites">Add to Favorites</a>
-							<%}else{%>
-								<img alt="" src="images/Yes_check.png" />
-								Favorite
-							<%} %>
-							
-						</div>
-					<%} %>
-				</div>
+			<div class="mainHeader">
+				<h1><%=s.getName()%></h1>
+			</div>
+			
+			<div style="display: table">
 				<div class="seriesImage">
 					<img alt="Image not found" src="<%=s.getImageURL()%>">
 				</div>
+				
 				<div class="seriesInfo">
-					<b>Premiere Year</b><br/>
-					<%=s.getAnoInicial() %><br/><br/>
-					<b>Overview</b><br/>
-					<%=s.getResumo() %><br /><br />
-					<b>Network</b><br/>
-					<%=s.getNetwork() %><br/><br/>
-					<b>Genres</b><br/>
-					<%=s.getGenres() %><br/><br/>
-					<b>Actors</b><br/>
-					<%=s.getActors() %><br/><br/>
+					<div class="favoriteState">
+						<%if(!isFavorite){%>
+									<a href="router?seriesAction=addToFavorites">
+										<img src="images/favorite.png">
+										Add to Favorites
+									</a>
+								<%}else{%>
+									<img alt="" src="images/Yes_check.png" />
+									Favorite
+						<%} %>
+					</div>
+					
+					<div class="seriesDescription">
+						<b>Premiere Year</b><br/>
+						<%=s.getAnoInicial() %><br/><br/>
+						<b>Overview</b><br/>
+						<%=s.getResumo() %><br /><br />
+						<b>Network</b><br/>
+						<%=s.getNetwork() %><br/><br/>
+						<b>Genres</b><br/>
+						<%=s.getGenres() %><br/><br/>
+						<b>Actors</b><br/>
+						<%=s.getActors() %><br/><br/>
+					</div>
 				</div>
-				<div class="episodesTable">
-					<table border="1" id="s1">
-						<%
-							for (int i = 0; i < s.getEpisodes().size(); i++) {
-								Episodio e = (Episodio) s.getEpisodes().get(i);
-						%>
-						<tr>
-							<td><%=e.getTemporada()%></td>
-							<td><%=e.getNumero()%></td>
-							<td><%=e.getTitulo()%></td>
-							<td><%=e.getOverview()%></td>
-						</tr>
-						<%
-							}
-						%>
-					</table>
-				</div>
+				
 			</div>
-
-		</div>
+				<!-- Adicionar aos favorites caso esteja logado -->
+			<%-- 	<%if(session.getAttribute("loginname") != null){ %>
+							<div class="favSeries">
+								<%if(!isFavorite){%>
+									<a href="router?seriesAction=addToFavorites">Add to Favorites</a>
+								<%}else{%>
+									<img alt="" src="images/Yes_check.png" />
+									Favorite
+								<%} %>
+								
+							</div>
+						<%} %>
+ --%>			
+					<%-- <div class="episodesTable">
+						<table border="1" id="s1">
+							<%
+								for (int i = 0; i < s.getEpisodes().size(); i++) {
+									Episodio e = (Episodio) s.getEpisodes().get(i);
+							%>
+							<tr>
+								<td><%=e.getTemporada()%></td>
+								<td><%=e.getNumero()%></td>
+								<td><%=e.getTitulo()%></td>
+								<td><%=e.getOverview()%></td>
+							</tr>
+							<%
+								}
+							%>
+						</table>
+					</div> --%>
+				</div>
 		<jsp:include page="footer.jsp" />
 	
 	</body>

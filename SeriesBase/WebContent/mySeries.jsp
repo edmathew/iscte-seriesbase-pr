@@ -37,20 +37,19 @@
 					for (int i = 0; i < series.length; i++) {
 							Series s = (Series) series[i];
 				%>
-				<div class="seriesLine">
-					<div class="infoName">
-						<a href="router?link=getSeriesById&id=<%=s.getId()%>">
-							<%=s.getName()%>
-						</a>
+					<div class="seriesLine">
+						<div class="infoName">	
+							<a href="router?link=getSeriesById&id=<%=s.getId()%>">
+								<%=s.getName()%>
+							</a>
+						</div>
+						<div class="infoYear"><%=s.getAnoInicial()%></div>
+						<div><%=s.getNetwork()%></div>
+						<div class="deleteSeries">
+							<a href="router?seriesAction=removeFromFavorites&id=<%=s.getId()%>">
+								<img src="images/remove.gif" title="Remove from Favorites"></a>
+						</div>
 					</div>
-					<div class="infoYear"><%=s.getAnoInicial()%></div>
-					<div><%=s.getNetwork()%></div>
-					<div class="deleteSeries">
-						<a href="router?seriesAction=removeFromFavorites&id=<%=s.getId()%>">
-							<img src="images/remove.gif" title="Remove from Favorites"></a>
-					</div>
-				</div>
-				
 				
 				<%} %>
 				
