@@ -25,6 +25,7 @@
 			<div class="Content">
 				<h2>Nuno Dias</h2>
 				<p>Estudante Finalista de Engenharia Informática no ISCTE-IUL</p>
+				<p>Número 30527</p>
 				<p>Residente em Lisboa, 25 anos</p>
 			</div>
 		</div>
@@ -35,6 +36,7 @@
 			<div class="Content">
 				<h2>Edgar Mateus</h2>
 				<p>Estudante Finalista de Engenharia Informática no ISCTE-IUL</p>
+				<p>Número 30539</p>
 				<p>Residente em Arruda dos Vinhos, 20 anos</p>
 			</div>
 		</div>
@@ -45,6 +47,7 @@
 			<div class="Content">
 				<h2>Tiago Amaral</h2>
 				<p>Estudante Finalista de Engenharia Informática no ISCTE-IUL</p>
+				<p>Número 30549</p>
 				<p>Residente em Sintra, 23 anos</p>
 			</div>
 		</div>
