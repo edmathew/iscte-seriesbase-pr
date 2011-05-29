@@ -11,11 +11,10 @@
 		<div class="container">
 			<jsp:include page="menu.jsp" />
 			<div>
-				There's nothing here to see..:P
+				<p>There is nothing here to see!</p>
 			</div>
-				
 		</div>
 		<jsp:include page="footer.jsp" />
-	
+
 	</body>
 </html>
