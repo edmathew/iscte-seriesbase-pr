@@ -22,9 +22,9 @@
 
 	<div class="container">
 		<jsp:include page="menu.jsp" />
-		<div class="controlPanel">
+		<div class="coloredControPanel">
 			<h1>Control Panel</h1>
-
+		</div>
 			<%	if(updateDone){ %>
 			<p>Changes saved</p>
 			<!--  <script type="text/javascript">
@@ -32,7 +32,7 @@
 							</script>
 							-->
 			<%	} %>
-
+<div class="controlPanel">
 			<form method="post" action="router?userAction=updateUserData">
 				<div class ="email">
 				<label> Change e-mail address: </label> <input type="text" size="20"

@@ -464,12 +464,25 @@ mainH1.header {
 }
 
 /*** CONTROL PANEL ***/
+.coloredControPanel{
+padding: 1px;
+	color: white;
+	background-color: /* #232DA3  #343EB5*/ #4751C7 ;
+	clear: left;
+	margin-bottom: 15px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	text-align: center;
+}
+
 .controlPanel {
 	background-color: #DEDEDE;
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 14px;
-	margin-top: 60px;
+	margin-top: 10px;
 	-webkit-box-shadow: 5px 5px 8px #818181;
 	-moz-box-shadow: 5px 5px 8px #818181;
 	-moz-border-radius-bottomright: 25px;
