@@ -474,7 +474,13 @@ padding: 1px;
 	-moz-border-radius-bottomleft: 10px;
 	-webkit-border-bottom-left-radius: 10px;
 	-webkit-border-bottom-right-radius: 10px;
-	text-align: center;
+}
+
+.coloredControPanel h1{
+	padding-left: 10px;
+	font-family: verdana;
+	font-size: 20px;
+	display: table;
 }
 
 .controlPanel {
@@ -482,7 +488,7 @@ padding: 1px;
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 14px;
-	margin-top: 10px;
+	margin-top: px;
 	-webkit-box-shadow: 5px 5px 8px #818181;
 	-moz-box-shadow: 5px 5px 8px #818181;
 	-moz-border-radius-bottomright: 25px;
