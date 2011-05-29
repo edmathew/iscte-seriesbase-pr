@@ -285,8 +285,24 @@ mainH1.header {
 .mainVideo {
 	float: inherit;
 	padding: 1em;
-	width: 70%;
+	width: 292px;
+	height: 200px;
 	line-height: 20px;
+	margin-right: 30%;
+	background-color: #4751C7;
+	opacity:0.3;
+	/* filter:alpha(opacity=40); */
+	
+	-webkit-box-shadow: 5px 5px 8px #818181;
+	-moz-box-shadow: 5px 5px 8px #818181;
+	-moz-border-radius-bottomright: 25px;
+	-moz-border-radius-topright: 25px;
+	-moz-border-radius-bottomleft: 25px;
+	-moz-border-radius-topleft: 25px;
+	-webkit-border-top-left-radius: 25px;
+	-webkit-border-bottom-left-radius: 25px;
+	-webkit-border-top-right-radius: 25px;
+	-webkit-border-bottom-right-radius: 25px;
 }
 
 .GeneralProfile {

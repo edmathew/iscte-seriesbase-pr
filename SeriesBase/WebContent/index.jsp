@@ -41,7 +41,7 @@
 			<div class="mainContent">
 				<h2><%=s1.getName()%></h2>
 				<hr />
-				<div class="mainText"><%=s1.getResumo()%></div>
+				<div class="mainText"><%=s1.getResumo()%><p></p><p></p></div>
 				<div class="mainVideo">
 					<object width="292" height="200">
 						<param name="movie"
@@ -91,7 +91,7 @@
 			<div class="mainContent">
 				<h2><%=s3.getName()%></h2>
 				<hr />
-				<div class="mainText"><%=s3.getResumo()%></div>
+				<div class="mainText"><%=s3.getResumo()%><p></p><p></p></div>
 				<div class="mainVideo">
 					<object width="292" height="200">
 						<param name="movie"
