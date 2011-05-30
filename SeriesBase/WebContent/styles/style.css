@@ -142,6 +142,22 @@ ul#menu li a.current {
 	font-size: 13px;
 }
 
+.seriesLineHeader {
+	background-color: #DEDEDE;
+	width: 80%;
+	height: 25px;
+	margin-bottom: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: Verdana, Arial;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.seriesLineHeader hr{
+	color: blue;
+}
+
 .infoName {
 	margin-left: 10px;
 	float: left;

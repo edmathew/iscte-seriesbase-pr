@@ -33,6 +33,13 @@
 				<h1>Your Favorite Series</h1>
 			</div>
 			<div style="display: table; width: 100%;">
+					<div class="seriesLineHeader">
+						<div class="infoName">Name</div>
+						<div class="infoYear">Year</div>
+						<div>Network</div>
+						<hr />
+					</div>
+					
 				<%
 					for (int i = 0; i < series.length; i++) {
 							Series s = (Series) series[i];

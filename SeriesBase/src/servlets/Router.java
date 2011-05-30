@@ -196,12 +196,14 @@ public class Router extends HttpServlet {
 					SeriesControl.addSeriesToFavorites(req);
 					id = ((Series) req.getSession().getAttribute("series"))
 							.getId();
+					resp.sendRedirect("showSeriesInfo.jsp?id=" + id);
 				} else {
 					SeriesControl.removeSeriesFromFavorites(req);
 					id = Integer.parseInt(req.getParameter("id"));
+					resp.sendRedirect("mySeries.jsp");
 				}
 
-				resp.sendRedirect("showSeriesInfo.jsp?id=" + id);
+				
 			}
 		} catch (NumberFormatException e) {
 			throw new ForbiddenException();

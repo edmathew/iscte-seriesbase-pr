@@ -1,16 +1,9 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%!int noLoginCount = 0; %>
+
 <%
 	boolean fromRegister = session.getAttribute("registerDone") != null;
 	boolean noLogin = session.getAttribute("tempAddress") != null;
-	if(noLogin)
-		noLoginCount ++;
-	if(noLoginCount == 2){
-		noLoginCount = 0;
-		noLogin = false;
-		session.removeAttribute("tempAddress");
-	}
 %>
 
 <html>
