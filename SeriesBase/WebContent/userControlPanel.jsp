@@ -32,30 +32,38 @@
 							</script>
 							-->
 			<%	} %>
-<div class="controlPanel">
+	<div class="registerForm">
 			<form method="post" action="router?userAction=updateUserData">
-				<div class ="email">
-				<label> Change e-mail address: </label> <input type="text" size="20"
-					name="newEmail"
-					value="<%=invalidEmail ? (String)session.getAttribute("invalidEmail") : "" %>" />
-				<%	if(invalidEmail){ %>
-				<p>Email already in System</p>
-				<%	} %>
+				<div class="field">
+						<label>Change e-mail address</label>
+						<label class="warning"><%=invalidEmail ? "E-Mail already in the system" : 
+								invalidEmail ? "Invalid Email":"" %></label>
+						<input type="email" name="newEmail" size="30" title="Mandatory"/>
 				</div>
+			
+				<div class="field">
+						<label>Password</label>
+						<label class="warning"><%=wrongPassword ? "Wrong Password" : "" %></label>
+						<input type="password" name="oldPassword" size="30" title="Your Old Password"/>
+				</div>
+				
+				
 				<div class="changePassword">
-				<p>Change Password</p>
+					<p>Change Password</p>
 				</div>
-				<div class="pass">
-				<label>Old Password</label> <input type="password" size="20"
-					name="oldPassword" />
-				<%	if(wrongPassword){%>
-				<p>Wrong Password</p>
-				<%	} %>
-				<p></p>
-				<p><label>New Password</label> <input type="password" size="20"
-					name="newPassword" /> </p> <p><label>Confirm New Password</label> <input
-					type="password" size="20" name="confirmPassword" /> </p> <br />
-					</div>
+				
+				<div class="field">
+						<label>New Password</label>
+						<label class="warning"><%=wrongPassword ? "Wrong Password" : "" %></label>
+						<input type="password" name="newPassword" size="30" title="Must be at least 5 characters."/>
+				</div>
+				
+				<div class="field">
+						<label>Repeat New Password</label>
+						<label class="warning"><%=wrongPassword ? "Wrong Password" : "" %></label>
+						<input type="password" name="confirmPassword" size="30" title="Repeat the password"/>
+				</div>
+		
 				<div class="bottom">
 					<input type="submit" value="Confirm!" />
 				</div>

@@ -61,36 +61,6 @@
 				</div>
 				
 			</div>
-				<!-- Adicionar aos favorites caso esteja logado -->
-			<%-- 	<%if(session.getAttribute("loginname") != null){ %>
-							<div class="favSeries">
-								<%if(!isFavorite){%>
-									<a href="router?seriesAction=addToFavorites">Add to Favorites</a>
-								<%}else{%>
-									<img alt="" src="images/Yes_check.png" />
-									Favorite
-								<%} %>
-								
-							</div>
-						<%} %>
- --%>			
-					<%-- <div class="episodesTable">
-						<table border="1" id="s1">
-							<%
-								for (int i = 0; i < s.getEpisodes().size(); i++) {
-									Episodio e = (Episodio) s.getEpisodes().get(i);
-							%>
-							<tr>
-								<td><%=e.getTemporada()%></td>
-								<td><%=e.getNumero()%></td>
-								<td><%=e.getTitulo()%></td>
-								<td><%=e.getOverview()%></td>
-							</tr>
-							<%
-								}
-							%>
-						</table>
-					</div> --%>
 				</div>
 		<jsp:include page="footer.jsp" />
 	
