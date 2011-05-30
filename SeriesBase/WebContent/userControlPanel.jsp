@@ -51,10 +51,10 @@
 				<%	if(wrongPassword){%>
 				<p>Wrong Password</p>
 				<%	} %>
-				
-				<label>New Password</label> <input type="password" size="20"
-					name="newPassword" /> <label>Confirm New Password</label> <input
-					type="password" size="20" name="confirmPassword" /> <br />
+				<p></p>
+				<p><label>New Password</label> <input type="password" size="20"
+					name="newPassword" /> </p> <p><label>Confirm New Password</label> <input
+					type="password" size="20" name="confirmPassword" /> </p> <br />
 					</div>
 				<div class="bottom">
 					<input type="submit" value="Confirm!" />
