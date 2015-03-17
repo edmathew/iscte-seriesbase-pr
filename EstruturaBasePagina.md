@@ -1,0 +1,4 @@
+#O que é preciso para funcionar tudo certinho...
+
+Para evitar HTMLception e o rodapé aparecer certinho no fundo da página é preciso utilizar a estrutura de página que está no ficheiro do projecto (estruturadapagina.txt).
+
